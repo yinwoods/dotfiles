@@ -49,6 +49,13 @@ Plugin 'nvie/vim-flake8'
 " Sper Searching
 Plugin 'kien/ctrlp.vim'
 
+" power airline
+Plugin 'vim-airline/vim-airline'
+Plugin 'vim-airline/vim-airline-themes'
+
+" match tags
+Plugin 'vim-scripts/matchit.zip'
+
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
 filetype plugin indent on    " required
@@ -66,6 +73,20 @@ filetype plugin indent on    " required
 
 " set theme
 syntax enable
+colo evening
+set number
+set relativenumber
+set background=dark
+set ruler
+set showcmd
+set noswapfile
+set autoread
+set nobackup
+set mouse=a
+set pastetoggle=<F3>
+
+hi Normal ctermfg=252 ctermbg=none
+
 let python_highlight_all=1
 let g:solarized_termcolors=256
 
@@ -74,6 +95,8 @@ if has('gui_running')
     colorscheme solarized
 endif
 
+" airline theme
+let g:airline_theme='solarized'
 
 " YouCompleteMe Position
 let g:ycm_global_ycm_extra_conf = '~/.vim/bundle/YouCompleteMe/third_party/ycmd/cpp/ycm/.ycm_extra_conf.py'
@@ -130,8 +153,9 @@ set encoding=utf-8
 set fileencoding=utf-8
 
 " make python scripts run easily
-au BufRead *.py map <buffer> <F5> :exec '!python' shellescape(@%, 1) <CR>:!/usr/bin/env python3 %<CR>
+au BufRead *.py map <buffer> <F5> :w <CR>:!/usr/bin/env python3 %<CR>
 
 " let cursor always in center
 nnoremap j jzz
 nnoremap k kzz
+
