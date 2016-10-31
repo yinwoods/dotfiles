@@ -1,4 +1,10 @@
 set nocompatible              " be iMproved, required
+set tabstop=4
+set softtabstop=4
+set shiftwidth=4
+set noexpandtab
+set autoindent
+set cindent
 filetype off                  " required
 
 " set the runtime path to include Vundle and initialize
@@ -29,7 +35,7 @@ Plugin 'jnurmine/Zenburn'
 Plugin 'altercation/vim-colors-solarized'
 
 " YouCompleteMe
-Plugin 'Valloric/YouCompleteMe'
+" Plugin 'Valloric/YouCompleteMe'
 
 " NERD Tree
 Plugin 'scrooloose/nerdtree'
@@ -133,7 +139,7 @@ nnoremap <space> za
 let g:SimpyFold_docstring_preview=1
 
 " the proper PEP8 indentation for python scripts
-au BufNewFile,BufRead *.py
+au BufNewFile,BufRead *.py, *.cpp
     \ set tabstop=4 |
     \ set softtabstop=4 |
     \ set shiftwidth=4 |
@@ -158,4 +164,3 @@ au BufRead *.py map <buffer> <F5> :w <CR>:!/usr/bin/env python3 %<CR>
 " let cursor always in center
 nnoremap j jzz
 nnoremap k kzz
-
