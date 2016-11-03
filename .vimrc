@@ -1,11 +1,26 @@
-set nocompatible              " be iMproved, required
+filetype plugin indent on    " required
 set tabstop=4
-set softtabstop=4
 set shiftwidth=4
-set noexpandtab
+set expandtab
+" To ignore plugin indent changes, instead use:
+"filetype plugin on
+set nocompatible              " be iMproved, required
 set autoindent
 set cindent
-filetype off                  " required
+
+" set theme
+syntax enable
+colo evening
+set number
+set relativenumber
+set background=dark
+set ruler
+set showcmd
+set noswapfile
+set autoread
+set nobackup
+set mouse=a
+set pastetoggle=<F3>
 
 " set the runtime path to include Vundle and initialize
 set rtp+=~/.vim/bundle/Vundle.vim
@@ -64,9 +79,6 @@ Plugin 'vim-scripts/matchit.zip'
 
 " All of your Plugins must be added before the following line
 call vundle#end()            " required
-filetype plugin indent on    " required
-" To ignore plugin indent changes, instead use:
-"filetype plugin on
 "
 " Brief help
 " :PluginList       - lists configured plugins
@@ -77,19 +89,6 @@ filetype plugin indent on    " required
 " see :h vundle for more details or wiki for FAQ
 " Put your non-Plugin stuff after this line
 
-" set theme
-syntax enable
-colo evening
-set number
-set relativenumber
-set background=dark
-set ruler
-set showcmd
-set noswapfile
-set autoread
-set nobackup
-set mouse=a
-set pastetoggle=<F3>
 
 hi Normal ctermfg=252 ctermbg=none
 
@@ -139,7 +138,7 @@ nnoremap <space> za
 let g:SimpyFold_docstring_preview=1
 
 " the proper PEP8 indentation for python scripts
-au BufNewFile,BufRead *.py, *.cpp
+au BufNewFile,BufRead *.py
     \ set tabstop=4 |
     \ set softtabstop=4 |
     \ set shiftwidth=4 |
