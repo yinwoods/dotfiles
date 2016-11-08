@@ -1,10 +1,12 @@
-# Path to your oh-my-zsh installation.
-export ZSH=$HOME/.oh-my-zsh
+# If you come from bash you might have to change your $PATH.
+# export PATH=$HOME/bin:/usr/local/bin:$PATH
 
-# Set name of the theme to load.
-# Look in ~/.oh-my-zsh/themes/
-# Optionally, if you set this to "random", it'll load a random theme each
-# time that oh-my-zsh is loaded.
+# Path to your oh-my-zsh installation.
+  export ZSH=/home/yinwoods/.oh-my-zsh
+
+# Set name of the theme to load. Optionally, if you set this to "random"
+# it'll load a random theme each time that oh-my-zsh is loaded.
+# See https://github.com/robbyrussell/oh-my-zsh/wiki/Themes
 ZSH_THEME="honukai"
 
 # Uncomment the following line to use case-sensitive completion.
@@ -51,12 +53,11 @@ ZSH_THEME="honukai"
 # Add wisely, as too many plugins slow down shell startup.
 plugins=(git)
 
+source $ZSH/oh-my-zsh.sh
+
 # User configuration
 
-# export PATH="/usr/bin:/bin:/usr/sbin:/sbin:$PATH"
 # export MANPATH="/usr/local/man:$MANPATH"
-
-source $ZSH/oh-my-zsh.sh
 
 # You may need to manually set your language environment
 # export LANG=en_US.UTF-8
@@ -82,16 +83,8 @@ source $ZSH/oh-my-zsh.sh
 # Example aliases
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
+alias cls=clear
+alias py2=python2
+alias py3=python3
 
-#配置别名
-alias cls="clear"
-alias grep="grep --color=auto"
-alias -s py='vim'
-alias -s c='vim'
-alias -s cpp='vim'
-alias -s gz='tar -xzvf'
-
-# zsh开启vimn模式
-set editing-mode vi
-# 通过j、k浏览历史记录
-bindkey '^R' history-incremental-search-backward
+export PYTHONPATH="/home/yinwoods/newsInPalm/"
