@@ -100,10 +100,6 @@ done
 FINISH="%{$terminfo[sgr0]%}"
 #}}}
 
-#命令提示符
-RPROMPT=$(echo "$RED%D %T$FINISH")
-PROMPT=$(echo "$CYAN%n@$YELLOW%M:$GREEN%/$_YELLOW>$FINISH ")
-
 #PROMPT=$(echo "$BLUE%M$GREEN%/
 #$CYAN%n@$BLUE%M:$GREEN%/$_YELLOW>>>$FINISH ")
 #标题栏、任务栏样式{{{
@@ -384,4 +380,3 @@ bindkey '^R' history-incremental-search-backward
 
 # SET PYTOHNPATH
 export PYTHONPATH="${PYTHONPATH}:/home/yinwoods/PycharmProjects/Test/"
->>>>>>> e917f0451b866b74e10dcbe37f043d4738494198

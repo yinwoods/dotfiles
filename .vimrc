@@ -157,6 +157,13 @@ au BufNewFile,BufRead *.js, *.html, *.css <here>:</here>
 set encoding=utf-8
 set fileencoding=utf-8
 
+" run the Flake8 check every time when write a python file
+autocmd BufWritePost *.py call Flake8()
+" customize the height of quick fix window
+let g:flake8_quickfix_height=7
+" customize whether the show marks in the file
+let g:flake8_show_in_file=1
+
 " make python scripts run easily
 au BufRead *.py map <buffer> <F5> :w <CR>:!/usr/bin/env python3 %<CR>
 
