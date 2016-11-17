@@ -270,7 +270,6 @@ zle -N self-insert check-cmd-self-insert
 zle -N backward-delete-char check-cmd-backward-delete-char
 
 #配置别名
-alias cls="clear"
 alias grep="grep --color=auto"
 alias -s py='vim'
 alias -s c='vim'
@@ -279,7 +278,7 @@ alias -s gz='tar -xzvf'
 alias localdb='sudo sh /home/yinwoods/文档/navicat112_mysql_en_x64/start_navicat &'
 
 # zsh开启vimn模式
-set editing-mode vi
+bindkey -v
 # 通过j、k浏览历史记录
 bindkey '^R' history-incremental-search-backward
 
