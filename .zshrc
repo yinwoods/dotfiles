@@ -7,43 +7,14 @@ export ZSH=$HOME/.oh-my-zsh
 # time that oh-my-zsh is loaded.
 ZSH_THEME="honukai"
 
-# Uncomment the following line to use case-sensitive completion.
-# CASE_SENSITIVE="true"
-
-# Uncomment the following line to use hyphen-insensitive completion. Case
-# sensitive completion must be off. _ and - will be interchangeable.
-# HYPHEN_INSENSITIVE="true"
-
-# Uncomment the following line to disable bi-weekly auto-update checks.
-# DISABLE_AUTO_UPDATE="true"
-
-# Uncomment the following line to change how often to auto-update (in days).
-# export UPDATE_ZSH_DAYS=13
-
-# Uncomment the following line to disable colors in ls.
-# DISABLE_LS_COLORS="true"
-
-# Uncomment the following line to disable auto-setting terminal title.
-# DISABLE_AUTO_TITLE="true"
-
 # Uncomment the following line to enable command auto-correction.
-# ENABLE_CORRECTION="true"
+ENABLE_CORRECTION="true"
 
-# Uncomment the following line to display red dots whilst waiting for completion.
-# COMPLETION_WAITING_DOTS="true"
-
-# Uncomment the following line if you want to disable marking untracked files
-# under VCS as dirty. This makes repository status check for large repositories
-# much, much faster.
-# DISABLE_UNTRACKED_FILES_DIRTY="true"
 
 # Uncomment the following line if you want to change the command execution time
 # stamp shown in the history command output.
 # The optional three formats: "mm/dd/yyyy"|"dd.mm.yyyy"|"yyyy-mm-dd"
-# HIST_STAMPS="mm/dd/yyyy"
-
-# Would you like to use another custom folder than $ZSH/custom?
-# ZSH_CUSTOM=/path/to/new-custom-folder
+HIST_STAMPS="yyyy-mm-dd"
 
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
@@ -53,35 +24,7 @@ plugins=(git)
 
 # User configuration
 
-# export PATH="/usr/bin:/bin:/usr/sbin:/sbin:$PATH"
-# export MANPATH="/usr/local/man:$MANPATH"
-
 source $ZSH/oh-my-zsh.sh
-
-# You may need to manually set your language environment
-# export LANG=en_US.UTF-8
-
-# Preferred editor for local and remote sessions
-# if [[ -n $SSH_CONNECTION ]]; then
-#   export EDITOR='vim'
-# else
-#   export EDITOR='mvim'
-# fi
-
-# Compilation flags
-# export ARCHFLAGS="-arch x86_64"
-
-# ssh
-# export SSH_KEY_PATH="~/.ssh/dsa_id"
-
-# Set personal aliases, overriding those provided by oh-my-zsh libs,
-# plugins, and themes. Aliases can be placed here, though oh-my-zsh
-# users are encouraged to define aliases within the ZSH_CUSTOM folder.
-# For a full list of active aliases, run `alias`.
-#
-# Example aliases
-# alias zshconfig="mate ~/.zshrc"
-# alias ohmyzsh="mate ~/.oh-my-zsh"
 
 # Created by newuser for 5.1.1
 #color{{{
@@ -113,11 +56,16 @@ export XMODIFIERS="@im=ibus"
 export QT_MODULE=ibus
 export GTK_MODULE=ibus
 
-#关于历史纪录的配置 {{{
+#关于历史纪录的配置
+#
 #历史纪录条目数量
 export HISTSIZE=10000
+
 #注销后保存的历史纪录条目数量
 export SAVEHIST=10000
+
+# 不记录相同历史命令
+export HISTCONTROL=ignoredups
 
 #杂项 {{{
 #允许在交互模式中使用注释  例如：
@@ -135,11 +83,6 @@ WORDCHARS='*?_-[]~=&;!#$%^(){}<>'
 #自动补全功能 {{{
 setopt AUTO_LIST
 setopt AUTO_MENU
-
-#自动补全缓存
-#zstyle ':completion::complete:*' use-cache on
-#zstyle ':completion::complete:*' cache-path .zcache
-#zstyle ':completion:*:cd:*' ignore-parents parent pwd
 
 #自动补全选项
 zstyle ':completion:*' verbose yes
@@ -167,10 +110,6 @@ zstyle ':completion:*:*:kill:*:processes' list-colors '=(#b) #([0-9]#)*=0=01;31'
 
 #修正大小写
 zstyle ':completion:*' matcher-list '' 'm:{a-zA-Z}={A-Za-z}'
-#错误校正
-zstyle ':completion:*' completer _complete _match _approximate
-zstyle ':completion:*:match:*' original only
-zstyle ':completion:*:approximate:*' max-errors 1 numeric
 
 #kill 命令补全
 compdef pkill=kill
@@ -196,8 +135,6 @@ special:bold      #特殊字符
 isearch:underline)#搜索时使用的关键字
 #}}}
 
-#定义快捷键为： [Esc] [Esc]
-#}}}
 
 #命令别名 {{{
 alias cp='cp -i'
@@ -207,8 +144,7 @@ alias ls='ls -F --color=auto'
 alias ll='ls -al'
 alias grep='grep --color=auto'
 alias la='ls -a'
-alias y='yaourt'
-alias h='htop'
+
 
 #[Esc][h] man 当前命令时，显示简短说明
 alias run-help >&/dev/null && unalias run-help
@@ -216,21 +152,13 @@ autoload run-help
 
 #历史命令 top10
 alias top10='print -l  ${(o)history%% *} | uniq -c | sort -nr | head -n 10'
-#}}}
 
-####{{{
 function timeconv { date -d @$1 +"%Y-%m-%d %T" }
-
-# }}}
 
 zmodload zsh/mathfunc
 autoload -U zsh-mime-setup
 zsh-mime-setup
 setopt EXTENDED_GLOB
-#autoload -U promptinit
-#promptinit
-#prompt redhat
-
 setopt correctall
 autoload compinstall
 
