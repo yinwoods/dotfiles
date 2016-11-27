@@ -1,10 +1,9 @@
-filetype plugin indent on    " required
+filetype plugin on
+filetype plugin indent on
 set tabstop=4
 set shiftwidth=4
 set expandtab
-" To ignore plugin indent changes, instead use:
-"filetype plugin on
-set nocompatible              " be iMproved, required
+set nocompatible
 set autoindent
 set cindent
 
@@ -21,6 +20,7 @@ set autoread
 set nobackup
 set mouse=a
 set pastetoggle=<F3>
+hi Normal ctermfg=252 ctermbg=none
 
 " set the runtime path to include Vundle and initialize
 set rtp+=~/.vim/bundle/Vundle.vim
@@ -50,7 +50,7 @@ Plugin 'jnurmine/Zenburn'
 Plugin 'altercation/vim-colors-solarized'
 
 " YouCompleteMe
-" Plugin 'Valloric/YouCompleteMe'
+Plugin 'Valloric/YouCompleteMe'
 
 " NERD Tree
 Plugin 'scrooloose/nerdtree'
@@ -90,8 +90,6 @@ call vundle#end()            " required
 " Put your non-Plugin stuff after this line
 
 
-hi Normal ctermfg=252 ctermbg=none
-
 let python_highlight_all=1
 let g:solarized_termcolors=256
 
@@ -101,12 +99,26 @@ if has('gui_running')
 endif
 
 " airline theme
+set t_Co=256
+set laststatus=2
+if !exists('g:airline_symbols')
+    let g:airline_symbols = {}
+endif
+let g:airline_powerline_fonts=1
+let g:airline#extensions#tabline#enabled=1
+let g:airline#extensions#tabline#buffer_nr_show=1
 let g:airline_theme='solarized'
+
 
 " YouCompleteMe Position
 let g:ycm_global_ycm_extra_conf = '~/.vim/bundle/YouCompleteMe/third_party/ycmd/cpp/ycm/.ycm_extra_conf.py'
 " ensure autocomplete window goes away when done with it
 let g:ycm_autoclose_preview_window_after_completion=1
+let g:ycm_collect_identifiers_from_comments_and_strings=1
+let g:ycm_min_num_of_chars_for_completion=2
+let g:ycm_cache_omnifunc=0
+let g:ycm_complete_in_comments=1
+let g:ycm_complete_in_strings=1
 
 " map a specific key or shortcut to open NERDTree
 map <C-n> :NERDTreeToggle<CR>
@@ -134,8 +146,6 @@ set foldlevel=99
 " Enable folding with spacebar
 nnoremap <space> za
 
-" see docstring for folded code
-let g:SimpyFold_docstring_preview=1
 
 " the proper PEP8 indentation for python scripts
 au BufNewFile,BufRead *.py
@@ -157,15 +167,22 @@ au BufNewFile,BufRead *.js, *.html, *.css <here>:</here>
 set encoding=utf-8
 set fileencoding=utf-8
 
+
 " run the Flake8 check every time when write a python file
 autocmd BufWritePost *.py call Flake8()
+" remember the cursor postion when you last leave
+if has("autocmd")
+    autocmd BufRead *.txt set tw=78
+    autocmd BufReadPost *
+    \ if line("'\"") > 0 && line ("'\"") <= line("$") |
+    \ exe "normal g'\"" |
+    \ endif
+endif
+
 " customize the height of quick fix window
 let g:flake8_quickfix_height=7
 " customize whether the show marks in the file
 let g:flake8_show_in_file=1
-
-" make python scripts run easily
-au BufRead *.py map <buffer> <F5> :w <CR>:!/usr/bin/env python3 %<CR>
 
 " let cursor always in center
 nnoremap j jzz
