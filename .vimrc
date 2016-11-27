@@ -19,6 +19,7 @@ set noswapfile
 set autoread
 set nobackup
 set mouse=a
+set hlsearch
 set pastetoggle=<F3>
 hi Normal ctermfg=252 ctermbg=none
 
@@ -104,6 +105,17 @@ set laststatus=2
 if !exists('g:airline_symbols')
     let g:airline_symbols = {}
 endif
+
+if !exists('g:airline_symbols')
+	let g:airline_symbols = {}
+endif
+
+let g:airline_left_sep = '▶'
+let g:airline_left_alt_sep = '❯'
+let g:airline_right_sep = '◀'
+let g:airline_right_alt_sep = '❮'
+let g:airline_symbols.linenr = '¶'
+let g:airline_symbols.branch = '⎇'
 let g:airline_powerline_fonts=1
 let g:airline#extensions#tabline#enabled=1
 let g:airline#extensions#tabline#buffer_nr_show=1
@@ -119,6 +131,7 @@ let g:ycm_min_num_of_chars_for_completion=2
 let g:ycm_cache_omnifunc=0
 let g:ycm_complete_in_comments=1
 let g:ycm_complete_in_strings=1
+let g:ycm_server_keep_logfiles=1
 
 " map a specific key or shortcut to open NERDTree
 map <C-n> :NERDTreeToggle<CR>
