@@ -222,3 +222,6 @@ RPROMPT='%{$fg[green]%}${VIMODE}%{$reset_color%}'
 
 # SET PYTOHNPATH
 export PYTHONPATH="${PYTHONPATH}:/home/yinwoods/PycharmProjects/Test/"
+
+# 确保byobu不影响vim背景色
+export TERM="xterm-256color"
