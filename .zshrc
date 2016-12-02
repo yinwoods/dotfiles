@@ -223,5 +223,8 @@ RPROMPT='%{$fg[green]%}${VIMODE}%{$reset_color%}'
 # SET PYTOHNPATH
 export PYTHONPATH="${PYTHONPATH}:/home/yinwoods/PycharmProjects/Test/"
 
+# SET 坚果云 PATH
+alias jianguoyun="cd ~/文档/我的坚果云/"
+
 # 确保byobu不影响vim背景色
 export TERM="xterm-256color"

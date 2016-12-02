@@ -1,5 +1,7 @@
 filetype plugin on
 filetype plugin indent on
+
+" set tab
 set tabstop=4
 set shiftwidth=4
 set expandtab
@@ -7,12 +9,24 @@ set nocompatible
 set autoindent
 set cindent
 
+" UTF-8 support
+set encoding=utf-8
+set fileencoding=utf-8
+
+" Enable folding
+set foldmethod=indent
+set foldlevel=99
+
+" Enable folding with spacebar
+nnoremap <space> za
+
 " set theme
 syntax enable
 colo evening
 set number
 set relativenumber
 set background=dark
+set nowrapscan
 set ruler
 set showcmd
 set noswapfile
@@ -153,12 +167,6 @@ nnoremap <C-K> <C-W><C-K>
 nnoremap <C-L> <C-W><C-L>
 nnoremap <C-H> <C-W><C-H>
 
-" Enable folding
-set foldmethod=indent
-set foldlevel=99
-" Enable folding with spacebar
-nnoremap <space> za
-
 
 " the proper PEP8 indentation for python scripts
 au BufNewFile,BufRead *.py
@@ -175,10 +183,6 @@ au BufNewFile,BufRead *.js, *.html, *.css <here>:</here>
     \ set tabstop=2 |
     \ set softtabstop=2 |
     \ set shiftwidth=2 |
-
-" UTF-8 support
-set encoding=utf-8
-set fileencoding=utf-8
 
 
 " run the Flake8 check every time when write a python file
