@@ -228,3 +228,5 @@ alias jianguoyun="cd ~/文档/我的坚果云/"
 
 # 确保byobu不影响vim背景色
 export TERM="xterm-256color"
+
+[ -f ~/.fzf.zsh ] && source ~/.fzf.zsh

@@ -26,7 +26,6 @@ colo evening
 set number
 set relativenumber
 set background=dark
-set nowrapscan
 set ruler
 set showcmd
 set noswapfile
@@ -37,73 +36,43 @@ set hlsearch
 set pastetoggle=<F3>
 hi Normal ctermfg=252 ctermbg=none
 
-" set the runtime path to include Vundle and initialize
-set rtp+=~/.vim/bundle/Vundle.vim
-call vundle#begin()
-" alternatively, pass a path where Vundle should install plugins
-"call vundle#begin('~/some/path/here')
+" Specify a directory for plugins (for Neovim: ~/.local/share/nvim/plugged)
+call plug#begin('~/.vim/plugged')
 
-" let Vundle manage Vundle, required
-Plugin 'VundleVim/Vundle.vim'
-
-" The following are examples of different formats supported.
-" Keep Plugin commands between vundle#begin/end.
-" plugin on GitHub repo
-Plugin 'tpope/vim-fugitive'
+" Make sure you use single quotes
 
 " The sparkup vim script is in a subdirectory of this repo called vim.
 " Pass the path to set the runtimepath properly.
-Plugin 'rstacruz/sparkup', {'rtp': 'vim/'}
-
-" Install L9 and avoid a Naming conflict if you've already installed a
-" different version somewhere else.
-Plugin 'ascenator/L9', {'name': 'newL9'}
-
-" vim Theme
-"Plugin 'flazz/vim-colorschemes'
-Plugin 'jnurmine/Zenburn'
-Plugin 'altercation/vim-colors-solarized'
+Plug 'rstacruz/sparkup', {'rtp': 'vim/'}
 
 " YouCompleteMe
-Plugin 'Valloric/YouCompleteMe'
+Plug 'Valloric/YouCompleteMe'
 
 " NERD Tree
-Plugin 'scrooloose/nerdtree'
+Plug 'scrooloose/nerdtree'
 
 " NERD Tree tabs
-Plugin 'jistr/vim-nerdtree-tabs'
-
-" SimpyFold 
-Plugin 'tmhedberg/SimpylFold'
+Plug 'jistr/vim-nerdtree-tabs'
 
 " Syntax checking
-Plugin 'scrooloose/syntastic'
+Plug 'w0rp/ale'
+
+" jumps to location
+Plug 'justinmk/vim-sneak'
 
 " PEP8 checking
-Plugin 'nvie/vim-flake8'
+Plug 'nvie/vim-flake8'
 
 " Sper Searching
-Plugin 'kien/ctrlp.vim'
+" Plug 'kien/ctrlp.vim'
+Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 
 " power airline
-Plugin 'vim-airline/vim-airline'
-Plugin 'vim-airline/vim-airline-themes'
+Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
 
-" match tags
-Plugin 'vim-scripts/matchit.zip'
-
-" All of your Plugins must be added before the following line
-call vundle#end()            " required
-"
-" Brief help
-" :PluginList       - lists configured plugins
-" :PluginInstall    - installs plugins; append `!` to update or just :PluginUpdate
-" :PluginSearch foo - searches for foo; append `!` to refresh local cache
-" :PluginClean      - confirms removal of unused plugins; append `!` to auto-approve removal
-"
-" see :h vundle for more details or wiki for FAQ
-" Put your non-Plugin stuff after this line
-
+" Initialize plugin system
+call plug#end()
 
 let python_highlight_all=1
 let g:solarized_termcolors=256
@@ -159,6 +128,9 @@ let NERDTreeWinSize=32
 " ignore *.pyc files
 let NERDTreeIgnore=['\.pyc$', '\~$']
 
+" set solarized terminal colors
+let g:solarized_termcolors=256
+
 " set split screen
 set splitright
 " split navigations
@@ -166,6 +138,14 @@ nnoremap <C-J> <C-W><C-J>
 nnoremap <C-K> <C-W><C-K>
 nnoremap <C-L> <C-W><C-L>
 nnoremap <C-H> <C-W><C-H>
+
+" replace f with Sneak
+nmap f <Plug>Sneak_s
+nmap F <Plug>Sneak_S
+xmap f <Plug>Sneak_s
+xmap F <Plug>Sneak_S
+omap f <Plug>Sneak_s
+omap F <Plug>Sneak_S
 
 
 " the proper PEP8 indentation for python scripts
