@@ -10,27 +10,46 @@
 
 使用：
 
+# clone配置文件
+
+`sudo git clone https://github.com/yinwoods/frequently-used-configuration.git`
+
+### 安装zsh
+
 `sudo apt install zsh`
 
-# 查看已安装shell
+### 查看已安装shell
 
 `cat /etc/shells`
 
-# clone配置文件
-
-`sudo clone https://github.com/yinwoods/frequently-used-configuration.git`
-
-# 切换当前shell为zsh，需重启后生效
+### 切换当前shell为zsh，需重启后生效
 
 `chsh -s /bin/zsh `
 
-# 安装vim
+# 安装vim8.0
 
-`sudo apt install vim`
+### 克隆vim8.0源码
 
-# 安装 vim 插件管理器
+`git clone https://github.com/vim/vim`
 
-`git clone https://github.com/VundleVim/Vundle.vim.git ~/.vim/bundle/Vundle.vim`
+### 编译安装vim8.0
+
+```
+
+cd vim
+
+./configure
+
+make
+
+sudo make install
+
+```
+
+# 安装 vim 并发插件管理器 Plug
+
+`curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
+    https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim`
 
 # 安装 vimrc 中的插件
 
@@ -38,7 +57,7 @@
 
 # 在 .vimrc 编辑页面中执行
 
-`:PluginInstall`
+`:PlugInstall`
 
 # linux 下安装 YaHei Consolas Hybrid 字体
 
