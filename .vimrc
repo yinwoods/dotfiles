@@ -63,6 +63,9 @@ Plug 'justinmk/vim-sneak'
 " PEP8 checking
 Plug 'nvie/vim-flake8'
 
+" Quick Run
+Plug 'skywind3000/asyncrun.vim'
+
 " Sper Searching
 " Plug 'kien/ctrlp.vim'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
@@ -93,6 +96,7 @@ if !exists('g:airline_symbols')
 	let g:airline_symbols = {}
 endif
 
+
 let g:airline_left_sep = '▶'
 let g:airline_left_alt_sep = '❯'
 let g:airline_right_sep = '◀'
@@ -116,6 +120,7 @@ let g:ycm_complete_in_comments=1
 let g:ycm_complete_in_strings=1
 let g:ycm_server_keep_logfiles=1
 
+
 " map a specific key or shortcut to open NERDTree
 map <C-n> :NERDTreeToggle<CR>
 " show NERDTree line numbers
@@ -128,16 +133,28 @@ let NERDTreeWinSize=32
 " ignore *.pyc files
 let NERDTreeIgnore=['\.pyc$', '\~$']
 
+
 " set solarized terminal colors
 let g:solarized_termcolors=256
 
+
+" customize the height of quick fix window
+let g:flake8_quickfix_height=7
+" customize whether the show marks in the file
+let g:flake8_show_in_file=1
+
 " set split screen
 set splitright
+
 " split navigations
 nnoremap <C-J> <C-W><C-J>
 nnoremap <C-K> <C-W><C-K>
 nnoremap <C-L> <C-W><C-L>
 nnoremap <C-H> <C-W><C-H>
+
+" let cursor always in center
+nnoremap j jzz
+nnoremap k kzz
 
 " replace f with Sneak
 nmap f <Plug>Sneak_s
@@ -146,6 +163,10 @@ xmap f <Plug>Sneak_s
 xmap F <Plug>Sneak_S
 omap f <Plug>Sneak_s
 omap F <Plug>Sneak_S
+
+" map Code Formatter
+let maplocalleader = "-"
+autocmd FileType python nnoremap <LocalLeader>= :0,$!yapf<CR>
 
 
 " the proper PEP8 indentation for python scripts
@@ -158,6 +179,7 @@ au BufNewFile,BufRead *.py
     \ set autoindent |
     \ set fileformat=unix |
 
+
 " set indent for js/html/css
 au BufNewFile,BufRead *.js, *.html, *.css <here>:</here>
     \ set tabstop=2 |
@@ -165,8 +187,6 @@ au BufNewFile,BufRead *.js, *.html, *.css <here>:</here>
     \ set shiftwidth=2 |
 
 
-" run the Flake8 check every time when write a python file
-autocmd BufWritePost *.py call Flake8()
 " remember the cursor postion when you last leave
 if has("autocmd")
     autocmd BufRead *.txt set tw=78
@@ -176,11 +196,26 @@ if has("autocmd")
     \ endif
 endif
 
-" customize the height of quick fix window
-let g:flake8_quickfix_height=7
-" customize whether the show marks in the file
-let g:flake8_show_in_file=1
+" Quick run via <F5>
+nnoremap <F10> :call <SID>compile_and_run()<CR>
 
-" let cursor always in center
-nnoremap j jzz
-nnoremap k kzz
+augroup SPACEVIM_ASYNCRUN
+    autocmd!
+    " Automatically open the quickfix window
+    autocmd User AsyncRunStart call asyncrun#quickfix_toggle(15, 1)
+augroup END
+
+function! s:compile_and_run()
+    exec 'w'
+    if &filetype == 'c'
+        exec "AsyncRun! gcc % -o %<; time ./%<"
+    elseif &filetype == 'cpp'
+       exec "AsyncRun! g++ -std=c++11 % -o %<; time ./%<"
+    elseif &filetype == 'java'
+       exec "AsyncRun! javac %; time java %<"
+    elseif &filetype == 'sh'
+       exec "AsyncRun! time bash %"
+    elseif &filetype == 'python'
+       exec "AsyncRun! time python %"
+    endif
+endfunction
