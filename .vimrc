@@ -164,11 +164,6 @@ xmap F <Plug>Sneak_S
 omap f <Plug>Sneak_s
 omap F <Plug>Sneak_S
 
-" map Code Formatter
-let maplocalleader = "-"
-autocmd FileType python nnoremap <LocalLeader>= :0,$!yapf<CR>
-
-
 " the proper PEP8 indentation for python scripts
 au BufNewFile,BufRead *.py
     \ set tabstop=4 |
