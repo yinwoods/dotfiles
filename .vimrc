@@ -191,7 +191,14 @@ if has("autocmd")
     \ endif
 endif
 
-" Quick run via <F5>
+" ale show errors or warnings in my statusline
+let g:ale_statusline_format = ['⨉ %d', '⚠ %d', '⬥ ok']
+
+" ale navigate between errors quickly
+nmap <silent> <C-k> <Plug>(ale_previous_wrap)
+nmap <silent> <C-j> <Plug>(ale_next_wrap)
+
+" Quick run via <F10>
 nnoremap <F10> :call <SID>compile_and_run()<CR>
 
 augroup SPACEVIM_ASYNCRUN
