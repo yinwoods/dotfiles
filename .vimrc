@@ -195,8 +195,8 @@ endif
 let g:ale_statusline_format = ['⨉ %d', '⚠ %d', '⬥ ok']
 
 " ale navigate between errors quickly
-nmap <silent> <C-k> <Plug>(ale_previous_wrap)
-nmap <silent> <C-j> <Plug>(ale_next_wrap)
+nmap <silent> <C-P> <Plug>(ale_previous_wrap)
+nmap <silent> <C-N> <Plug>(ale_next_wrap)
 
 " Quick run via <F10>
 nnoremap <F10> :call <SID>compile_and_run()<CR>
@@ -218,6 +218,6 @@ function! s:compile_and_run()
     elseif &filetype == 'sh'
        exec "AsyncRun! time bash %"
     elseif &filetype == 'python'
-       exec "AsyncRun! time python %"
+       exec "AsyncRun! time python3 %"
     endif
 endfunction
