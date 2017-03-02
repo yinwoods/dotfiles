@@ -199,8 +199,8 @@ endif
 let g:ale_statusline_format = ['⨉ %d', '⚠ %d', '⬥ ok']
 
 " ale navigate between errors quickly
-nmap <silent> <C-P> <Plug>(ale_previous_wrap)
-nmap <silent> <C-N> <Plug>(ale_next_wrap)
+nmap <silent> <S-P> <Plug>(ale_previous_wrap)
+nmap <silent> <S-N> <Plug>(ale_next_wrap)
 
 " Quick run via <F10>
 nnoremap <F10> :call <SID>compile_and_run()<CR>

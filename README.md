@@ -12,7 +12,7 @@
 
 ### clone配置文件
 
-`sudo git clone https://github.com/yinwoods/frequently-used-configuration.git`
+`git clone https://github.com/yinwoods/frequently-used-configuration.git`
 
 #### 安装zsh
 
@@ -26,6 +26,11 @@
 
 `chsh -s /bin/zsh `
 
+#### 拷贝oh-my-zsh到home目录
+
+`cp -r oh-my-zsh ~/.oh-my-zsh`
+
+
 ### 安装vim8.0
 
 #### 克隆vim8.0源码
@@ -38,7 +43,16 @@
 
 cd vim
 
-./configure
+./configure --with-features=huge \
+            --enable-multibyte \
+            --enable-rubyinterp \
+            --enable-pythoninterp \
+            --with-python-config-dir=/usr/lib/python2.7/config-i386-linux-gnu \
+            --enable-python3interp \ 
+            --with-python3-config-dir=/usr/lib/python3.5/config-3.5m-i386-linux-gnu \ 
+            --enable-gui=gtk2  \ 
+            --enable-cscope \ 
+            --prefix=/usr
 
 make
 
