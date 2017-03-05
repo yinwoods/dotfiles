@@ -220,9 +220,6 @@ zle -N zle-line-init
 zle -N zle-keymap-select
 RPROMPT='%{$fg[green]%}${VIMODE}%{$reset_color%}'
 
-# SET PYTOHNPATH
-export PYTHONPATH="${PYTHONPATH}:/home/yinwoods/PycharmProjects/Test/"
-
 # SET 坚果云 PATH
 alias jianguoyun="cd ~/文档/我的坚果云/"
 
