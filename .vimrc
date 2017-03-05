@@ -106,6 +106,7 @@ let g:airline_symbols.branch = '⎇'
 let g:airline_powerline_fonts=1
 let g:airline#extensions#tabline#enabled=1
 let g:airline#extensions#tabline#buffer_nr_show=1
+let g:airline_section_error = '%{ALEGetStatusLine()}'
 let g:airline_theme='solarized'
 
 
@@ -195,12 +196,13 @@ if has("autocmd")
     \ endif
 endif
 
+" ale navigate between errors quickly
+nmap <silent> <C-k> <Plug>(ale_previous_wrap)
+nmap <silent> <C-j> <Plug>(ale_next_wrap)
+
 " ale show errors or warnings in my statusline
 let g:ale_statusline_format = ['⨉ %d', '⚠ %d', '⬥ ok']
 
-" ale navigate between errors quickly
-nmap <silent> <S-P> <Plug>(ale_previous_wrap)
-nmap <silent> <S-N> <Plug>(ale_next_wrap)
 
 " Quick run via <F10>
 nnoremap <F10> :call <SID>compile_and_run()<CR>
