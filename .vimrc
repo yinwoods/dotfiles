@@ -200,8 +200,8 @@ if has("autocmd")
 endif
 
 " ale navigate between errors quickly
-nmap <silent> <C-k> <Plug>(ale_previous_wrap)
-nmap <silent> <C-j> <Plug>(ale_next_wrap)
+nmap <silent> ˚ <Plug>(ale_previous_wrap)
+nmap <silent> ∆ <Plug>(ale_next_wrap)
 
 " ale show errors or warnings in my statusline
 let g:ale_statusline_format = ['⨉ %d', '⚠ %d', '⬥ ok']
