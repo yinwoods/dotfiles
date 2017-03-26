@@ -74,8 +74,8 @@ Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 
-" dash plugin for vim
-Plug 'rizzatti/dash.vim'
+" nginx vim syntax
+Plug 'evanmiller/nginx-vim-syntax'
 
 " Initialize plugin system
 call plug#end()
