@@ -8,6 +8,8 @@ set expandtab
 set nocompatible
 set autoindent
 set cindent
+set showmatch
+set cursorline
 
 " UTF-8 support
 set encoding=utf-8
@@ -207,8 +209,10 @@ nmap <silent> ∆ <Plug>(ale_next_wrap)
 let g:ale_statusline_format = ['⨉ %d', '⚠ %d', '⬥ ok']
 
 
-" Quick run via <F10>
-nnoremap <F10> :call <SID>compile_and_run()<CR>
+" Quick run python3 via ,p
+nmap ,3 :w<CR>:!python3 %<CR>
+" Quick run python2 via 
+nmap ,2 :w<CR>:!python2.7 %<CR>
 
 augroup SPACEVIM_ASYNCRUN
     autocmd!

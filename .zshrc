@@ -102,7 +102,6 @@ zstyle ':completion:*' squeeze-shlashes 'yes'
 zstyle ':completion::complete:*' '\\'
 
 #彩色补全菜单
-eval $(dircolors -b)
 export ZLSCOLORS="${LS_COLORS}"
 zmodload zsh/complist
 zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}
@@ -140,9 +139,9 @@ isearch:underline)#搜索时使用的关键字
 alias cp='cp -i'
 alias mv='mv -i'
 alias rm='rm -i'
-alias ls='ls -F --color=auto'
+alias ls='ls -F'
 alias ll='ls -al'
-alias grep='grep --color=auto'
+alias grep='grep'
 alias la='ls -a'
 
 
@@ -203,7 +202,8 @@ alias -s py='vim'
 alias -s c='vim'
 alias -s cpp='vim'
 alias -s gz='tar -xzvf'
-alias localdb='sudo sh /home/yinwoods/文档/navicat112_mysql_en_x64/start_navicat &'
+alias mysql='mycli'
+alias pyenv='python3 -m venv venv && source venv/bin/activate'
 
 # zsh开启vimn模式
 bindkey -v
@@ -221,7 +221,7 @@ zle -N zle-keymap-select
 RPROMPT='%{$fg[green]%}${VIMODE}%{$reset_color%}'
 
 # SET 坚果云 PATH
-alias jianguoyun="cd ~/文档/我的坚果云/"
+alias jianguoyun="cd ~/Documents/我的坚果云/"
 
 # 确保byobu不影响vim背景色
 export TERM="xterm-256color"
