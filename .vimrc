@@ -209,8 +209,8 @@ nmap <silent> ∆ <Plug>(ale_next_wrap)
 let g:ale_statusline_format = ['⨉ %d', '⚠ %d', '⬥ ok']
 
 
-" Quick run python3 via ,p
-nmap ,3 :w<CR>:!python3 %<CR>
+" Quick run kinds of files via ,p
+nnoremap ,r :call <SID>compile_and_run()<CR>
 " Quick run python2 via 
 nmap ,2 :w<CR>:!python2.7 %<CR>
 
