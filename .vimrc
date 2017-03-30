@@ -232,5 +232,7 @@ function! s:compile_and_run()
        exec "AsyncRun! time bash %"
     elseif &filetype == 'python'
        exec "AsyncRun! time python3 %"
+    elseif &filetype == 'javascript'
+       exec "AsyncRun! time node %"
     endif
 endfunction
