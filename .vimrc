@@ -8,7 +8,6 @@ set expandtab
 set nocompatible
 set autoindent
 set cindent
-set showmatch
 set cursorline
 
 " UTF-8 support
