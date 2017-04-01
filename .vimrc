@@ -193,6 +193,8 @@ au BufNewFile,BufRead *.js
     \ set autoindent |
     \ set fileformat=unix |
 
+" solve the macos crontab problem
+au BufEnter /private/tmp/crontab.* setl backupcopy=yes
 
 " remember the cursor postion when you last leave
 if has("autocmd")
