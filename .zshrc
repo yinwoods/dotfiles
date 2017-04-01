@@ -203,7 +203,11 @@ alias -s c='vim'
 alias -s cpp='vim'
 alias -s gz='tar -xzvf'
 alias mysql='mycli'
-alias pyenv='python3 -m venv venv && source venv/bin/activate'
+
+# build venv quickily with desired project name
+pyenv() {
+    python3 -m venv $1 && source $1/bin/activate
+}
 
 # zsh开启vimn模式
 bindkey -v
