@@ -78,6 +78,9 @@ Plug 'vim-airline/vim-airline-themes'
 " nginx vim syntax
 Plug 'evanmiller/nginx-vim-syntax'
 
+" vim indent object
+Plug 'michaeljsmith/vim-indent-object'
+
 " Initialize plugin system
 call plug#end()
 
