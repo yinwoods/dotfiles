@@ -1,3 +1,8 @@
+" UTF-8 support
+set encoding=utf-8
+set fileencoding=utf-8
+
+scriptencoding utf8
 filetype plugin on
 filetype plugin indent on
 
@@ -5,14 +10,9 @@ filetype plugin indent on
 set tabstop=4
 set shiftwidth=4
 set expandtab
-set nocompatible
 set autoindent
 set cindent
 set cursorline
-
-" UTF-8 support
-set encoding=utf-8
-set fileencoding=utf-8
 
 " Enable folding
 set foldmethod=indent
@@ -81,10 +81,13 @@ Plug 'evanmiller/nginx-vim-syntax'
 " vim indent object
 Plug 'michaeljsmith/vim-indent-object'
 
+" rust vim syntax
+Plug 'wting/rust.vim'
+
 " Initialize plugin system
 call plug#end()
 
-let python_highlight_all=1
+let g:python_highlight_all=1
 let g:solarized_termcolors=256
 
 if has('gui_running')
@@ -127,19 +130,20 @@ let g:ycm_cache_omnifunc=0
 let g:ycm_complete_in_comments=1
 let g:ycm_complete_in_strings=1
 let g:ycm_server_keep_logfiles=1
+let g:ycm_rust_src_path = '/usr/local/rust/src'
 
 
 " map a specific key or shortcut to open NERDTree
 map <C-n> :NERDTreeToggle<CR>
 " show NERDTree line numbers
-let NERDTreeShowLineNumbers=1
-let NERDTreeAutoCenter=1
+let g:NERDTreeShowLineNumbers=1
+let g:NERDTreeAutoCenter=1
 " show hidden files
-let NERDTreeShowHidden=0
+let g:NERDTreeShowHidden=0
 " set NERDTree windows width
-let NERDTreeWinSize=32
+let g:NERDTreeWinSize=32
 " ignore *.pyc files
-let NERDTreeIgnore=['\.pyc$', '\~$']
+let g:NERDTreeIgnore=['\.pyc$', '\~$']
 
 
 " set solarized terminal colors
@@ -194,15 +198,19 @@ au BufNewFile,BufRead *.js
     \ set fileformat=unix |
 
 " solve the macos crontab problem
-au BufEnter /private/tmp/crontab.* setl backupcopy=yes
+augroup MACOS_CRONTAB
+    au BufEnter /private/tmp/crontab.* setl backupcopy=yes
+augroup end
 
 " remember the cursor postion when you last leave
-if has("autocmd")
-    autocmd BufRead *.txt set tw=78
-    autocmd BufReadPost *
-    \ if line("'\"") > 0 && line ("'\"") <= line("$") |
-    \ exe "normal g'\"" |
-    \ endif
+if has('autocmd')
+    augroup REMEBER_POSITON
+        autocmd BufRead *.txt set tw=78
+        autocmd BufReadPost *
+        \ if line("'\"") > 0 && line ("'\"") <= line("$") |
+        \ exe "normal g'\"" |
+        \ endif
+    augroup end
 endif
 
 " ale navigate between errors quickly
@@ -213,10 +221,11 @@ nmap <silent> ∆ <Plug>(ale_next_wrap)
 let g:ale_statusline_format = ['⨉ %d', '⚠ %d', '⬥ ok']
 
 
-" Quick run kinds of files via ,p
+" Quick compile and run kinds of files via ,p
 nnoremap ,r :call <SID>compile_and_run()<CR>
-" Quick run python2 via 
-nmap ,2 :w<CR>:!python2.7 %<CR>
+
+" go to definition for function or class
+nnoremap <Leader>gd :YcmCompleter GoTo<CR>
 
 augroup SPACEVIM_ASYNCRUN
     autocmd!
@@ -226,17 +235,17 @@ augroup END
 
 function! s:compile_and_run()
     exec 'w'
-    if &filetype == 'c'
-        exec "AsyncRun! gcc % -o %<; time ./%<"
-    elseif &filetype == 'cpp'
-       exec "AsyncRun! g++ -std=c++11 % -o %<; time ./%<"
-    elseif &filetype == 'java'
-       exec "AsyncRun! javac %; time java %<"
-    elseif &filetype == 'sh'
-       exec "AsyncRun! time bash %"
-    elseif &filetype == 'python'
-       exec "AsyncRun! time python3 %"
-    elseif &filetype == 'javascript'
-       exec "AsyncRun! time node %"
+    if &filetype ==# 'c'
+        exec 'AsyncRun! gcc % -o %<; time ./%<'
+    elseif &filetype ==# 'cpp'
+       exec 'AsyncRun! g++ -std=c++11 % -o %<; time ./%<'
+    elseif &filetype ==# 'java'
+       exec 'AsyncRun! javac %; time java %<'
+    elseif &filetype ==# 'sh'
+       exec 'AsyncRun! time bash %'
+    elseif &filetype ==# 'python'
+       exec 'AsyncRun! time python3 %'
+    elseif &filetype ==# 'javascript'
+       exec 'AsyncRun! time node %'
     endif
 endfunction

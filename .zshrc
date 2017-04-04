@@ -203,6 +203,8 @@ alias -s c='vim'
 alias -s cpp='vim'
 alias -s gz='tar -xzvf'
 alias mysql='mycli'
+alias vi=nvim
+alias vim=nvim
 
 # build venv quickily with desired project name
 pyenv() {
