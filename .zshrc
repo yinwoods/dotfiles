@@ -202,7 +202,6 @@ alias -s py='vim'
 alias -s c='vim'
 alias -s cpp='vim'
 alias -s gz='tar -xzvf'
-alias mysql='mycli'
 alias vi=nvim
 alias vim=nvim
 
@@ -231,5 +230,8 @@ alias jianguoyun="cd ~/Documents/我的坚果云/"
 
 # 确保byobu不影响vim背景色
 export TERM="xterm-256color"
+
+# 配置rust cargo路径
+export PATH="$HOME/.cargo/bin:$PATH"
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
