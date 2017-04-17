@@ -31,43 +31,43 @@
 `cp -r oh-my-zsh ~/.oh-my-zsh`
 
 
-### 安装vim8.0
+### 安装neovim
 
-#### 克隆vim8.0源码
+For Mac
 
-`git clone https://github.com/vim/vim`
-
-#### 编译安装vim8.0
-
+```SHELL
+brew install neovim/neovim/neovim
 ```
 
-cd vim
+For Ubuntu
 
-./configure --with-features=huge \
-            --enable-multibyte \
-            --enable-rubyinterp \
-            --enable-pythoninterp \
-            --with-python-config-dir=/usr/lib/python2.7/config-i386-linux-gnu \
-            --enable-python3interp \ 
-            --with-python3-config-dir=/usr/lib/python3.5/config-3.5m-i386-linux-gnu \ 
-            --enable-gui=gtk2  \ 
-            --enable-cscope \ 
-            --prefix=/usr
-
-make
-
-sudo make install
-
+```sh
+sudo apt install software-properties-common
+sudo apt install python-software-properties
+sudo add-apt-repository ppa:neovim-ppa/stable
+sudo apt update
+sudo apt install neovim
+sudo apt install python-dev python-pip python3-dev python3-pip
 ```
 
 ### 安装 vim 并发插件管理器 Plug
 
-`curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
-    https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim`
+```sh
+curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
+    https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+```
 
 ### 安装 vimrc 中的插件
 
 `vim ~/.vimrc`
+
+### 建立nvim到vim的软连接
+
+```sh
+mkdir -p .config/nvim/autoload
+ln -s ~/.vimrc ~/.config/nvim/init.vim
+ln -s ~/.vim/autoload/plug.vim ~/.config/nvim/autoload/plug.vim
+```
 
 ### 在 .vimrc 编辑页面中执行
 
@@ -75,7 +75,7 @@ sudo make install
 
 ### linux 下安装 YaHei Consolas Hybrid 字体
 
-```SHELL
+```sh
 sudo mkdir -p /usr/share/fonts/vista
 
 sudo cp YaHei\ Consolas\ Hybrid.ttf /usr/share/fonts/vista/

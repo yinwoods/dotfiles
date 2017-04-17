@@ -83,9 +83,6 @@ Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 
-" nginx vim syntax
-Plug 'evanmiller/nginx-vim-syntax'
-
 " vim indent object
 Plug 'michaeljsmith/vim-indent-object'
 
@@ -222,8 +219,8 @@ if has('autocmd')
 endif
 
 " ale navigate between errors quickly
-nmap <silent> ˚ <Plug>(ale_previous_wrap)
-nmap <silent> ∆ <Plug>(ale_next_wrap)
+nmap <silent> ,p <Plug>(ale_previous_wrap)
+nmap <silent> ,n <Plug>(ale_next_wrap)
 
 " ale show errors or warnings in my statusline
 let g:ale_statusline_format = ['⨉ %d', '⚠ %d', '⬥ ok']
