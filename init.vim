@@ -21,6 +21,11 @@ set foldlevel=99
 " Enable folding with spacebar
 nnoremap <space> za
 
+" 设置命令行补全模式为菜单模式
+" 有多个候选项时，以菜单形式展示，而不是默认第一个
+set wildmenu
+set wildmode=list:longest,full
+
 " set theme
 syntax enable
 colo evening
