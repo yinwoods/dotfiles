@@ -49,6 +49,9 @@ Plug 'rstacruz/sparkup', {'rtp': 'vim/'}
 " YouCompleteMe
 Plug 'Valloric/YouCompleteMe'
 
+"make fold code right
+Plug 'tmhedberg/SimpylFold'
+
 " NERD Tree
 Plug 'scrooloose/nerdtree'
 
@@ -225,7 +228,7 @@ let g:ale_statusline_format = ['⨉ %d', '⚠ %d', '⬥ ok']
 nnoremap ,r :call <SID>compile_and_run()<CR>
 
 " go to definition for function or class
-nnoremap <Leader>gd :YcmCompleter GoTo<CR>
+nnoremap ,gd :YcmCompleter GoTo<CR>
 
 augroup SPACEVIM_ASYNCRUN
     autocmd!
@@ -239,6 +242,8 @@ function! s:compile_and_run()
         exec 'AsyncRun! gcc % -o %<; time ./%<'
     elseif &filetype ==# 'cpp'
        exec 'AsyncRun! g++ -std=c++11 % -o %<; time ./%<'
+    elseif &filetype ==# 'rust'
+       exec 'AsyncRun! rustc %; time ./%<'
     elseif &filetype ==# 'java'
        exec 'AsyncRun! javac %; time java %<'
     elseif &filetype ==# 'sh'
