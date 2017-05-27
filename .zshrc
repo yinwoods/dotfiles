@@ -234,4 +234,17 @@ export TERM="xterm-256color"
 # 配置rust cargo路径
 export PATH="$HOME/.cargo/bin:$PATH"
 
+# 设置spark路径
+export PATH="/usr/local/spark/bin:$PATH"
+
+# 设置微信双开
+alias wechat="cd /Applications/WeChat.app/Contents/MacOS/; screen -S wechat ./WeChat"
+
+# 设置ipython为ptpython
+alias ipython=ptpython
+alias ipython3=ptpython3
+
+# 设置supervisor
+alias super=supervisorctl
+
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
