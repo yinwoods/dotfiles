@@ -34,6 +34,10 @@
 `cp -r oh-my-zsh ~/.oh-my-zsh`
 
 
+#### 使用colorls
+
+参考[链接🔗](https://github.com/athityakumar/colorls#usage)
+
 ### 安装neovim
 
 For Mac

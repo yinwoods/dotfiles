@@ -204,6 +204,7 @@ alias -s cpp='vim'
 alias -s gz='tar -xzvf'
 alias vi=nvim
 alias vim=nvim
+alias lc='colorls'
 
 # build venv quickily with desired project name
 pyenv() {
@@ -247,6 +248,10 @@ alias wechat="cd /Applications/WeChat.app/Contents/MacOS/; screen -S wechat ./We
 # 设置psql使用pgcli
 alias mysql="mycli"
 alias psql="pgcli"
+
+# 设置docker-compose docker-machine简称
+alias d-c='docker-compose'
+alias d-m='docker-machine'
 
 # 设置ipython为ptpython
 alias ipython=ptpython
