@@ -6,6 +6,7 @@
 - .zshrc
 - .vimrc
 - .tmux.conf
+- bootstrap
 
 - .my.cnf
 - .eslintrc.json
