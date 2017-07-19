@@ -13,6 +13,9 @@
 
 使用：
 
+建立各个dotfiles的软连接到用户主目录
+`bash bootstrap`
+
 ### clone配置文件
 
 `git clone https://github.com/yinwoods/dotfiles.git`
@@ -28,10 +31,6 @@
 #### 切换当前shell为zsh，需重启后生效
 
 `chsh -s /bin/zsh `
-
-#### 拷贝oh-my-zsh到home目录
-
-`cp -r oh-my-zsh ~/.oh-my-zsh`
 
 
 #### 使用colorls
@@ -66,14 +65,6 @@ curl -fLo ~/.vim/autoload/plug.vim --create-dirs https://raw.githubusercontent.c
 ### 安装 vimrc 中的插件
 
 `vim ~/.vimrc`
-
-### 建立nvim到vim的软连接
-
-```sh
-mkdir -p .config/nvim/autoload
-ln -s ~/.vimrc ~/.config/nvim/init.vim
-ln -s ~/.vim/autoload/plug.vim ~/.config/nvim/autoload/plug.vim
-```
 
 ### 在 .vimrc 编辑页面中执行
 

@@ -1,0 +1,13 @@
+ln -s .eslintrc.js ~/.eslintrc.js
+ln -s .htmlhintrc ~/.htmlhintrc
+ln -s .my.cnf ~/.my.cnf
+ln -s .tmux.conf ~/.tmux.conf
+ln -s .vimrc ~/.vimrc
+ln -s .zshrc ~/.zshrc
+
+# 建立nvim到vim的软连接
+mkdir -p .config/nvim/autoload
+ln -s ~/.vimrc ~/.config/nvim/init.vim
+ln -s ~/.vim/autoload/plug.vim ~/.config/nvim/autoload/plug.vim
+
+cp -r oh-my-zsh ~/.oh-my-zsh
