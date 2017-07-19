@@ -56,20 +56,6 @@ sudo apt install neovim
 sudo apt install python-dev python-pip python3-dev python3-pip
 ```
 
-### 安装 vim 并发插件管理器 Plug
-
-```sh
-curl -fLo ~/.vim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
-```
-
-### 安装 vimrc 中的插件
-
-`vim ~/.vimrc`
-
-### 在 .vimrc 编辑页面中执行
-
-`:PlugInstall`
-
 ### linux 下安装 YaHei Consolas Hybrid 字体
 
 ```sh
