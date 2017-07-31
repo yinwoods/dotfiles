@@ -16,6 +16,9 @@ ENABLE_CORRECTION="true"
 # The optional three formats: "mm/dd/yyyy"|"dd.mm.yyyy"|"yyyy-mm-dd"
 HIST_STAMPS="yyyy-mm-dd"
 
+# keep history unique
+setopt HIST_IGNORE_DUPS
+
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
@@ -39,8 +42,6 @@ done
 FINISH="%{$terminfo[sgr0]%}"
 #}}}
 
-#PROMPT=$(echo "$BLUE%M$GREEN%/
-#$CYAN%n@$BLUE%M:$GREEN%/$_YELLOW>>>$FINISH ")
 #标题栏、任务栏样式{{{
 case $TERM in (*xterm*|*rxvt*|(dt|k|E)term)
 precmd () { print -Pn "\e]0;%n@%M//%/\a" }
@@ -51,10 +52,6 @@ esac
 
 #编辑器
 export EDITOR=vim
-#输入法
-export XMODIFIERS="@im=ibus"
-export QT_MODULE=ibus
-export GTK_MODULE=ibus
 
 #关于历史纪录的配置
 #
@@ -66,12 +63,6 @@ export SAVEHIST=10000
 
 # 不记录相同历史命令
 export HISTCONTROL=ignoredups
-
-#杂项 {{{
-#允许在交互模式中使用注释  例如：
-#cmd #这是注释
-setopt INTERACTIVE_COMMENTS
-
 
 #禁用 core dumps
 limit coredumpsize 0
@@ -127,32 +118,26 @@ zstyle ':completion:*:messages' format $'\e[01;35m -- %d --\e[0m'
 zstyle ':completion:*:warnings' format $'\e[01;31m -- No Matches Found --\e[0m'
 zstyle ':completion:*:corrections' format $'\e[01;32m -- %d (errors: %e) --\e[0m'
 
-##行编辑高亮模式 {{{
-# Ctrl+@ 设置标记，标记和光标点之间为 region
-zle_highlight=(region:bg=magenta #选中区域
-special:bold      #特殊字符
-isearch:underline)#搜索时使用的关键字
-#}}}
-
-
 #命令别名 {{{
 alias cp='cp -i'
 alias mv='mv -i'
 alias rm='rm -i'
 alias ls='ls -F'
 alias ll='ls -al'
-alias grep='grep'
 alias la='ls -a'
+alias grep="grep --color=auto"
+alias -s py='vim'
+alias -s c='vim'
+alias -s cpp='vim'
+alias -s gz='tar -xzvf'
+alias vi=nvim
+alias vim=nvim
+alias lc='colorls'
 
 
 #[Esc][h] man 当前命令时，显示简短说明
 alias run-help >&/dev/null && unalias run-help
 autoload run-help
-
-#历史命令 top10
-alias top10='print -l  ${(o)history%% *} | uniq -c | sort -nr | head -n 10'
-
-function timeconv { date -d @$1 +"%Y-%m-%d %T" }
 
 zmodload zsh/mathfunc
 autoload -U zsh-mime-setup
@@ -196,15 +181,6 @@ check-cmd-backward-delete-char() { zle .backward-delete-char && recolor-cmd }
 zle -N self-insert check-cmd-self-insert
 zle -N backward-delete-char check-cmd-backward-delete-char
 
-#配置别名
-alias grep="grep --color=auto"
-alias -s py='vim'
-alias -s c='vim'
-alias -s cpp='vim'
-alias -s gz='tar -xzvf'
-alias vi=nvim
-alias vim=nvim
-alias lc='colorls'
 
 # build venv quickily with desired project name
 pyenv() {
@@ -225,9 +201,6 @@ function zle-line-init zle-keymap-select {
 zle -N zle-line-init 
 zle -N zle-keymap-select
 RPROMPT='%{$fg[green]%}${VIMODE}%{$reset_color%}'
-
-# SET 坚果云 PATH
-alias jianguoyun="cd ~/Documents/我的坚果云/"
 
 # 确保byobu不影响vim背景色
 export TERM="xterm-256color"
