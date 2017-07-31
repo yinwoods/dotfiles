@@ -96,26 +96,26 @@ Contents ~
   13. The |g:ycm_filter_diagnostics| option
   14. The |g:ycm_always_populate_location_list| option
   15. The |g:ycm_open_loclist_on_ycm_diags| option
-  16. The |g:ycm_allow_changing_updatetime| option
-  17. The |g:ycm_complete_in_comments| option
-  18. The |g:ycm_complete_in_strings| option
-  19. The |g:ycm_collect_identifiers_from_comments_and_strings| option
-  20. The |g:ycm_collect_identifiers_from_tags_files| option
-  21. The |g:ycm_seed_identifiers_with_syntax| option
-  22. The |g:ycm_extra_conf_vim_data| option
-  23. The |g:ycm_server_python_interpreter| option
-  24. The |g:ycm_keep_logfiles| option
-  25. The |g:ycm_log_level| option
-  26. The |g:ycm_auto_start_csharp_server| option
-  27. The |g:ycm_auto_stop_csharp_server| option
-  28. The |g:ycm_csharp_server_port| option
-  29. The |g:ycm_csharp_insert_namespace_expr| option
-  30. The |g:ycm_add_preview_to_completeopt| option
-  31. The |g:ycm_autoclose_preview_window_after_completion| option
-  32. The |g:ycm_autoclose_preview_window_after_insertion| option
-  33. The |g:ycm_max_diagnostics_to_display| option
-  34. The |g:ycm_key_list_select_completion| option
-  35. The |g:ycm_key_list_previous_completion| option
+  16. The |g:ycm_complete_in_comments| option
+  17. The |g:ycm_complete_in_strings| option
+  18. The |g:ycm_collect_identifiers_from_comments_and_strings| option
+  19. The |g:ycm_collect_identifiers_from_tags_files| option
+  20. The |g:ycm_seed_identifiers_with_syntax| option
+  21. The |g:ycm_extra_conf_vim_data| option
+  22. The |g:ycm_server_python_interpreter| option
+  23. The |g:ycm_keep_logfiles| option
+  24. The |g:ycm_log_level| option
+  25. The |g:ycm_auto_start_csharp_server| option
+  26. The |g:ycm_auto_stop_csharp_server| option
+  27. The |g:ycm_csharp_server_port| option
+  28. The |g:ycm_csharp_insert_namespace_expr| option
+  29. The |g:ycm_add_preview_to_completeopt| option
+  30. The |g:ycm_autoclose_preview_window_after_completion| option
+  31. The |g:ycm_autoclose_preview_window_after_insertion| option
+  32. The |g:ycm_max_diagnostics_to_display| option
+  33. The |g:ycm_key_list_select_completion| option
+  34. The |g:ycm_key_list_previous_completion| option
+  35. The |g:ycm_key_list_stop_completion| option
   36. The |g:ycm_key_invoke_completion| option
   37. The |g:ycm_key_detailed_diagnostics| option
   38. The |g:ycm_global_ycm_extra_conf| option
@@ -151,22 +151,22 @@ Contents ~
   20. Snippets added with ':UltiSnipsAddFiletypes' do not appear in the popup menu |youcompleteme-snippets-added-with-ultisnipsaddfiletypes-do-not-appear-in-popup-menu|
   21. Why isn't YCM just written in plain VimScript, FFS? |youcompleteme-why-isnt-ycm-just-written-in-plain-vimscript-ffs|
   22. Why does YCM demand such a recent version of Vim? |youcompleteme-why-does-ycm-demand-such-recent-version-of-vim|
-  23. I get annoying messages in Vim's status area when I type |youcompleteme-i-get-annoying-messages-in-vims-status-area-when-i-type|
-  24. Nasty bugs happen if I have the 'vim-autoclose' plugin installed |youcompleteme-nasty-bugs-happen-if-i-have-vim-autoclose-plugin-installed|
-  25. Is there some sort of YCM mailing list? I have questions |youcompleteme-is-there-sort-of-ycm-mailing-list-i-have-questions|
-  26. I get an internal compiler error when installing |youcompleteme-i-get-an-internal-compiler-error-when-installing|
-  27. I get weird errors when I press 'Ctrl-C' in Vim |youcompleteme-i-get-weird-errors-when-i-press-ctrl-c-in-vim|
-  28. Why did YCM stop using Syntastic for diagnostics display? |youcompleteme-why-did-ycm-stop-using-syntastic-for-diagnostics-display|
-  29. Completion doesn't work with the C++ standard library headers |youcompleteme-completion-doesnt-work-with-c-standard-library-headers|
-  30. When I open a JavaScript file, I get an annoying warning about '.tern-project'
+  23. Nasty bugs happen if I have the 'vim-autoclose' plugin installed |youcompleteme-nasty-bugs-happen-if-i-have-vim-autoclose-plugin-installed|
+  24. Is there some sort of YCM mailing list? I have questions |youcompleteme-is-there-sort-of-ycm-mailing-list-i-have-questions|
+  25. I get an internal compiler error when installing |youcompleteme-i-get-an-internal-compiler-error-when-installing|
+  26. I get weird errors when I press 'Ctrl-C' in Vim |youcompleteme-i-get-weird-errors-when-i-press-ctrl-c-in-vim|
+  27. Why did YCM stop using Syntastic for diagnostics display? |youcompleteme-why-did-ycm-stop-using-syntastic-for-diagnostics-display|
+  28. Completion doesn't work with the C++ standard library headers |youcompleteme-completion-doesnt-work-with-c-standard-library-headers|
+  29. When I open a JavaScript file, I get an annoying warning about '.tern-project'
 file |youcompleteme-when-i-open-javascript-file-i-get-an-annoying-warning-about-.tern-project-file|
-  31. When I start vim I get a runtime error saying 'R6034 An application has made an
+  30. When I start vim I get a runtime error saying 'R6034 An application has made an
 attempt to load the C runtime library incorrectly.' |youcompleteme-when-i-start-vim-i-get-runtime-error-saying-r6034-an-application-has-made-an-attempt-to-load-c-runtime-library-incorrectly.|
-  32. I hear that YCM only supports Python 2, is that true? |youcompleteme-i-hear-that-ycm-only-supports-python-2-is-that-true|
-  33. On Windows I get "E887: Sorry, this command is disabled, the Python's site
+  31. I hear that YCM only supports Python 2, is that true? |youcompleteme-i-hear-that-ycm-only-supports-python-2-is-that-true|
+  32. On Windows I get "E887: Sorry, this command is disabled, the Python's site
 module could not be loaded" |youcompleteme-on-windows-i-get-e887-sorry-this-command-is-disabled-pythons-site-module-could-not-be-loaded|
-  34. I can't complete python packages in a virtual environment. |youcompleteme-i-cant-complete-python-packages-in-virtual-environment.|
-  35. I want to defer loading of YouCompleteMe until after Vim finishes booting |i-want-to-defer-loading-of-youcompleteme-until-after-vim-finishes-booting|
+  33. I can't complete python packages in a virtual environment. |youcompleteme-i-cant-complete-python-packages-in-virtual-environment.|
+  34. I want to defer loading of YouCompleteMe until after Vim finishes booting |i-want-to-defer-loading-of-youcompleteme-until-after-vim-finishes-booting|
+  35. YCM does not shut down when I quit Vim |youcompleteme-ycm-does-not-shut-down-when-i-quit-vim|
  12. Contributor Code of Conduct    |youcompleteme-contributor-code-of-conduct|
  13. Contact                                            |youcompleteme-contact|
  14. License                                            |youcompleteme-license|
@@ -412,7 +412,7 @@ These instructions (using 'install.py') are the quickest way to install
 YouCompleteMe, however they may not work for everyone. If the following
 instructions don't work for you, check out the full installation guide.
 
-Make sure you have Vim 7.4.143 with Python 2 or Python 3 support. Ubuntu 14.10
+Make sure you have Vim 7.4.1578 with Python 2 or Python 3 support. Ubuntu 16.04
 and later have a Vim that's recent enough. You can see the version of Vim
 installed by running 'vim --version'. If the version is too old, you may need
 to compile Vim from source [30] (don't worry, it's easy).
@@ -483,10 +483,10 @@ These instructions (using 'install.py') are the quickest way to install
 YouCompleteMe, however they may not work for everyone. If the following
 instructions don't work for you, check out the full installation guide.
 
-Make sure you have Vim 7.4.143 with Python 2 or Python 3 support. Fedora 21 and
-later have a Vim that's recent enough. You can see the version of Vim installed
-by running 'vim --version'. If the version is too old, you may need to compile
-Vim from source [30] (don't worry, it's easy).
+Make sure you have Vim 7.4.1578 with Python 2 or Python 3 support. Fedora 21
+and later have a Vim that's recent enough. You can see the version of Vim
+installed by running 'vim --version'. If the version is too old, you may need
+to compile Vim from source [30] (don't worry, it's easy).
 
 Install YouCompleteMe with Vundle [23].
 
@@ -557,13 +557,22 @@ instructions don't work for you, check out the full installation guide.
 **Important:** we assume that you are using the 'cmd.exe' command prompt and
 that you know how to add an executable to the PATH environment variable.
 
-Make sure you have at least Vim 7.4.143 with Python 2 or Python 3 support. You
+Make sure you have at least Vim 7.4.1578 with Python 2 or Python 3 support. You
 can check the version and which Python is supported by typing ':version' inside
 Vim. Look at the features included: '+python/dyn' for Python 2 and
 '+python3/dyn' for Python 3. Take note of the Vim architecture, i.e. 32 or
 64-bit. It will be important when choosing the Python installer. We recommend
 using a 64-bit client. Daily updated copies of 32-bit and 64-bit Vim with
 Python 2 and Python 3 support [33] are available.
+
+Add the line:
+>
+  set encoding=utf-8
+<
+to your vimrc [34] if not already present. This option is required by YCM. Note
+that it does not prevent you from editing a file in another encoding than
+UTF-8. You can do that by specifying the '|++enc|' argument to the ':e'
+command.
 
 Install YouCompleteMe with Vundle [23].
 
@@ -573,16 +582,16 @@ will notify you to recompile it. You should then rerun the install process.
 
 Download and install the following software:
 
-- Python 2 or Python 3 [34]. Be sure to pick the version corresponding to
+- Python 2 or Python 3 [35]. Be sure to pick the version corresponding to
   your Vim architecture. It is _Windows x86_ for a 32-bit Vim and _Windows
   x86-64_ for a 64-bit Vim. We recommend installing Python 3.
 
 - CMake [25]. Add CMake executable to the PATH environment variable.
 
-- Visual Studio [35]. Download the community edition. During setup, select
+- Visual Studio [36]. Download the community edition. During setup, select
   _Desktop development with C++_ in _Workloads_.
 
-- 7-zip [36]. Required to build YCM with semantic support for C-family
+- 7-zip [37]. Required to build YCM with semantic support for C-family
   languages.
 
 Compiling YCM **with** semantic support for C-family languages:
@@ -598,7 +607,7 @@ Compiling YCM **without** semantic support for C-family languages:
 The following additional language support options are available:
 
 - C# support: add '--omnisharp-completer' when calling 'install.py'. Be sure
-  that the build utility 'msbuild' is in your PATH [37].
+  that the build utility 'msbuild' is in your PATH [38].
 
 - Go support: install Go [27] and add '--gocode-completer' when calling
   'install.py'.
@@ -642,7 +651,7 @@ instructions don't work for you, check out the full installation guide.
 
 **NOTE:** OpenBSD / FreeBSD are not officially supported platforms by YCM.
 
-Make sure you have Vim 7.4.143 with Python 2 or Python 3 support.
+Make sure you have Vim 7.4.1578 with Python 2 or Python 3 support.
 
 OpenBSD 5.5 and later have a Vim that's recent enough. You can see the version
 of Vim installed by running 'vim --version'.
@@ -723,19 +732,19 @@ will notify you to recompile it. You should then rerun the install process.
 
 **Please follow the instructions carefully. Read EVERY WORD.**
 
-1. **Ensure that your version of Vim is _at least_ 7.4.143 _and_ that it has
-   support for Python 2 or Python 3 scripting**.
+1. **Ensure that your version of Vim is _at least_ 7.4.1578 _and_ that it
+   has support for Python 2 or Python 3 scripting**.
 
    Inside Vim, type ':version'. Look at the first two to three lines of
    output; it should say 'Vi IMproved X.Y', where X.Y is the major version
    of vim. If your version is greater than 7.4, then you're all set. If your
    version is 7.4 then look below that where it says, 'Included patches:
-   1-Z', where Z will be some number. That number needs to be 143 or higher.
+   1-Z', where Z will be some number. That number needs to be 1578 or higher.
 
    If your version of Vim is not recent enough, you may need to compile Vim
    from source [30] (don't worry, it's easy).
 
-   After you have made sure that you have Vim 7.4.143+, type the following
+   After you have made sure that you have Vim 7.4.1578+, type the following
    in Vim: ":echo has('python') || has('python3')". The output should be 1.
    If it's 0, then get a version of Vim with Python support.
 
@@ -743,9 +752,9 @@ will notify you to recompile it. You should then rerun the install process.
    critical because it must match the Python and the YCM libraries
    architectures. We recommend using a 64-bit Vim.
 
-2. **Install YCM** with Vundle [23] (or Pathogen [38], but Vundle is a
+2. **Install YCM** with Vundle [23] (or Pathogen [39], but Vundle is a
    better idea). With Vundle, this would mean adding a "Plugin
-   'Valloric/YouCompleteMe'" line to your vimrc [39].
+   'Valloric/YouCompleteMe'" line to your vimrc [34].
 
    If you don't install YCM with Vundle, make sure you have run 'git
    submodule update --init --recursive' after checking out the YCM
@@ -782,10 +791,10 @@ will notify you to recompile it. You should then rerun the install process.
    a Debian-like Linux distro, this would be 'sudo apt-get install python-
    dev python3-dev'. On Mac they should already be present.
 
-   On Windows, you need to download and install Python 2 or Python 3 [34].
+   On Windows, you need to download and install Python 2 or Python 3 [35].
    Pick the version corresponding to your Vim architecture. You will also
    need Microsoft Visual C++ (MSVC) to build YCM. You can obtain it by
-   installing Visual Studio [35]. MSVC 12 (Visual Studio 2013), 14 (2015),
+   installing Visual Studio [36]. MSVC 12 (Visual Studio 2013), 14 (2015),
    and 15 (2017) are officially supported.
 
    Here we'll assume you installed YCM with Vundle. That means that the top-
@@ -807,9 +816,9 @@ will notify you to recompile it. You should then rerun the install process.
    where '<generator>' is 'Unix Makefiles' on Unix systems and one of the
    following Visual Studio generators on Windows:
 
-   - 'Visual Studio 11 Win64'
    - 'Visual Studio 12 Win64'
    - 'Visual Studio 14 Win64'
+   - 'Visual Studio 15 Win64'
 
    Remove the 'Win64' part in these generators if your Vim architecture is
    32-bit.
@@ -828,7 +837,7 @@ will notify you to recompile it. You should then rerun the install process.
    extracted the archive file to folder '~/ycm_temp/llvm_root_dir' (with
    'bin', 'lib', 'include' etc. folders right inside that folder). On
    Windows, you can extract the files from the LLVM+Clang installer using
-   7-zip [36].
+   7-zip [37].
 
    **NOTE:** This _only_ works with a _downloaded_ LLVM binary package, not
    a custom-built LLVM! See docs below for 'EXTERNAL_LIBCLANG_PATH' when
@@ -869,25 +878,30 @@ will notify you to recompile it. You should then rerun the install process.
 
 5. Set up support for additional languages, as desired:
 
-6. C# support: install Mono on non-Windows platforms [41]. Navigate to
-   'YouCompleteMe/third_party/ycmd/third_party/OmniSharpServer' and run
-   'msbuild /property:Configuration=Release' on Windows. Replace 'msbuild'
-   by 'xbuild' on other platforms. On Windows, be sure that the build
-   utility 'msbuild' is in your PATH [37].
+   - C# support: install Mono on non-Windows platforms [41]. Navigate to
+     'YouCompleteMe/third_party/ycmd/third_party/OmniSharpServer' and run
 
-7. Go support: install Go [27] and add it to your path. Navigate to
-   'YouCompleteMe/third_party/ycmd/third_party/gocode' and run 'go build'.
+     msbuild /property:Configuration=Release
+     /property:TargetFrameworkVersion=v4.5
 
-8. TypeScript support: as with the quick installation, simply 'npm install
-   -g typescript' after successfully installing Node.js and npm [28].
+   Replace 'msbuild' by 'xbuild' if 'msbuild' is not available. On Windows,
+   be sure that the build utility 'msbuild' is in your PATH [38].
 
-9. JavaScript support: install Node.js and npm [28]. Then navigate to
-   'YouCompleteMe/third_party/ycmd/third_party/tern_runtime' and run 'npm
-   install --production'
+   - Go support: install Go [27] and add it to your path. Navigate to
+     'YouCompleteMe/third_party/ycmd/third_party/gocode' and run 'go
+     build'.
 
-10. Rust support: install Rust [29]. Navigate to
-    'YouCompleteMe/third_party/ycmd/third_party/racerd' and run 'cargo
-    build --release'.
+   - TypeScript support: as with the quick installation, simply 'npm
+     install -g typescript' after successfully installing Node.js and npm
+     [28].
+
+   - JavaScript support: install Node.js and npm [28]. Then navigate to
+     'YouCompleteMe/third_party/ycmd/third_party/tern_runtime' and run
+     'npm install --production'
+
+   - Rust support: install Rust [29]. Navigate to
+     'YouCompleteMe/third_party/ycmd/third_party/racerd' and run 'cargo
+     build --release'.
 
 That's it. You're done. Refer to the _User Guide_ section on how to use YCM.
 Don't forget that if you want the C-family semantic completion engine to work,
@@ -1944,9 +1958,11 @@ For instance:
 >
   function! s:CustomizeYcmLocationWindow()
     " Move the window to the top of the screen.
-    execute "wincmd K"
+    wincmd K
     " Set the window height to 5.
-    execute "5wincmd _"
+    5wincmd _
+    " Switch back to working window.
+    wincmd p
   endfunction
   
   autocmd User YcmLocationOpened call s:CustomizeYcmLocationWindow()
@@ -1963,9 +1979,9 @@ quickfix window. For instance:
 >
   function! s:CustomizeYcmQuickFixWindow()
     " Move the window to the top of the screen.
-    execute "wincmd K"
+    wincmd K
     " Set the window height to 5.
-    execute "5wincmd _"
+    5wincmd _
   endfunction
   
   autocmd User YcmQuickFixOpened call s:CustomizeYcmQuickFixWindow()
@@ -1976,11 +1992,11 @@ Options ~
 
 All options have reasonable defaults so if the plug-in works after installation
 you don't need to change any options. These options can be configured in your
-vimrc script [39] by including a line like this:
+vimrc script [34] by including a line like this:
 >
   let g:ycm_min_num_of_chars_for_completion = 1
 <
-Note that after changing an option in your vimrc script [39] you have to
+Note that after changing an option in your vimrc script [34] you have to
 restart Vim for the changes to take effect.
 
 -------------------------------------------------------------------------------
@@ -2270,24 +2286,6 @@ Default: '1'
   let g:ycm_open_loclist_on_ycm_diags = 1
 <
 -------------------------------------------------------------------------------
-The *g:ycm_allow_changing_updatetime* option
-
-When this option is set to '1', YCM will change the 'updatetime' Vim option to
-'2000' (see ':h updatetime'). This may conflict with some other plugins you
-have (but it's unlikely). The 'updatetime' option is the number of milliseconds
-that have to pass before Vim's 'CursorHold' (see ':h CursorHold') event fires.
-YCM runs the completion engines' "file comprehension" systems in the background
-on every such event; the identifier-based engine collects the identifiers
-whereas the semantic engine compiles the file to build an AST.
-
-The Vim default of '4000' for 'updatetime' is a bit long, so YCM reduces this.
-Set this option to '0' to force YCM to leave your 'updatetime' setting alone.
-
-Default: '1'
->
-  let g:ycm_allow_changing_updatetime = 1
-<
--------------------------------------------------------------------------------
 The *g:ycm_complete_in_comments* option
 
 When this option is set to '1', YCM will show the completion menu even when
@@ -2566,6 +2564,18 @@ Vim.
 Default: "['<S-TAB>', '<Up>']"
 >
   let g:ycm_key_list_previous_completion = ['<S-TAB>', '<Up>']
+<
+-------------------------------------------------------------------------------
+The *g:ycm_key_list_stop_completion* option
+
+This option controls the key mappings used to close the completion menu. This
+is useful when the menu is blocking the view, when you need to insert the
+'<TAB>' character, or when you want to expand a snippet from UltiSnips [21] and
+navigate through it.
+
+Default: "['<C-y>']"
+>
+  let g:ycm_key_list_stop_completion = ['<C-y>']
 <
 -------------------------------------------------------------------------------
 The *g:ycm_key_invoke_completion* option
@@ -3097,21 +3107,8 @@ in the current file and simple prefix-based filtering.
                  *youcompleteme-why-does-ycm-demand-such-recent-version-of-vim*
 Why does YCM demand such a recent version of Vim? ~
 
-During YCM's development several show-stopper bugs were encountered in Vim.
-Those needed to be fixed upstream (and were). A few months after those bugs
-were fixed, Vim trunk landed the 'pyeval()' function which improved YCM
-performance even more since less time was spent serializing and deserializing
-data between Vim and the embedded Python interpreter. A few critical bugfixes
-for 'pyeval()' landed in Vim 7.3.584 (and a few commits before that), and given
-the current availability of Vim 7.4.143, which features improved events for
-text change detection, it has been chosen.
-
--------------------------------------------------------------------------------
-        *youcompleteme-i-get-annoying-messages-in-vims-status-area-when-i-type*
-I get annoying messages in Vim's status area when I type ~
-
-If you're referring to the 'User defined completion <bla bla> back at original'
-and similar, then just update to Vim 7.4.314 (or later) and they'll go away.
+YCM needs a version of Vim with the timers feature to achieve full
+asynchronicity. This feature is available since Vim 7.4.1578.
 
 -------------------------------------------------------------------------------
      *youcompleteme-nasty-bugs-happen-if-i-have-vim-autoclose-plugin-installed*
@@ -3298,12 +3295,23 @@ In recent versions of Vim, you can install YCM in a folder under
                                   \ | autocmd! load_ycm
   augroup END
 <
+-------------------------------------------------------------------------------
+                         *youcompleteme-ycm-does-not-shut-down-when-i-quit-vim*
+YCM does not shut down when I quit Vim ~
+
+YCM relies on the 'VimLeave' event to shut down the ycmd server [43]. Some
+plugins prevent this event from triggering by exiting Vim through an
+autocommand without using the 'nested' keyword (see ':h autocmd-nested'). One
+of these plugins is vim-nerdtree-tabs [68]. You should identify which plugin is
+responsible for the issue and report it to the plugin author. Note that when
+this happens, ycmd [43] will automatically shut itself down after 30 minutes.
+
 ===============================================================================
                                     *youcompleteme-contributor-code-of-conduct*
 Contributor Code of Conduct ~
 
 Please note that this project is released with a Contributor Code of Conduct
-[68]. By participating in this project you agree to abide by its terms.
+[69]. By participating in this project you agree to abide by its terms.
 
 ===============================================================================
                                                         *youcompleteme-contact*
@@ -3313,7 +3321,7 @@ If you have questions about the plugin or need help, please join the Gitter
 room [1] or use the ycm-users [62] mailing list.
 
 If you have bug reports or feature suggestions, please use the issue tracker
-[69].
+[70].
 
 The latest version of the plugin is available at
 http://valloric.github.io/YouCompleteMe/.
@@ -3324,7 +3332,7 @@ The author's homepage is http://val.markovic.io.
                                                         *youcompleteme-license*
 License ~
 
-This software is licensed under the GPL v3 license [70]. © 2015-2016
+This software is licensed under the GPL v3 license [71]. © 2015-2017
 YouCompleteMe contributors
 
 ===============================================================================
@@ -3364,12 +3372,12 @@ References ~
 [31] http://www.mono-project.com/docs/getting-started/install/linux/#debian-ubuntu-and-derivatives
 [32] http://www.mono-project.com/docs/getting-started/install/linux/#centos-7-fedora-19-and-later-and-derivatives
 [33] https://bintray.com/micbou/generic/vim
-[34] https://www.python.org/downloads/windows/
-[35] https://www.visualstudio.com/downloads/
-[36] http://www.7-zip.org/download.html
-[37] http://stackoverflow.com/questions/6319274/how-do-i-run-msbuild-from-the-command-line-using-windows-sdk-7-1
-[38] https://github.com/tpope/vim-pathogen#pathogenvim
-[39] http://vimhelp.appspot.com/starting.txt.html#vimrc
+[34] http://vimhelp.appspot.com/starting.txt.html#vimrc
+[35] https://www.python.org/downloads/windows/
+[36] https://www.visualstudio.com/downloads/
+[37] http://www.7-zip.org/download.html
+[38] http://stackoverflow.com/questions/6319274/how-do-i-run-msbuild-from-the-command-line-using-windows-sdk-7-1
+[39] https://github.com/tpope/vim-pathogen#pathogenvim
 [40] http://llvm.org/releases/download.html
 [41] http://www.mono-project.com/docs/getting-started/install/
 [42] https://github.com/Valloric/YouCompleteMe#options
@@ -3398,8 +3406,9 @@ References ~
 [65] http://stackoverflow.com/questions/14552348/runtime-error-r6034-in-embedded-python-application/34696022
 [66] https://github.com/vim/vim/issues/717
 [67] https://github.com/vim/vim-win32-installer/blob/a27bbdba9bb87fa0e44c8a00d33d46be936822dd/appveyor.bat#L86-L88
-[68] https://github.com/Valloric/YouCompleteMe/blob/master/CODE_OF_CONDUCT.md
-[69] https://github.com/Valloric/YouCompleteMe/issues?state=open
-[70] http://www.gnu.org/copyleft/gpl.html
+[68] https://github.com/jistr/vim-nerdtree-tabs
+[69] https://github.com/Valloric/YouCompleteMe/blob/master/CODE_OF_CONDUCT.md
+[70] https://github.com/Valloric/YouCompleteMe/issues?state=open
+[71] http://www.gnu.org/copyleft/gpl.html
 
 vim: ft=help

@@ -27,16 +27,44 @@ endfunction
 if exists( "g:loaded_youcompleteme" )
   call s:restore_cpo()
   finish
-elseif v:version < 704 || (v:version == 704 && !has('patch143'))
+elseif v:version < 704 || (v:version == 704 && !has( 'patch1578' ))
   echohl WarningMsg |
-        \ echomsg "YouCompleteMe unavailable: requires Vim 7.4.143+" |
+        \ echomsg "YouCompleteMe unavailable: requires Vim 7.4.1578+." |
+        \ echohl None
+  if v:version == 704 && has( 'patch8056' )
+    " Very very special case for users of the default Vim on macOS. For some
+    " reason, that version of Vim contains a completely arbitrary (presumably
+    " custom) patch '8056', which fools users (but not our has( 'patch1578' )
+    " check) into thinking they have a sufficiently new Vim. In fact they do
+    " not and YCM fails to initialise. So we give them a more specific warning.
+    echohl WarningMsg
+          \ | echomsg
+          \ "Info: You appear to be running the default system Vim on macOS. "
+          \ . "It reports as patch 8056, but it is really older than 1578. "
+          \ . "Please consider MacVim, homebrew Vim or a self-built Vim that "
+          \ . "satisfies the minimum requirement."
+          \ | echohl None
+  endif
+  call s:restore_cpo()
+  finish
+elseif !has( 'timers' )
+  echohl WarningMsg |
+        \ echomsg "YouCompleteMe unavailable: requires Vim compiled with " .
+        \ "the timers feature." |
         \ echohl None
   call s:restore_cpo()
   finish
 elseif !has( 'python' ) && !has( 'python3' )
   echohl WarningMsg |
         \ echomsg "YouCompleteMe unavailable: requires Vim compiled with " .
-        \ "Python (2.6+ or 3.3+) support" |
+        \ "Python (2.6+ or 3.3+) support." |
+        \ echohl None
+  call s:restore_cpo()
+  finish
+elseif &encoding !~? 'utf-\?8'
+  echohl WarningMsg |
+        \ echomsg "YouCompleteMe unavailable: requires UTF-8 encoding. " .
+        \ "Put the line 'set encoding=utf-8' in your vimrc." |
         \ echohl None
   call s:restore_cpo()
   finish
@@ -49,9 +77,6 @@ let g:loaded_youcompleteme = 1
 " already exist; thus, the user can override the defaults.
 " The only defaults that are here are the ones that are only relevant to the YCM
 " Vim client and not the ycmd server.
-
-let g:ycm_allow_changing_updatetime =
-      \ get( g:, 'ycm_allow_changing_updatetime', 1 )
 
 let g:ycm_open_loclist_on_ycm_diags =
       \ get( g:, 'ycm_open_loclist_on_ycm_diags', 1 )
@@ -70,6 +95,9 @@ let g:ycm_key_list_select_completion =
 
 let g:ycm_key_list_previous_completion =
       \ get( g:, 'ycm_key_list_previous_completion', ['<S-TAB>', '<Up>'] )
+
+let g:ycm_key_list_stop_completion =
+      \ get( g:, 'ycm_key_list_stop_completion', ['<C-y>'] )
 
 let g:ycm_key_invoke_completion =
       \ get( g:, 'ycm_key_invoke_completion', '<C-Space>' )

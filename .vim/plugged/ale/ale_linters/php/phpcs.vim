@@ -1,15 +1,28 @@
-" Author: jwilliams108 <https://github.com/jwilliams108>
+" Author: jwilliams108 <https://github.com/jwilliams108>, Eric Stern <https://github.com/firehed>
 " Description: phpcs for PHP files
 
+let g:ale_php_phpcs_standard = get(g:, 'ale_php_phpcs_standard', '')
+
+call ale#Set('php_phpcs_executable', 'phpcs')
+call ale#Set('php_phpcs_use_global', 0)
+
+function! ale_linters#php#phpcs#GetExecutable(buffer) abort
+    return ale#node#FindExecutable(a:buffer, 'php_phpcs', [
+    \   'vendor/bin/phpcs',
+    \   'phpcs'
+    \])
+endfunction
+
 function! ale_linters#php#phpcs#GetCommand(buffer) abort
-    let l:command = 'phpcs -s --report=emacs --stdin-path=%s'
+    let l:executable = ale_linters#php#phpcs#GetExecutable(a:buffer)
 
-    " This option can be set to change the standard used by phpcs
-    if exists('g:ale_php_phpcs_standard')
-        let l:command .= ' --standard=' . g:ale_php_phpcs_standard
-    endif
+    let l:standard = ale#Var(a:buffer, 'php_phpcs_standard')
+    let l:standard_option = !empty(l:standard)
+    \   ? '--standard=' . l:standard
+    \   : ''
 
-    return l:command
+    return ale#Escape(l:executable)
+    \   . ' -s --report=emacs --stdin-path=%s ' . l:standard_option
 endfunction
 
 function! ale_linters#php#phpcs#Handle(buffer, lines) abort
@@ -19,18 +32,11 @@ function! ale_linters#php#phpcs#Handle(buffer, lines) abort
     let l:pattern = '^.*:\(\d\+\):\(\d\+\): \(.\+\) - \(.\+\) \(\(.\+\)\)$'
     let l:output = []
 
-    for l:line in a:lines
-        let l:match = matchlist(l:line, l:pattern)
-
-        if len(l:match) == 0
-            continue
-        endif
-
+    for l:match in ale#util#GetMatches(a:lines, l:pattern)
         let l:text = l:match[4]
         let l:type = l:match[3]
 
         call add(l:output, {
-        \   'bufnr': a:buffer,
         \   'lnum': l:match[1] + 0,
         \   'col': l:match[2] + 0,
         \   'text': l:text,
@@ -43,7 +49,7 @@ endfunction
 
 call ale#linter#Define('php', {
 \   'name': 'phpcs',
-\   'executable': 'phpcs',
+\   'executable_callback': 'ale_linters#php#phpcs#GetExecutable',
 \   'command_callback': 'ale_linters#php#phpcs#GetCommand',
 \   'callback': 'ale_linters#php#phpcs#Handle',
 \})

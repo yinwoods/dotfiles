@@ -1,6 +1,11 @@
 " Author: Masahiro H https://github.com/mshr-h
 " Description: verilator for verilog files
 
+" Set this option to change Verilator lint options
+if !exists('g:ale_verilog_verilator_options')
+    let g:ale_verilog_verilator_options = ''
+endif
+
 function! ale_linters#verilog#verilator#GetCommand(buffer) abort
     let l:filename = tempname() . '_verilator_linted.v'
 
@@ -8,7 +13,9 @@ function! ale_linters#verilog#verilator#GetCommand(buffer) abort
     call ale#engine#ManageFile(a:buffer, l:filename)
     call writefile(getbufline(a:buffer, 1, '$'), l:filename)
 
-    return 'verilator --lint-only -Wall -Wno-DECLFILENAME ' . fnameescape(l:filename)
+    return 'verilator --lint-only -Wall -Wno-DECLFILENAME '
+    \   . ale#Var(a:buffer, 'verilog_verilator_options') .' '
+    \   . ale#Escape(l:filename)
 endfunction
 
 function! ale_linters#verilog#verilator#Handle(buffer, lines) abort
@@ -23,13 +30,7 @@ function! ale_linters#verilog#verilator#Handle(buffer, lines) abort
     let l:pattern = '^%\(Warning\|Error\)[^:]*:\([^:]\+\):\(\d\+\): \(.\+\)$'
     let l:output = []
 
-    for l:line in a:lines
-        let l:match = matchlist(l:line, l:pattern)
-
-        if len(l:match) == 0
-            continue
-        endif
-
+    for l:match in ale#util#GetMatches(a:lines, l:pattern)
         let l:line = l:match[3] + 0
         let l:type = l:match[1] ==# 'Error' ? 'E' : 'W'
         let l:text = l:match[4]
@@ -37,7 +38,6 @@ function! ale_linters#verilog#verilator#Handle(buffer, lines) abort
 
         if l:file =~# '_verilator_linted.v'
             call add(l:output, {
-            \   'bufnr': a:buffer,
             \   'lnum': l:line,
             \   'text': l:text,
             \   'type': l:type,

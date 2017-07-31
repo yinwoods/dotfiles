@@ -5,7 +5,7 @@ function! s:FindDUBConfig(buffer) abort
     " Find a DUB configuration file in ancestor paths.
     " The most DUB-specific names will be tried first.
     for l:possible_filename in ['dub.sdl', 'dub.json', 'package.json']
-        let l:dub_file = ale#util#FindNearestFile(a:buffer, l:possible_filename)
+        let l:dub_file = ale#path#FindNearestFile(a:buffer, l:possible_filename)
 
         if !empty(l:dub_file)
             return l:dub_file
@@ -31,7 +31,7 @@ function! ale_linters#d#dmd#DUBCommand(buffer) abort
     " To support older dub versions, we just change the directory to
     " the directory where we found the dub config, and then run `dub describe`
     " from that directory.
-    return 'cd ' . fnameescape(fnamemodify(l:dub_file, ':h'))
+    return 'cd ' . ale#Escape(fnamemodify(l:dub_file, ':h'))
     \   . ' && dub describe --import-paths'
 endfunction
 
@@ -42,7 +42,7 @@ function! ale_linters#d#dmd#DMDCommand(buffer, dub_output) abort
     for l:line in a:dub_output
         if !empty(l:line)
             " The arguments must be '-Ifilename', not '-I filename'
-            call add(l:import_list, '-I' . fnameescape(l:line))
+            call add(l:import_list, '-I' . ale#Escape(l:line))
         endif
     endfor
 
@@ -56,24 +56,12 @@ function! ale_linters#d#dmd#Handle(buffer, lines) abort
     let l:pattern = '^[^(]\+(\([0-9]\+\)\,\?\([0-9]*\)): \([^:]\+\): \(.\+\)'
     let l:output = []
 
-    for l:line in a:lines
-        let l:match = matchlist(l:line, l:pattern)
-
-        if len(l:match) == 0
-            break
-        endif
-
-        let l:line = l:match[1] + 0
-        let l:column = l:match[2] + 0
-        let l:type = l:match[3]
-        let l:text = l:match[4]
-
+    for l:match in ale#util#GetMatches(a:lines, l:pattern)
         call add(l:output, {
-        \   'bufnr': bufnr('%'),
-        \   'lnum': l:line,
-        \   'col': l:column,
-        \   'text': l:text,
-        \   'type': l:type ==# 'Warning' ? 'W' : 'E',
+        \   'lnum': l:match[1],
+        \   'col': l:match[2],
+        \   'type': l:match[3] ==# 'Warning' ? 'W' : 'E',
+        \   'text': l:match[4],
         \})
     endfor
 

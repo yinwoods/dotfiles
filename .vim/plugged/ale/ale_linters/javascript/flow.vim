@@ -1,40 +1,65 @@
 " Author: Zach Perrault -- @zperrault
 " Description: FlowType checking for JavaScript files
 
-let g:ale_javascript_flow_executable =
-\   get(g:, 'ale_javascript_flow_executable', 'flow')
-
-let g:ale_javascript_flow_use_global =
-\   get(g:, 'ale_javascript_flow_use_global', 0)
+call ale#Set('javascript_flow_executable', 'flow')
+call ale#Set('javascript_flow_use_global', 0)
 
 function! ale_linters#javascript#flow#GetExecutable(buffer) abort
-    if g:ale_javascript_flow_use_global
-        return g:ale_javascript_flow_executable
-    endif
-
-    return ale#util#ResolveLocalPath(
-    \   a:buffer,
+    return ale#node#FindExecutable(a:buffer, 'javascript_flow', [
     \   'node_modules/.bin/flow',
-    \   g:ale_javascript_flow_executable
-    \)
+    \])
 endfunction
 
-function! ale_linters#javascript#flow#GetCommand(buffer) abort
-    let l:flow_config = ale#util#FindNearestFile(a:buffer, '.flowconfig')
+function! ale_linters#javascript#flow#VersionCheck(buffer) abort
+    return ale#Escape(ale_linters#javascript#flow#GetExecutable(a:buffer))
+    \   . ' --version'
+endfunction
+
+function! ale_linters#javascript#flow#GetCommand(buffer, version_lines) abort
+    let l:flow_config = ale#path#FindNearestFile(a:buffer, '.flowconfig')
 
     if empty(l:flow_config)
         " Don't run Flow if we can't find a .flowconfig file.
         return ''
     endif
 
-    return ale_linters#javascript#flow#GetExecutable(a:buffer)
-    \   . ' check-contents --respect-pragma --json --from ale %s'
+    let l:use_respect_pragma = 1
+
+    " If we can parse the version number, then only use --respect-pragma
+    " if the version is >= 0.36.0, which added the argument.
+    for l:match in ale#util#GetMatches(a:version_lines, '\v\d+\.\d+\.\d+$')
+        let l:use_respect_pragma = ale#semver#GreaterOrEqual(
+        \   ale#semver#Parse(l:match[0]),
+        \   [0, 36, 0]
+        \)
+    endfor
+
+    return ale#Escape(ale_linters#javascript#flow#GetExecutable(a:buffer))
+    \   . ' check-contents'
+    \   . (l:use_respect_pragma ? ' --respect-pragma': '')
+    \   . ' --json --from ale %s'
+endfunction
+
+" Filter lines of flow output until we find the first line where the JSON
+" output starts.
+function! s:GetJSONLines(lines) abort
+    let l:start_index = 0
+
+    for l:line in a:lines
+        if l:line[:0] ==# '{'
+            break
+        endif
+
+        let l:start_index += 1
+    endfor
+
+    return a:lines[l:start_index :]
 endfunction
 
 function! ale_linters#javascript#flow#Handle(buffer, lines) abort
-    let l:str = join(a:lines, '')
+    let l:str = join(s:GetJSONLines(a:lines), '')
 
-    if l:str ==# ''
+    if empty(l:str)
         return []
     endif
 
@@ -48,8 +73,12 @@ function! ale_linters#javascript#flow#Handle(buffer, lines) abort
         let l:col = 0
 
         for l:message in l:error.message
-            " Comments have no line of column information
-            if has_key(l:message, 'loc') && l:line ==# 0
+            " Comments have no line of column information, so we skip them.
+            " In certain cases, `l:message.loc.source` points to a different path
+            " than the buffer one, thus we skip this loc information too.
+            if has_key(l:message, 'loc')
+            \&& l:line ==# 0
+            \&& ale#path#IsBufferPath(a:buffer, l:message.loc.source)
                 let l:line = l:message.loc.start.line + 0
                 let l:col = l:message.loc.start.column + 0
             endif
@@ -66,7 +95,6 @@ function! ale_linters#javascript#flow#Handle(buffer, lines) abort
         endif
 
         call add(l:output, {
-        \   'bufnr': a:buffer,
         \   'lnum': l:line,
         \   'col': l:col,
         \   'text': l:text,
@@ -80,6 +108,10 @@ endfunction
 call ale#linter#Define('javascript', {
 \   'name': 'flow',
 \   'executable_callback': 'ale_linters#javascript#flow#GetExecutable',
-\   'command_callback': 'ale_linters#javascript#flow#GetCommand',
+\   'command_chain': [
+\       {'callback': 'ale_linters#javascript#flow#VersionCheck'},
+\       {'callback': 'ale_linters#javascript#flow#GetCommand'},
+\   ],
 \   'callback': 'ale_linters#javascript#flow#Handle',
+\   'add_newline': !has('win32'),
 \})

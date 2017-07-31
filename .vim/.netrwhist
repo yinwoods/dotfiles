@@ -1,0 +1,10 @@
+let g:netrw_dirhistmax  =10
+let g:netrw_dirhist_cnt =8
+let g:netrw_dirhist_1='/root/imply-2.2.3/conf/localdata'
+let g:netrw_dirhist_2='/root/imply-2.2.3/conf'
+let g:netrw_dirhist_3='/root/imply-2.2.3/conf/kafkaindex'
+let g:netrw_dirhist_4='/root/datatask'
+let g:netrw_dirhist_5='/root/imply-2.2.3/conf'
+let g:netrw_dirhist_6='/root/imply-2.2.3/conf/kafkaindex'
+let g:netrw_dirhist_7='/root/imply-2.2.3'
+let g:netrw_dirhist_8='/root/datatask'

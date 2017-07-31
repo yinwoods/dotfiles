@@ -13,12 +13,16 @@ endif
 function! airline#extensions#denite#check_denite_mode(bufnr)
   let l:mode = split(denite#get_status_mode(), ' ')
   let l:mode = tolower(l:mode[1])
-  call airline#highlighter#highlight([l:mode], a:bufnr)
+  if !exists('b:denite_mode_cache') || l:mode != b:denite_mode_cache
+    call airline#highlighter#highlight([l:mode], a:bufnr)
+    let b:denite_mode_cache = l:mode
+  endif
   return ''
 endfunction
 
 function! airline#extensions#denite#apply(...)
   if &ft == 'denite'
+    let w:airline_skip_empty_sections = 0
     call a:1.add_section('airline_a', ' Denite %{airline#extensions#denite#check_denite_mode('.a:2['bufnr'].')}')
     call a:1.add_section('airline_c', ' %{denite#get_status_sources()}')
     call a:1.split()

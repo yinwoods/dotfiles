@@ -21,16 +21,16 @@ endf
 
 func! s:default_color(hlgroup, what, mode) abort
   let c = synIDattr(synIDtrans(hlID(a:hlgroup)), a:what, a:mode)
-  return !empty(c) ? c : (a:what ==# 'bg' ? 'magenta' : 'white')
+  return !empty(c) && c != -1 ? c : (a:what ==# 'bg' ? 'magenta' : 'white')
 endfunc
 
 func! s:init() abort
   exec "highlight default Sneak guifg=white guibg=magenta ctermfg=white ctermbg=".(&t_Co < 256 ? "magenta" : "201")
 
   if &background ==# 'dark'
-    highlight default SneakScope guifg=white guibg=black ctermfg=white ctermbg=black
+    highlight default SneakScope guifg=black guibg=white ctermfg=0     ctermbg=255
   else
-    highlight default SneakScope guifg=black guibg=white ctermfg=black ctermbg=white
+    highlight default SneakScope guifg=white guibg=black ctermfg=255   ctermbg=0
   endif
 
   highlight default link Cursor SneakScope

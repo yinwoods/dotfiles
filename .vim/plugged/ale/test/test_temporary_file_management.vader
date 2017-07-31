@@ -1,22 +1,27 @@
 Before:
+  let g:ale_run_synchronously = 1
+
   let g:command = 'echo test'
-  let g:filename = tempname()
-  let g:directory = tempname()
-  let g:preserved_directory = tempname()
+  let g:filename = ''
+  let g:directory = ''
+  let g:preserved_directory = ''
 
   function! TestCommandCallback(buffer) abort
     " We are registering a temporary file, so we should delete it.
+    let g:filename = tempname()
     call writefile(['foo'], g:filename)
     call ale#engine#ManageFile(a:buffer, g:filename)
 
     " We are registering this directory appropriately, so we should delete
     " the whole thing.
+    let g:directory = tempname()
     call mkdir(g:directory)
     call writefile(['foo'], g:directory . '/bar')
     call ale#engine#ManageDirectory(a:buffer, g:directory)
 
     " We are registering this directory as temporary file, so we
     " shouldn't delete it.
+    let g:preserved_directory = tempname()
     call mkdir(g:preserved_directory)
     call writefile(['foo'], g:preserved_directory . '/bar')
     call ale#engine#ManageFile(a:buffer, g:preserved_directory)
@@ -36,8 +41,11 @@ Before:
   \})
 
 After:
-  call delete(g:preserved_directory, 'rf')
+  if !empty(g:preserved_directory)
+    call delete(g:preserved_directory, 'rf')
+  endif
 
+  unlet! g:ale_run_synchronously
   unlet! g:command
   unlet! g:filename
   unlet! g:directory
@@ -57,9 +65,9 @@ Execute(ALE should delete managed files/directories appropriately after linting)
   call ale#Lint()
   call ale#engine#WaitForJobs(2000)
 
-  Assert !filereadable(g:filename), 'The tempoary file was not deleted'
-  Assert !isdirectory(g:directory), 'The tempoary directory was not deleted'
-  Assert isdirectory(g:preserved_directory), 'The tempoary directory was not kept'
+  Assert !filereadable(g:filename), 'The temporary file was not deleted'
+  Assert !isdirectory(g:directory), 'The temporary directory was not deleted'
+  Assert isdirectory(g:preserved_directory), 'The temporary directory was not kept'
 
 Execute(ALE should delete managed files even if no command is run):
   AssertEqual 'foobar', &filetype
@@ -69,17 +77,17 @@ Execute(ALE should delete managed files even if no command is run):
   call ale#Lint()
   call ale#engine#WaitForJobs(2000)
 
-  Assert !filereadable(g:filename), 'The tempoary file was not deleted'
-  Assert !isdirectory(g:directory), 'The tempoary directory was not deleted'
-  Assert isdirectory(g:preserved_directory), 'The tempoary directory was not kept'
+  Assert !filereadable(g:filename), 'The temporary file was not deleted'
+  Assert !isdirectory(g:directory), 'The temporary directory was not deleted'
+  Assert isdirectory(g:preserved_directory), 'The temporary directory was not kept'
 
 Execute(ALE should delete managed files when the buffer is removed):
   call ale#engine#InitBufferInfo(bufnr('%'))
   call TestCommandCallback(bufnr('%'))
-  call ale#cleanup#Buffer(bufnr('%'))
+  call ale#engine#Cleanup(bufnr('%'))
 
-  Assert !filereadable(g:filename), 'The tempoary file was not deleted'
-  Assert !isdirectory(g:directory), 'The tempoary directory was not deleted'
+  Assert !filereadable(g:filename), 'The temporary file was not deleted'
+  Assert !isdirectory(g:directory), 'The temporary directory was not deleted'
   Assert isdirectory(g:preserved_directory), 'The tempoary directory was not kept'
 
 Execute(ALE should create and delete directories for ale#engine#CreateDirectory()):
@@ -97,7 +105,7 @@ Execute(ALE should create and delete directories for ale#engine#CreateDirectory(
   " The two directories shouldn't be the same.
   AssertNotEqual b:dir2, b:dir
 
-  call ale#cleanup#Buffer(bufnr('%'))
+  call ale#engine#Cleanup(bufnr('%'))
 
   Assert !isdirectory(b:dir), 'The directory was not deleted'
   Assert !isdirectory(b:dir2), 'The second directory was not deleted'

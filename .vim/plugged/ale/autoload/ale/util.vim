@@ -13,49 +13,6 @@ function! ale#util#GetLineCount(buffer) abort
     return len(getbufline(a:buffer, 1, '$'))
 endfunction
 
-" Given a buffer and a filename, find the nearest file by searching upwards
-" through the paths relative to the given buffer.
-function! ale#util#FindNearestFile(buffer, filename) abort
-    let l:buffer_filename = fnamemodify(bufname(a:buffer), ':p')
-
-    let l:relative_path = findfile(a:filename, l:buffer_filename . ';')
-
-    if !empty(l:relative_path)
-        return fnamemodify(l:relative_path, ':p')
-    endif
-
-    return ''
-endfunction
-
-" Given a buffer and a directory name, find the nearest directory by searching upwards
-" through the paths relative to the given buffer.
-function! ale#util#FindNearestDirectory(buffer, directory_name) abort
-    let l:buffer_filename = fnamemodify(bufname(a:buffer), ':p')
-
-    let l:relative_path = finddir(a:directory_name, l:buffer_filename . ';')
-
-    if !empty(l:relative_path)
-        return fnamemodify(l:relative_path, ':p')
-    endif
-
-    return ''
-endfunction
-
-" Given a buffer, a string to search for, an a global fallback for when
-" the search fails, look for a file in parent paths, and if that fails,
-" use the global fallback path instead.
-function! ale#util#ResolveLocalPath(buffer, search_string, global_fallback) abort
-    " Search for a locally installed file first.
-    let l:path = ale#util#FindNearestFile(a:buffer, a:search_string)
-
-    " If the serach fails, try the global executable instead.
-    if empty(l:path)
-        let l:path = a:global_fallback
-    endif
-
-    return l:path
-endfunction
-
 function! ale#util#GetFunction(string_or_ref) abort
     if type(a:string_or_ref) == type('')
         return function(a:string_or_ref)
@@ -123,13 +80,11 @@ endfunction
 " See :help sandbox
 function! ale#util#InSandbox() abort
     try
-        call setbufvar('%', '', '')
+        function! s:SandboxCheck() abort
+        endfunction
     catch /^Vim\%((\a\+)\)\=:E48/
         " E48 is the sandbox error.
         return 1
-    catch
-        " If we're not in a sandbox, we'll get another error about an
-        " invalid buffer variable name.
     endtry
 
     return 0
@@ -145,15 +100,90 @@ function! ale#util#ClockMilliseconds() abort
     return float2nr(reltimefloat(reltime()) * 1000)
 endfunction
 
+" Given a single line, or a List of lines, and a single pattern, or a List
+" of patterns, return all of the matches for the lines(s) from the given
+" patterns, using matchlist().
+"
+" Only the first pattern which matches a line will be returned.
+function! ale#util#GetMatches(lines, patterns) abort
+    let l:matches = []
+    let l:lines = type(a:lines) == type([]) ? a:lines : [a:lines]
+    let l:patterns = type(a:patterns) == type([]) ? a:patterns : [a:patterns]
 
-" Output 'cd <directory> && '
-" This function can be used changing the directory for a linter command.
-function! ale#util#CdString(directory) abort
-    return 'cd ' . fnameescape(a:directory) . ' && '
+    for l:line in l:lines
+        for l:pattern in l:patterns
+            let l:match = matchlist(l:line, l:pattern)
+
+            if !empty(l:match)
+                call add(l:matches, l:match)
+                break
+            endif
+        endfor
+    endfor
+
+    return l:matches
 endfunction
 
-" Output 'cd <buffer_filename_directory> && '
-" This function can be used changing the directory for a linter command.
-function! ale#util#BufferCdString(buffer) abort
-    return ale#util#CdString(fnamemodify(bufname(a:buffer), ':p:h'))
+function! s:LoadArgCount(function) abort
+    let l:Function = a:function
+
+    redir => l:output
+        silent! function Function
+    redir END
+
+    if !exists('l:output')
+        return 0
+    endif
+
+    let l:match = matchstr(split(l:output, "\n")[0], '\v\([^)]+\)')[1:-2]
+    let l:arg_list = filter(split(l:match, ', '), 'v:val !=# ''...''')
+
+    return len(l:arg_list)
+endfunction
+
+" Given the name of a function, a Funcref, or a lambda, return the number
+" of named arguments for a function.
+function! ale#util#FunctionArgCount(function) abort
+    let l:Function = ale#util#GetFunction(a:function)
+    let l:count = s:LoadArgCount(l:Function)
+
+    " If we failed to get the count, forcibly load the autoload file, if the
+    " function is an autoload function. autoload functions aren't normally
+    " defined until they are called.
+    if l:count == 0
+        let l:function_name = matchlist(string(l:Function), 'function([''"]\(.\+\)[''"])')[1]
+
+        if l:function_name =~# '#'
+            execute 'runtime autoload/' . join(split(l:function_name, '#')[:-2], '/') . '.vim'
+            let l:count = s:LoadArgCount(l:Function)
+        endif
+    endif
+
+    return l:count
+endfunction
+
+" Escape a string so the characters in it will be safe for use inside of PCRE
+" or RE2 regular expressions without characters having special meanings.
+function! ale#util#EscapePCRE(unsafe_string) abort
+    return substitute(a:unsafe_string, '\([\-\[\]{}()*+?.^$|]\)', '\\\1', 'g')
+endfunction
+
+" Given a String or a List of String values, try and decode the string(s)
+" as a JSON value which can be decoded with json_decode. If the JSON string
+" is invalid, the default argument value will be returned instead.
+"
+" This function is useful in code where the data can't be trusted to be valid
+" JSON, and where throwing exceptions is mostly just irritating.
+function! ale#util#FuzzyJSONDecode(data, default) abort
+    if empty(a:data)
+        return a:default
+    endif
+
+    let l:str = type(a:data) == type('') ? a:data : join(a:data, '')
+
+    try
+        return json_decode(l:str)
+    catch /E474/
+        return a:default
+    endtry
 endfunction

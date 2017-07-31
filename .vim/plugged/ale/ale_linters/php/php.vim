@@ -1,28 +1,26 @@
-" Author: Spencer Wood <https://github.com/scwood>
+" Author: Spencer Wood <https://github.com/scwood>, Adriaan Zonnenberg <amz@adriaan.xyz>
 " Description: This file adds support for checking PHP with php-cli
 
 function! ale_linters#php#php#Handle(buffer, lines) abort
     " Matches patterns like the following:
     "
-    " PHP Parse error:  syntax error, unexpected ';', expecting ']' in - on line 15
-    let l:pattern = '\vParse error:\s+(.+unexpected ''(.+)%(expecting.+)@<!''.*|.+) in - on line (\d+)'
-
+    " Parse error:  syntax error, unexpected ';', expecting ']' in - on line 15
+    let l:pattern = '\v^%(Fatal|Parse) error:\s+(.+unexpected ''(.+)%(expecting.+)@<!''.*|.+) in - on line (\d+)'
     let l:output = []
 
-    for l:line in a:lines
-        let l:match = matchlist(l:line, l:pattern)
+    for l:match in ale#util#GetMatches(a:lines, l:pattern)
+        let l:col = empty(l:match[2]) ? 0 : stridx(getline(l:match[3]), l:match[2]) + 1
+        let l:obj = {
+        \   'lnum': l:match[3] + 0,
+        \   'col': l:col,
+        \   'text': l:match[1],
+        \}
 
-        if len(l:match) == 0
-            continue
+        if l:col != 0
+            let l:obj.end_col = l:col + strlen(l:match[2]) - 1
         endif
 
-        call add(l:output, {
-        \   'bufnr': a:buffer,
-        \   'lnum': l:match[3] + 0,
-        \   'col': empty(l:match[2]) ? 0 : stridx(getline(l:match[3]), l:match[2]) + 1,
-        \   'text': l:match[1],
-        \   'type': 'E',
-        \})
+        call add(l:output, l:obj)
     endfor
 
     return l:output
@@ -31,7 +29,7 @@ endfunction
 call ale#linter#Define('php', {
 \   'name': 'php',
 \   'executable': 'php',
-\   'output_stream': 'both',
-\   'command': 'php -l -d display_errors=1 --',
+\   'output_stream': 'stdout',
+\   'command': 'php -l -d error_reporting=E_ALL -d display_errors=1 --',
 \   'callback': 'ale_linters#php#php#Handle',
 \})
