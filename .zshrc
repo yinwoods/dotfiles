@@ -5,19 +5,28 @@ export ZSH=$HOME/.oh-my-zsh
 # Look in ~/.oh-my-zsh/themes/
 # Optionally, if you set this to "random", it'll load a random theme each
 # time that oh-my-zsh is loaded.
-ZSH_THEME="honukai"
+ZSH_THEME="random"
+
+# Uncomment the following line to use hyphen-insensitive completion. Case
+# sensitive completion must be off. _ and - will be interchangeable.
+HYPHEN_INSENSITIVE="true"
+
+# Uncomment the following line to change how often to auto-update (in days).
+export UPDATE_ZSH_DAYS=30
 
 # Uncomment the following line to enable command auto-correction.
 ENABLE_CORRECTION="true"
 
+# Uncomment the following line to display red dots whilst waiting for completion.
+COMPLETION_WAITING_DOTS="true"
+
+# Uncomment the following line to enable command auto-correction.
+ENABLE_CORRECTION="true"
 
 # Uncomment the following line if you want to change the command execution time
 # stamp shown in the history command output.
 # The optional three formats: "mm/dd/yyyy"|"dd.mm.yyyy"|"yyyy-mm-dd"
 HIST_STAMPS="yyyy-mm-dd"
-
-# keep history unique
-setopt HIST_IGNORE_DUPS
 
 # Which plugins would you like to load? (plugins can be found in ~/.oh-my-zsh/plugins/*)
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
@@ -26,32 +35,17 @@ setopt HIST_IGNORE_DUPS
 plugins=(git)
 
 # User configuration
-
 source $ZSH/oh-my-zsh.sh
-
-# Created by newuser for 5.1.1
-#color{{{
-autoload colors
-colors
-
-for color in RED GREEN YELLOW BLUE MAGENTA CYAN WHITE; do
-eval _$color='%{$terminfo[bold]$fg[${(L)color}]%}'
-eval $color='%{$fg[${(L)color}]%}'
-(( count = $count + 1 ))
-done
-FINISH="%{$terminfo[sgr0]%}"
-#}}}
-
-#标题栏、任务栏样式{{{
-case $TERM in (*xterm*|*rxvt*|(dt|k|E)term)
-precmd () { print -Pn "\e]0;%n@%M//%/\a" }
-preexec () { print -Pn "\e]0;%n@%M//%/\ $1\a" }
-;;
-esac
-#}}}
 
 #编辑器
 export EDITOR=vim
+
+# Preferred editor for local and remote sessions
+if [[ -n $SSH_CONNECTION ]]; then
+  export EDITOR='vim'
+else
+  export EDITOR='mvim'
+fi
 
 #关于历史纪录的配置
 #
@@ -62,7 +56,7 @@ export HISTSIZE=10000
 export SAVEHIST=10000
 
 # 不记录相同历史命令
-export HISTCONTROL=ignoredups
+setopt HIST_IGNORE_DUPS
 
 #禁用 core dumps
 limit coredumpsize 0
@@ -71,7 +65,7 @@ limit coredumpsize 0
 WORDCHARS='*?_-[]~=&;!#$%^(){}<>'
 #}}}
 
-#自动补全功能 {{{
+#自动补全功能
 setopt AUTO_LIST
 setopt AUTO_MENU
 
@@ -101,24 +95,7 @@ zstyle ':completion:*:*:kill:*:processes' list-colors '=(#b) #([0-9]#)*=0=01;31'
 #修正大小写
 zstyle ':completion:*' matcher-list '' 'm:{a-zA-Z}={A-Za-z}'
 
-#kill 命令补全
-compdef pkill=kill
-compdef pkill=killall
-zstyle ':completion:*:*:kill:*' menu yes select
-zstyle ':completion:*:*:*:*:processes' force-list always
-zstyle ':completion:*:processes' command 'ps -au$USER'
-
-#补全类型提示分组
-zstyle ':completion:*:matches' group 'yes'
-zstyle ':completion:*' group-name ''
-zstyle ':completion:*:options' description 'yes'
-zstyle ':completion:*:options' auto-description '%d'
-zstyle ':completion:*:descriptions' format $'\e[01;33m -- %d --\e[0m'
-zstyle ':completion:*:messages' format $'\e[01;35m -- %d --\e[0m'
-zstyle ':completion:*:warnings' format $'\e[01;31m -- No Matches Found --\e[0m'
-zstyle ':completion:*:corrections' format $'\e[01;32m -- %d (errors: %e) --\e[0m'
-
-#命令别名 {{{
+#命令别名
 alias cp='cp -i'
 alias mv='mv -i'
 alias rm='rm -i'
@@ -133,18 +110,6 @@ alias -s gz='tar -xzvf'
 alias vi=nvim
 alias vim=nvim
 alias lc='colorls'
-
-
-#[Esc][h] man 当前命令时，显示简短说明
-alias run-help >&/dev/null && unalias run-help
-autoload run-help
-
-zmodload zsh/mathfunc
-autoload -U zsh-mime-setup
-zsh-mime-setup
-setopt EXTENDED_GLOB
-setopt correctall
-autoload compinstall
 
 #漂亮又实用的命令高亮界面
 setopt extended_glob
