@@ -5,6 +5,9 @@ ln -s .tmux.conf ~/.tmux.conf
 ln -s .vimrc ~/.vimrc
 ln -s .zshrc ~/.zshrc
 
+git submodule init
+git submodule update
+
 # 建立nvim到vim的软连接
 mkdir -p ~/.config/nvim/autoload
 ln -s ~/.vimrc ~/.config/nvim/init.vim
