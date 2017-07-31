@@ -56,19 +56,3 @@ sudo apt update
 sudo apt install neovim
 sudo apt install python-dev python-pip python3-dev python3-pip
 ```
-
-### linux 下安装 YaHei Consolas Hybrid 字体
-
-```sh
-sudo mkdir -p /usr/share/fonts/vista
-
-sudo cp YaHei\ Consolas\ Hybrid.ttf /usr/share/fonts/vista/
-
-sudo chmod 644 /usr/share/fonts/vista/*.ttf
-
-cd /usr/share/fonts/vista
-
-sudo mkfontscale && sudo mkfontdir && sudo fc-cache -fv
-```
-
-### 在软件中心安装 Ubuntu Tweak 并通过该软件设置字体为 YaHei Consolas Hybrid
