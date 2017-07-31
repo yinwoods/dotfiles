@@ -157,16 +157,6 @@ bindkey -v
 # 通过j、k浏览历史记录
 bindkey '^R' history-incremental-search-backward
 
-# 显示提示符，表明现在的编辑模式
-VIMODE='-- INSERT --'
-function zle-line-init zle-keymap-select {
-    VIMODE="${${KEYMAP/vicmd/-- NORMAL --}/(main|viins)/-- INSERT --}"
-    zle reset-prompt
-}
-zle -N zle-line-init 
-zle -N zle-keymap-select
-RPROMPT='%{$fg[green]%}${VIMODE}%{$reset_color%}'
-
 # 确保byobu不影响vim背景色
 export TERM="xterm-256color"
 
