@@ -26,21 +26,6 @@ nnoremap <space> za
 set wildmenu
 set wildmode=list:longest,full
 
-" set theme
-syntax enable
-colo evening
-set number
-set relativenumber
-set background=dark
-set ruler
-set showcmd
-set noswapfile
-set autoread
-set nobackup
-set mouse=a
-set hlsearch
-set pastetoggle=<F3>
-hi Normal ctermfg=252 ctermbg=none
 
 " Specify a directory for plugins (for Neovim: ~/.local/share/nvim/plugged)
 call plug#begin('~/.vim/plugged')
@@ -53,6 +38,9 @@ Plug 'rstacruz/sparkup', {'rtp': 'vim/'}
 
 " YouCompleteMe
 Plug 'Valloric/YouCompleteMe'
+
+" Dracula theme
+Plug 'dracula/vim'
 
 "make fold code right
 Plug 'tmhedberg/SimpylFold'
@@ -94,6 +82,22 @@ call plug#end()
 
 let g:python_highlight_all=1
 let g:solarized_termcolors=256
+
+" set theme
+syntax enable
+colorscheme dracula 
+set number
+set relativenumber
+set background=dark
+set ruler
+set showcmd
+set noswapfile
+set autoread
+set nobackup
+set mouse=a
+set hlsearch
+set pastetoggle=<F3>
+hi Normal ctermfg=252 ctermbg=none
 
 if has('gui_running')
     set background=dark
