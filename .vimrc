@@ -107,14 +107,10 @@ endif
 " airline theme
 set t_Co=256
 set laststatus=2
-if !exists('g:airline_symbols')
-    let g:airline_symbols = {}
-endif
 
 if !exists('g:airline_symbols')
-	let g:airline_symbols = {}
+       let g:airline_symbols = {}
 endif
-
 
 let g:airline_left_sep = '▶'
 let g:airline_left_alt_sep = '❯'
@@ -126,7 +122,7 @@ let g:airline_powerline_fonts=1
 let g:airline#extensions#tabline#enabled=1
 let g:airline#extensions#tabline#buffer_nr_show=1
 let g:airline_section_error = '%{ALEGetStatusLine()}'
-let g:airline_theme='solarized'
+let g:airline_theme='murmur'
 
 
 " YouCompleteMe Position
