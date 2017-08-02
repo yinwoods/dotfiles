@@ -44,7 +44,7 @@ export EDITOR=vim
 if [[ -n $SSH_CONNECTION ]]; then
   export EDITOR='vim'
 else
-  export EDITOR='mvim'
+  export EDITOR='nvim'
 fi
 
 #关于历史纪录的配置
