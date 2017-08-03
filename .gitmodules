@@ -1,0 +1,42 @@
+[submodule ".vim/plugged/SimpylFold"]
+	path = .vim/plugged/SimpylFold
+	url = https://github.com/tmhedberg/SimpylFold.git
+[submodule ".vim/plugged/ale"]
+	path = .vim/plugged/ale
+	url = https://github.com/w0rp/ale.git
+[submodule ".vim/plugged/nerdtree"]
+	path = .vim/plugged/nerdtree
+	url = https://github.com/scrooloose/nerdtree.git
+[submodule ".vim/plugged/sparkup"]
+	path = .vim/plugged/sparkup
+	url = https://github.com/rstacruz/sparkup.git
+[submodule ".vim/plugged/vim-airline"]
+	path = .vim/plugged/vim-airline
+	url = https://github.com/vim-airline/vim-airline.git
+[submodule ".vim/plugged/vim-airline-themes"]
+	path = .vim/plugged/vim-airline-themes
+	url = https://github.com/vim-airline/vim-airline-themes.git
+[submodule ".vim/plugged/vim-flake8"]
+	path = .vim/plugged/vim-flake8
+	url = https://github.com/nvie/vim-flake8.git
+[submodule ".vim/plugged/vim-nerdtree-tabs"]
+	path = .vim/plugged/vim-nerdtree-tabs
+	url = https://github.com/jistr/vim-nerdtree-tabs.git
+[submodule ".vim/plugged/YouCompleteMe"]
+	path = .vim/plugged/YouCompleteMe
+	url = https://github.com/Valloric/YouCompleteMe.git
+[submodule ".vim/plugged/asyncrun.vim"]
+	path = .vim/plugged/asyncrun.vim
+	url = https://github.com/skywind3000/asyncrun.vim.git
+[submodule ".vim/plugged/rust.vim"]
+	path = .vim/plugged/rust.vim
+	url = https://github.com/wting/rust.vim.git
+[submodule ".vim/plugged/vim"]
+	path = .vim/plugged/vim
+	url = https://github.com/dracula/vim.git
+[submodule ".vim/plugged/vim-indent-object"]
+	path = .vim/plugged/vim-indent-object
+	url = https://github.com/michaeljsmith/vim-indent-object.git
+[submodule ".vim/plugged/vim-sneak"]
+	path = .vim/plugged/vim-sneak
+	url = https://github.com/justinmk/vim-sneak.git
