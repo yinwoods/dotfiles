@@ -40,3 +40,6 @@
 [submodule ".vim/plugged/vim-sneak"]
 	path = .vim/plugged/vim-sneak
 	url = https://github.com/justinmk/vim-sneak.git
+[submodule "yinwoods-iterm-zsh"]
+	path = yinwoods-iterm-zsh
+	url = https://github.com/yinwoods/yinwoods-iterm-zsh
