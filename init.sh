@@ -13,5 +13,6 @@ mkdir -p ~/.config/nvim/autoload
 ln -s ~/.vimrc ~/.config/nvim/init.vim
 ln -s ~/.vim/autoload/plug.vim ~/.config/nvim/autoload/plug.vim
 
+cp yinwoods-iterm-zsh/yinwoods.zsh-theme oh-my-zsh/themes/
 cp -r oh-my-zsh ~/.oh-my-zsh
 cp -r .vim ~/.vim
