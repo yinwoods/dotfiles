@@ -18,6 +18,11 @@ set cursorline
 set foldmethod=indent
 set foldlevel=99
 
+" Enable undo after close file
+set undofile
+set undodir=~/.vim/undo
+set undolevels=5000
+
 " Enable folding with spacebar
 nnoremap <space> za
 
