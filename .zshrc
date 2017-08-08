@@ -109,7 +109,6 @@ alias -s cpp='vim'
 alias -s gz='tar -xzvf'
 alias vi=nvim
 alias vim=nvim
-alias lc='colorls'
 
 #漂亮又实用的命令高亮界面
 setopt extended_glob
