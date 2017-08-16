@@ -4,6 +4,7 @@ ln -s .my.cnf ~/.my.cnf
 ln -s .tmux.conf ~/.tmux.conf
 ln -s .vimrc ~/.vimrc
 ln -s .zshrc ~/.zshrc
+ln -s .pylintrc ~/.pylintrc
 
 git submodule init
 git submodule update
