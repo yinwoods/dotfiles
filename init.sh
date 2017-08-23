@@ -4,7 +4,10 @@ ln -s .my.cnf ~/.my.cnf
 ln -s .tmux.conf ~/.tmux.conf
 ln -s .vimrc ~/.vimrc
 ln -s .zshrc ~/.zshrc
-ln -s .pylintrc ~/.pylintrc
+ln -s flake8 ~/.config/flake8
+
+mkdir -p ~/.ptpython
+ln -s .ptpythonrc ~/.ptpython/config.py
 
 git submodule init
 git submodule update

@@ -229,10 +229,6 @@ nmap <silent> ,n <Plug>(ale_next_wrap)
 
 " ale show errors or warnings in my statusline
 let g:ale_statusline_format = ['⨉ %d', '⚠ %d', '⬥ ok']
-" only run ale when save files
-let g:ale_lint_on_text_changed = 'never'
-" open error message window
-let g:ale_open_list = 1
 
 
 " Quick compile and run kinds of files via ,p
