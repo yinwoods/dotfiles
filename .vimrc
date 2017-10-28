@@ -165,6 +165,12 @@ let g:flake8_quickfix_height=7
 " customize whether the show marks in the file
 let g:flake8_show_in_file=1
 
+" use rg when search in vim
+let g:rg_command = '
+  \ rg --column --line-number --no-heading --fixed-strings --ignore-case --no-ignore --hidden --follow --color "always"
+  \ -g "*.{js,json,php,md,styl,jade,html,config,py,cpp,c,go,hs,rb,conf}"
+  \ -g "!{.git,node_modules,vendor}/*" '
+
 " set split screen
 set splitright
 
@@ -191,7 +197,7 @@ au BufNewFile,BufRead *.py
     \ set tabstop=4 |
     \ set softtabstop=4 |
     \ set shiftwidth=4 |
-    \ set textwidth=79 |
+    \ set textwidth=99 |
     \ set expandtab |
     \ set autoindent |
     \ set fileformat=unix |
@@ -202,7 +208,7 @@ au BufNewFile,BufRead *.js
     \ set tabstop=2 |
     \ set softtabstop=2 |
     \ set shiftwidth=2 |
-    \ set textwidth=79 |
+    \ set textwidth=99 |
     \ set expandtab |
     \ set autoindent |
     \ set fileformat=unix |
