@@ -65,6 +65,9 @@ Plug 'justinmk/vim-sneak'
 " PEP8 checking
 Plug 'nvie/vim-flake8'
 
+" Java complete"
+Plug 'artur-shaik/vim-javacomplete2'
+
 " Quick Run
 Plug 'skywind3000/asyncrun.vim'
 
@@ -258,7 +261,7 @@ function! s:compile_and_run()
     elseif &filetype ==# 'rust'
        exec 'AsyncRun! rustc %; time ./%<'
     elseif &filetype ==# 'java'
-       exec 'AsyncRun! javac %; time java %<'
+       exec 'AsyncRun! javac %; time java %<; rm -f *.class'
     elseif &filetype ==# 'sh'
        exec 'AsyncRun! time bash %'
     elseif &filetype ==# 'python'
