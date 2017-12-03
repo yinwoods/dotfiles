@@ -162,14 +162,11 @@ export TERM="xterm-256color"
 # 配置rust cargo路径
 export PATH="$HOME/.cargo/bin:$PATH"
 
-# 配置python路径
-export PYTHONPATH="$HOME/newsinpalm:$PYTHONPATH"
-
 # 设置spark路径
 export PATH="/usr/local/spark/bin:$PATH"
 
 # 设置微信双开
-alias wechat="cd /Applications/WeChat.app/Contents/MacOS/; screen -S wechat ./WeChat"
+alias wechat="cd /Applications/WeChat.app/Contents/MacOS/; screen -dmUS wechat ./WeChat"
 
 # 设置mysql使用mycli
 # 设置psql使用pgcli
