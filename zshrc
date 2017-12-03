@@ -146,10 +146,8 @@ zle -N self-insert check-cmd-self-insert
 zle -N backward-delete-char check-cmd-backward-delete-char
 
 
-# build venv quickily with desired project name
-pyenv() {
-    python3 -m venv $1 && source $1/bin/activate
-}
+# 使用pyenv
+if which pyenv > /dev/null; then eval "$(pyenv init -)"; fi
 
 # zsh开启vimn模式
 bindkey -v
@@ -164,6 +162,9 @@ export PATH="$HOME/.cargo/bin:$PATH"
 
 # 设置spark路径
 export PATH="/usr/local/spark/bin:$PATH"
+
+# 设置PYTHONPATH
+export PYTHONPATH="/Users/yinwoods/4paradigm:$PYTHONPATH"
 
 # 设置微信双开
 alias wechat="cd /Applications/WeChat.app/Contents/MacOS/; screen -dmUS wechat ./WeChat"
