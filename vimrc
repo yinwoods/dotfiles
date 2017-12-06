@@ -254,6 +254,8 @@ augroup END
 
 function! s:compile_and_run()
     exec 'w'
+    exec 'vertical rightbelow copen 80'
+    exec 'wincmd w'
     if &filetype ==# 'c'
         exec 'AsyncRun! gcc % -o %<; time ./%<'
     elseif &filetype ==# 'cpp'
@@ -265,7 +267,7 @@ function! s:compile_and_run()
     elseif &filetype ==# 'sh'
        exec 'AsyncRun! time bash %'
     elseif &filetype ==# 'python'
-       exec 'AsyncRun! time python3 %'
+       exec 'AsyncRun! time python3 "%"'
     elseif &filetype ==# 'javascript'
        exec 'AsyncRun! time node %'
     endif
