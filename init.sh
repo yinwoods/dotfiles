@@ -1,6 +1,8 @@
 
 rm -f ~/.my.cnf
+rm -f ~/.myclirc
 ln -s $PWD/my.cnf ~/.my.cnf
+ln -s $PWD/myclirc ~/.myclirc
 
 rm -f ~/.tmux.conf
 ln -s $PWD/tmux.conf ~/.tmux.conf
