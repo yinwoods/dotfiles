@@ -1,42 +1,43 @@
 
-rm -f ~/.my.cnf
-rm -f ~/.myclirc
-ln -s $PWD/my.cnf ~/.my.cnf
-ln -s $PWD/myclirc ~/.myclirc
+# 配置mycli
+rm -f $HOME/.my.cnf
+rm -f $HOME/.myclirc
+ln -s $PWD/.my.cnf $HOME/.my.cnf
+ln -s $PWD/.myclirc $HOME/.myclirc
 
-rm -f ~/.tmux.conf
-ln -s $PWD/tmux.conf ~/.tmux.conf
+rm -f $HOME/.tmux.conf
+ln -s $PWD/.tmux.conf $HOME/.tmux.conf
 
-rm -f ~/.vimrc
-ln -s $PWD/vimrc ~/.vimrc
+rm -f $HOME/.zshrc
+ln -s $PWD/.zshrc $HOME/.zshrc
 
-rm -f ~/.zshrc
-ln -s $PWD/zshrc ~/.zshrc
+rm -rf $HOME/.pip
+ln -s $PWD/.pip $HOME/.pip
 
-rm -rf ~/.pip
-mkdir -p ~/.pip
-ln -s $PWD/pip.conf ~/.pip/pip.conf
+rm -rf $HOME/.ptpython
+ln -s $PWD/.ptpython $HOME/.ptpython
 
-rm -f ~/.config/flake8
-mkdir -p ~/.config
-ln -s $PWD/flake8 ~/.config/flake8
+rm -f $HOME/.vimrc
+ln -s $PWD/.config/nvim/init.vim $HOME/.vimrc
 
-rm -rf ~/.ptpython
-mkdir -p ~/.ptpython
-ln -s $PWD/ptpythonrc ~/.ptpython/config.py
+# neovim 安装vim-plug插件
+curl -fLo $HOME/.local/share/nvim/site/autoload/plug.vim --create-dirs \
+    https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 
+# vim 安装vim-plug插件
+curl -fLo $HOME/.vim/autoload/plug.vim --create-dirs \
+    https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+
+ln -s $PWD/.config $HOME/.config
+
+rm -rf $HOME/.oh-my-zsh
+ln -s $PWD/.oh-my-zsh $HOME/.oh-my-zsh
+
+rm -rf $HOME/.vim
+ln -s $PWD/.vim $HOME/.vim
 git submodule init
 git submodule update
 
-# 建立nvim到vim的软连接
-rm -rf ~/.config/nvim/autoload
-rm -f ~/.config/nvim/init.vim
-mkdir -p ~/.config/nvim/autoload
-ln -s $PWD/vimrc ~/.config/nvim/init.vim
-cp $PWD/.vim/autoload/plug.vim ~/.config/nvim/autoload/plug.vim
-
-rm -rf ~/.oh-my-zsh
-cp yinwoods-iterm-zsh/yinwoods.zsh-theme oh-my-zsh/themes/
-cp -r $PWD/oh-my-zsh ~/.oh-my-zsh
-rm -rf ~/.vim
-cp -r .vim ~/.vim
+# 安装ycmd
+git submodule update --init --recursive
+python3 install.py --clang-completer

@@ -188,3 +188,27 @@ alias super=supervisorctl
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 export FZF_DEFAULT_COMMAND='rg --files --no-ignore --hidden --follow -g "!{.git,node_modules}/*" 2> /dev/null'
 export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
+
+alias r1='ssh chengtao@aws-prophet-recom01'
+alias r2='ssh chengtao@aws-prophet-recom02'
+alias r3='ssh chengtao@aws-prophet-recom03'
+alias r4='ssh chengtao@aws-prophet-recom04'
+alias r5='ssh chengtao@aws-prophet-recom05'
+alias r6='ssh chengtao@aws-prophet-recom06'
+alias r7='ssh chengtao@aws-prophet-recom07'
+alias r8='ssh chengtao@aws-prophet-recom08'
+alias r9='ssh chengtao@aws-prophet-recom09'
+
+alias p1='ssh chengtao@aws-changba-predict01'
+alias p2='ssh chengtao@aws-changba-predict02'
+
+alias es1='ssh chengtao@aws-recom-es01'
+alias es2='ssh chengtao@aws-recom-es02'
+alias es3='ssh chengtao@aws-recom-es03'
+
+alias k1='ssh chengtao@aws-recom-kafka01'
+alias k2='ssh chengtao@aws-recom-kafka02'
+alias k3='ssh chengtao@aws-recom-kafka03'
+
+alias c1='ssh chengtao@aws-recom-center01'
+alias d1='ssh chengtao@aws-recom-dev01'
