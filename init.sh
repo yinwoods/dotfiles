@@ -35,9 +35,8 @@ ln -s $PWD/.oh-my-zsh $HOME/.oh-my-zsh
 
 rm -rf $HOME/.vim
 ln -s $PWD/.vim $HOME/.vim
-git submodule init
+git submodule update --init --recursive
 git submodule update
 
 # 安装ycmd
-git submodule update --init --recursive
-python3 install.py --clang-completer
+python3 .vim/plugged/YouCompleteMe/install.py --clang-completer
