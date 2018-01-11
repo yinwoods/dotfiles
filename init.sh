@@ -28,7 +28,7 @@ curl -fLo $HOME/.local/share/nvim/site/autoload/plug.vim --create-dirs \
 curl -fLo $HOME/.vim/autoload/plug.vim --create-dirs \
     https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 
-rm -rf $PWD/.config
+rm -rf $HOME/.config
 ln -s $PWD/.config $HOME/.config
 
 rm -rf $HOME/.oh-my-zsh
