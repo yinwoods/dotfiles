@@ -189,6 +189,10 @@ alias super=supervisorctl
 export FZF_DEFAULT_COMMAND='rg --files --no-ignore --hidden --follow -g "!{.git,node_modules}/*" 2> /dev/null'
 export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
 
+alias b1='ssh buaa01'
+alias b2='ssh buaa02'
+alias b3='ssh buaa03'
+
 alias r1='ssh chengtao@aws-prophet-recom01'
 alias r2='ssh chengtao@aws-prophet-recom02'
 alias r3='ssh chengtao@aws-prophet-recom03'
@@ -212,3 +216,13 @@ alias k3='ssh chengtao@aws-recom-kafka03'
 
 alias c1='ssh chengtao@aws-recom-center01'
 alias d1='ssh chengtao@aws-recom-dev01'
+
+alias x1='ssh chengtao@aws-recom-xjp-ser01.4pd.io'
+alias x2='ssh chengtao@aws-recom-xjp-redis01.4pd.io'
+
+alias h1='ssh chengtao@aws-recom-hdp01'
+alias h2='ssh chengtao@aws-recom-hdp02'
+alias h3='ssh chengtao@aws-recom-hdp03'
+alias h4='ssh chengtao@aws-recom-hdp04'
+
+export PYTHONPATH="/Users/yinwoods/code/python:$PYTHONPATH"

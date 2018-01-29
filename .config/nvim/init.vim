@@ -260,6 +260,8 @@ function! s:compile_and_run()
         exec 'AsyncRun! gcc % -o %<; time ./%<'
     elseif &filetype ==# 'cpp'
        exec 'AsyncRun! g++ -std=c++11 % -o %<; time ./%<'
+    elseif &filetype ==# 'go'
+       exec 'AsyncRun! time go run "%"'
     elseif &filetype ==# 'rust'
        exec 'AsyncRun! rustc %; time ./%<'
     elseif &filetype ==# 'java'

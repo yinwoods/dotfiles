@@ -1,0 +1,474 @@
+
+# 2018-01-16 15:12:31.924120
++import arrow
+
+# 2018-01-16 15:12:42.865532
++from datetime import datetime
+
+# 2018-01-16 15:13:05.108700
++d = datetime.strptime('2017-01-01', '%Y-%m-%d')
+
+# 2018-01-16 15:13:05.862726
++d
+
+# 2018-01-16 15:13:18.909256
++arrow.get('2017-01-01', 'YYYY-mm-dd')
+
+# 2018-01-16 15:13:23.600334
++arrow.get('2017-01-01', 'YYYY-mm-DD')
+
+# 2018-01-16 15:16:55.551879
++d = arrow.get('2017-01-01', 'YYYY-mm-DD')
+
+# 2018-01-16 15:17:01.172121
++d.replace(days=+1)
+
+# 2018-01-16 15:18:08.577296
++from dateutil import tz
+
+# 2018-01-16 15:19:11.801269
++d.replace(tzinfo='CN/Beijing')
+
+# 2018-01-16 15:19:19.121113
++d.replace(tzinfo='ZH/Beijing')
+
+# 2018-01-16 15:19:25.154961
++d.replace(tzinfo='Asia/Beijing')
+
+# 2018-01-16 15:19:56.608081
++d.replace(tzinfo='Asia/Hongkong')
+
+# 2018-01-16 15:20:07.079233
++d.replace(tzinfo='Asia/Shanghai')
+
+# 2018-01-16 15:27:45.428185
++arrow.now().date()
+
+# 2018-01-16 15:30:23.681659
++arrow.get('2017-01-01')
+
+# 2018-01-16 15:30:55.351958
++d = arrow.get('2017-01-01').replace(days=+1, hours=+22, tzinfo='Asia/Shanghai')
+
+# 2018-01-16 15:30:56.167586
++d
+
+# 2018-01-16 15:31:08.471341
++str(d)
+
+# 2018-01-16 15:32:50.389992
++str(arrow.get('2017-01-01').replace(tzinfo='Asia/Shanghai'))
+
+# 2018-01-16 16:15:28.983001
++import time
+
+# 2018-01-16 16:15:30.730187
++time.time()
+
+# 2018-01-16 16:15:38.763771
++float(arrow.now())
+
+# 2018-01-16 16:15:42.841868
++import arrow
+
+# 2018-01-16 16:15:43.896278
++float(arrow.now())
+
+# 2018-01-16 16:17:32.805943
++arrow.now().float_timestamp()
+
+# 2018-01-16 16:17:40.663300
++arrow.now()
+
+# 2018-01-16 16:18:04.635527
++arrow.now().timestamp
+
+# 2018-01-16 16:18:09.860897
++arrow.now().floag_timestamp
+
+# 2018-01-16 16:18:14.443005
++arrow.now().float_timestamp
+
+# 2018-01-16 16:19:40.143965
++time.time()
+
+# 2018-01-16 17:31:41.221285
++a = {'a': 123}
+
+# 2018-01-16 17:31:49.653097
++a.update({'x': 24})
+
+# 2018-01-16 17:31:50.933692
++a
+
+# 2018-01-16 18:01:57.964601
++arrow.get('2017-01-01').date()
+
+# 2018-01-16 18:02:01.560342
++str(arrow.get('2017-01-01').date())
+
+# 2018-01-16 18:06:07.483506
++arrow.now().date().replace(days=+1)
+
+# 2018-01-16 18:06:16.210754
++arrow.now().replace(days=+1).date()
+
+# 2018-01-17 17:04:03.504439
++import arrow
+
+# 2018-01-17 17:04:11.218702
++arrow.now().date()
+
+# 2018-01-17 17:04:16.239353
++arrow.get(arrow.now().date())
+
+# 2018-01-17 17:04:20.231441
++str(arrow.get(arrow.now().date()))
+
+# 2018-01-17 17:19:52.172699
++str(arrow.get(arrow.now(days=-1, tzinfo='Asia/Shanghai').date()))
+
+# 2018-01-17 17:20:03.824839
++str(arrow.get(arrow.now().replace(days=-1, tzinfo='Asia/Shanghai').date()))
+
+# 2018-01-17 17:20:38.441082
++str(arrow.get(arrow.now().replace(days=-1, tzinfo='Asia/Shanghai')))
+
+# 2018-01-17 17:20:55.463830
++arrow.now().date()
+
+# 2018-01-17 17:20:59.183626
++str(arrow.now().date())
+
+# 2018-01-17 17:26:00.800864
++str(arrow.get(arrow.now().replace(days=-1, tzinfo='Asia/Shanghai')))
+
+# 2018-01-17 17:26:18.952034
++arrow.get(arrow.now().date()).replace(hours=-2)
+
+# 2018-01-17 17:26:22.256330
++str(arrow.get(arrow.now().date()).replace(hours=-2))
+
+# 2018-01-19 09:53:45.679905
++d = dict()
+
+# 2018-01-19 09:53:51.173610
++d[1] = 'a'
+
+# 2018-01-19 09:53:54.743079
++d[2] = 'b'
+
+# 2018-01-19 09:53:58.136006
++d.items()
+
+# 2018-01-19 09:54:05.975958
++set(d.items())
+
+# 2018-01-19 09:54:39.398645
++tuple(d.items())
+
+# 2018-01-19 09:56:05.383757
++sorted('tea')
+
+# 2018-01-19 11:27:43.952822
++dict(d)
+
+# 2018-01-19 11:27:49.448825
++d.__dir__
+
+# 2018-01-19 11:27:52.234586
++d.__dir__()
+
+# 2018-01-21 19:32:41.742725
++import requests
+
+# 2018-01-21 19:32:53.815527
++response = requests.get('https://api.zhihu.com/lives/homefeed?includes=live')
+
+# 2018-01-21 19:33:00.924355
++response.json()
+
+# 2018-01-21 19:33:06.662263
++response.text
+
+# 2018-01-21 19:34:15.117317
++headers = dict({'User-Agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_13_0) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/63.0.3239.132 Safari/537.36'})
+
+# 2018-01-21 19:34:24.538900
++response = requests.get('https://api.zhihu.com/lives/homefeed?includes=live', headers=headers)
+
+# 2018-01-21 19:34:31.674267
++response.text
+
+# 2018-01-21 19:35:30.093859
++response.json()
+
+# 2018-01-21 19:36:24.488292
++requests.get('https://api.zhihu.com/lives/homefeed?includes=live', headers=headers)
+
+# 2018-01-21 19:36:29.220378
++response = requests.get('https://api.zhihu.com/lives/homefeed?includes=live', headers=headers)
+
+# 2018-01-21 19:36:35.659120
++len(response.json())
+
+# 2018-01-21 19:36:52.121400
++len(response.json()['data'])
+
+# 2018-01-21 19:38:22.031922
++response = requests.get('https://api.zhihu.com/lives/homefeed?includes=live&limit=10&offset=10', headers=headers)
+
+# 2018-01-21 19:38:23.803121
++len(response.json()['data'])
+
+# 2018-01-21 19:38:31.644204
++response = requests.get('https://api.zhihu.com/lives/homefeed?includes=live&limit=10&offset=1', headers=headers)
+
+# 2018-01-21 19:38:33.770739
++len(response.json()['data'])
+
+# 2018-01-21 19:38:44.841326
++response = requests.get('https://api.zhihu.com/lives/homefeed?includes=live&limit=5&offset=1', headers=headers)
+
+# 2018-01-21 19:38:46.954612
++len(response.json()['data'])
+
+# 2018-01-23 17:40:15.957665
++import json
+
+# 2018-01-23 17:40:32.576920
++with open('live.json', 'r') as f:
++    json.load(f)
+
+# 2018-01-23 17:40:39.999816
++with open('live.json', 'r') as f:
++    json.loads(f)
+
+# 2018-01-23 17:44:28.776592
++import json
+
+# 2018-01-23 17:44:47.556045
++dt = dict({'a': 1})
+
+# 2018-01-23 17:45:17.408310
++with open('test.json', 'r') as f:
++    f.write(json.dumps(dt))
+
+# 2018-01-23 17:45:28.044421
++with open('test.json', 'w') as f:
++    f.write(json.dumps(dt))
+
+# 2018-01-23 17:46:37.530536
++import json
+
+# 2018-01-23 17:46:44.737375
++dt = dict({'a': 1})
+
+# 2018-01-23 17:47:04.351567
++with open('test.json', 'w') as f:
++    f.write(json.dumps(dt))
+
+# 2018-01-23 21:12:44.854389
++import pandas
+
+# 2018-01-23 21:14:24.576605
++d = pandas.read_excel('test.xlsx')
+
+# 2018-01-23 21:14:45.796916
++import pandas
+
+# 2018-01-23 21:14:46.931134
++d = pandas.read_excel('test.xlsx')
+
+# 2018-01-23 21:14:51.150941
++d.head()
+
+# 2018-01-23 21:15:35.570558
++d = pandas.read_excel('test.xlsx', header=1)
+
+# 2018-01-23 21:15:38.366392
++d.head()
+
+# 2018-01-23 21:16:03.829101
++d = pandas.read_excel('test.xlsx', header=2)
+
+# 2018-01-23 21:16:06.142708
++d.head()
+
+# 2018-01-23 21:16:08.742205
++d.tail()
+
+# 2018-01-23 21:16:33.745237
++d[0]
+
+# 2018-01-23 21:17:23.011626
++d = pandas.read_excel('test.xlsx', header=2)
+
+# 2018-01-23 21:17:25.680387
++d
+
+# 2018-01-24 17:06:09.249826
++f = 12
+
+# 2018-01-24 17:06:11.067548
++f / 7
+
+# 2018-01-24 17:06:14.152844
++f // 7
+
+# 2018-01-25 12:28:41.832230
++import arrow
+
+# 2018-01-25 12:28:48.876752
++d = arrow.now().date()
+
+# 2018-01-25 12:28:50.180681
++d
+
+# 2018-01-25 12:29:02.354301
++d.replace(tzinfo='Asia/Shanghai')
+
+# 2018-01-25 12:29:11.076743
++d.timetuple()
+
+# 2018-01-25 12:29:26.644560
++d.format('YYYY-MM-DD HH:mm:ss ZZZ')
+
+# 2018-01-25 12:29:32.069676
++d.ctime
+
+# 2018-01-25 12:29:34.283245
++d.ctime()
+
+# 2018-01-25 12:29:42.394455
++d.isoformat
+
+# 2018-01-25 12:29:44.683199
++d.isoformat()
+
+# 2018-01-25 12:30:10.563246
++d.strftime()
+
+# 2018-01-25 12:30:22.586215
++d.strftime(format='YYYY-MM-DD HH:mm:ss ZZZ')
+
+# 2018-01-25 12:31:49.351215
++d.ctime()
+
+# 2018-01-25 12:32:02.472032
++t = arrow.get(d.ctime())
+
+# 2018-01-25 12:34:21.154541
++arrow.now().date().isoformat()
+
+# 2018-01-25 14:01:45.025275
++d = list
+
+# 2018-01-25 14:01:52.104157
++d = list()
+
+# 2018-01-25 14:01:54.903062
++d.append(3)
+
+# 2018-01-25 14:01:57.910871
++d.append(4)
+
+# 2018-01-25 14:02:01.551222
++x = d.pop()
+
+# 2018-01-25 14:02:02.456937
++x
+
+# 2018-01-25 14:02:03.870976
++d
+
+# 2018-01-25 14:02:58.019597
++d = sum()
+
+# 2018-01-25 14:03:05.277096
++d = [1, 2, 3, 4]
+
+# 2018-01-25 14:03:13.944397
++d.pop
+
+# 2018-01-25 14:03:16.356902
++d.pop()
+
+# 2018-01-25 15:06:10.485974
++d = dict()
+
+# 2018-01-25 15:06:15.564912
++d['id'] = 1
+
+# 2018-01-25 15:06:26.876770
++d['body'] = dict({'id': 2})
+
+# 2018-01-25 15:06:27.981021
++d
+
+# 2018-01-25 15:17:05.537869
++family = {'name': 'bob', 'children': {'name': 'marry'}}
+
+# 2018-01-26 12:08:38.791278
++a = [[1, 2, 3], [4, 5, 6]]
+
+# 2018-01-26 12:08:42.411668
++a[1][2]
+
+# 2018-01-26 12:08:48.963553
++a[(1, 2)]
+
+# 2018-01-26 12:09:00.717744
++a.__getitem__
+
+# 2018-01-26 12:09:05.350082
++a.__getitem__(1, 2)
+
+# 2018-01-26 12:09:11.638041
++a.__getitem__((1, 2))
+
+# 2018-01-26 12:09:21.259941
++a.__getitem__(1)
+
+# 2018-01-26 12:24:08.997267
++x = range(1, 10)
+
+# 2018-01-26 12:24:09.669622
++x
+
+# 2018-01-26 12:24:20.988506
++from functools import reduce
+
+# 2018-01-26 12:24:37.861976
++reduce(lambda x, y: x * y, x)
+
+# 2018-01-26 17:05:35.630475
++s = [1, 1, 1, 2, 2, 3, 3, 3]
+
+# 2018-01-26 17:05:45.604996
++s.remove(1)
+
+# 2018-01-26 17:05:46.331751
++s
+
+# 2018-01-26 17:05:53.960812
++s.remove(-10
++)
+
+# 2018-01-26 17:05:58.741698
++s.remove(-1)
+
+# 2018-01-29 14:55:29.951507
++a = {'a': 1}
+
+# 2018-01-29 14:55:33.150575
++b = {'b': 2}
+
+# 2018-01-29 14:55:34.660391
++a += b
+
+# 2018-01-29 14:55:44.435141
++a.update(**b)
+
+# 2018-01-29 14:55:45.502939
++a
