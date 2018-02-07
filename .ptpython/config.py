@@ -9,6 +9,7 @@ from prompt_toolkit.key_binding.input_processor import KeyPress
 from prompt_toolkit.keys import Keys
 from pygments.token import Token
 
+from ptpython.repl import embed
 from ptpython.layout import CompletionVisualisation
 
 __all__ = (
@@ -100,7 +101,7 @@ def configure(repl):
     repl.enable_input_validation = True
 
     # Use this colorscheme for the code.
-    repl.use_code_colorscheme('autumn')
+    repl.use_code_colorscheme('bw')
 
     # Enable 24bit True color. (Not all terminals support this. -- maybe check
     # $TERM before changing.)
@@ -163,3 +164,4 @@ _custom_ui_colorscheme = {
     # Make the status toolbar red.
     Token.Toolbar.Status:                         'bg:#ff0000 #000000',
 }
+embed(globals(), locals())

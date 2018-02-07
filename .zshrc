@@ -165,6 +165,8 @@ export PATH="/usr/local/spark/bin:$PATH"
 
 # 设置PYTHONPATH
 export PYTHONPATH="/Users/yinwoods/4paradigm:$PYTHONPATH"
+# 设置python的默认交互为ptpython
+export PYTHONSTARTUP="$HOME/.ptpython/config.py"
 
 # 设置微信双开
 alias wechat="cd /Applications/WeChat.app/Contents/MacOS/; screen -dmUS wechat ./WeChat"
