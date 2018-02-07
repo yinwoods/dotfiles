@@ -1,2 +1,3 @@
 .DS_Store
 .vim/undo
+.ptpython/.mypy_cache
