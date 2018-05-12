@@ -227,4 +227,10 @@ alias h2='ssh chengtao@aws-recom-hdp02'
 alias h3='ssh chengtao@aws-recom-hdp03'
 alias h4='ssh chengtao@aws-recom-hdp04'
 
+alias ls=exa
+alias find=fd
+alias grep=rg
+alias cat=bat
+
 export PYTHONPATH="/Users/yinwoods/code/python:$PYTHONPATH"
+export GOPATH="/Users/yinwoods/code/go"
