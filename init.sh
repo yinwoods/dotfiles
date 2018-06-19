@@ -1,4 +1,6 @@
 
+pip3 install ptpython
+
 # 配置mycli
 rm -f $HOME/.my.cnf
 rm -f $HOME/.myclirc

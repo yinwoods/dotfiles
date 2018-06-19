@@ -59,14 +59,14 @@ Plug 'jistr/vim-nerdtree-tabs'
 " Syntax checking
 Plug 'w0rp/ale'
 
+" vim-go
+Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
+
 " jumps to location
 Plug 'justinmk/vim-sneak'
 
 " PEP8 checking
 Plug 'nvie/vim-flake8'
-
-" Java complete"
-Plug 'artur-shaik/vim-javacomplete2'
 
 " Quick Run
 Plug 'skywind3000/asyncrun.vim'

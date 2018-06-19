@@ -195,42 +195,15 @@ alias b1='ssh buaa01'
 alias b2='ssh buaa02'
 alias b3='ssh buaa03'
 
-alias r1='ssh chengtao@aws-prophet-recom01'
-alias r2='ssh chengtao@aws-prophet-recom02'
-alias r3='ssh chengtao@aws-prophet-recom03'
-alias r4='ssh chengtao@aws-prophet-recom04'
-alias r5='ssh chengtao@aws-prophet-recom05'
-alias r6='ssh chengtao@aws-prophet-recom06'
-alias r7='ssh chengtao@aws-prophet-recom07'
-alias r8='ssh chengtao@aws-prophet-recom08'
-alias r9='ssh chengtao@aws-prophet-recom09'
+alias ep1='ssh ctyin@ep01'
 
-alias p1='ssh chengtao@aws-changba-predict01'
-alias p2='ssh chengtao@aws-changba-predict02'
-
-alias es1='ssh chengtao@aws-recom-es01'
-alias es2='ssh chengtao@aws-recom-es02'
-alias es3='ssh chengtao@aws-recom-es03'
-
-alias k1='ssh chengtao@aws-recom-kafka01'
-alias k2='ssh chengtao@aws-recom-kafka02'
-alias k3='ssh chengtao@aws-recom-kafka03'
-
-alias c1='ssh chengtao@aws-recom-center01'
-alias d1='ssh chengtao@aws-recom-dev01'
-
-alias x1='ssh chengtao@aws-recom-xjp-ser01.4pd.io'
-alias x2='ssh chengtao@aws-recom-xjp-redis01.4pd.io'
-
-alias h1='ssh chengtao@aws-recom-hdp01'
-alias h2='ssh chengtao@aws-recom-hdp02'
-alias h3='ssh chengtao@aws-recom-hdp03'
-alias h4='ssh chengtao@aws-recom-hdp04'
-
+alias kc=kubectl
 alias ls=exa
 alias find=fd
 alias grep=rg
-alias cat=bat
+alias git=hub
 
-export PYTHONPATH="/Users/yinwoods/code/python:$PYTHONPATH"
-export GOPATH="/Users/yinwoods/code/go"
+export PYTHONPATH="$HOME/code/python:$PYTHONPATH"
+export GOPATH="$HOME/code/go"
+export GOBIN="$(go env GOPATH)/bin"
+export PATH="$(go env GOBIN):$PATH"
