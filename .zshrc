@@ -168,9 +168,6 @@ export PYTHONPATH="/Users/yinwoods/4paradigm:$PYTHONPATH"
 # 设置python的默认交互为ptpython
 export PYTHONSTARTUP="$HOME/.ptpython/config.py"
 
-# 设置微信双开
-alias wechat="cd /Applications/WeChat.app/Contents/MacOS/; screen -dmUS wechat ./WeChat"
-
 # 设置mysql使用mycli
 # 设置psql使用pgcli
 alias mysql="mycli"
@@ -194,8 +191,6 @@ export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
 alias b1='ssh buaa01'
 alias b2='ssh buaa02'
 alias b3='ssh buaa03'
-
-alias ep1='ssh ctyin@ep01'
 
 alias kc=kubectl
 alias ls=exa
