@@ -1,26 +1,35 @@
 
-pip3 install ptpython
+install_file()
+{
+    src=`pwd`"/"$1
+    des=`$HOME`/$1
+    if [-e $des ]; then
+        mv -f $des $des".bak"
+    fi
+    rm -f $des
+    ln -s $src $des
+}
+
+if [ ! -d ~/.ssh ]; then
+    mkdir ~/.ssh
+    chmod 0700 ~/.ssh
+fi
 
 # 配置mycli
-rm -f $HOME/.my.cnf
-rm -f $HOME/.myclirc
-ln -s $PWD/.my.cnf $HOME/.my.cnf
-ln -s $PWD/.myclirc $HOME/.myclirc
+install_file .my.cnf
+install_file .myclirc
+install_file .tmux.conf
+install_file .zshrc
+install_file .pip
+install_file .ptpython
+install_file init.vim
+install_file .config
+install_file .oh-my-zsh
+install_file .vim
 
-rm -f $HOME/.tmux.conf
-ln -s $PWD/.tmux.conf $HOME/.tmux.conf
+chmod 0600 ~/.ssh/config
+pip3 install ptpython
 
-rm -f $HOME/.zshrc
-ln -s $PWD/.zshrc $HOME/.zshrc
-
-rm -rf $HOME/.pip
-ln -s $PWD/.pip $HOME/.pip
-
-rm -rf $HOME/.ptpython
-ln -s $PWD/.ptpython $HOME/.ptpython
-
-rm -f $HOME/.vimrc
-ln -s $PWD/.config/nvim/init.vim $HOME/.vimrc
 
 # neovim 安装vim-plug插件
 curl -fLo $HOME/.local/share/nvim/site/autoload/plug.vim --create-dirs \
@@ -29,15 +38,6 @@ curl -fLo $HOME/.local/share/nvim/site/autoload/plug.vim --create-dirs \
 # vim 安装vim-plug插件
 curl -fLo $HOME/.vim/autoload/plug.vim --create-dirs \
     https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
-
-rm -rf $HOME/.config
-ln -s $PWD/.config $HOME/.config
-
-rm -rf $HOME/.oh-my-zsh
-ln -s $PWD/.oh-my-zsh $HOME/.oh-my-zsh
-
-rm -rf $HOME/.vim
-ln -s $PWD/.vim $HOME/.vim
 
 git submodule update --init --recursive
 

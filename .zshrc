@@ -197,6 +197,7 @@ alias ls=exa
 alias find=fd
 alias grep=rg
 alias git=hub
+alias mesos="cd $HOME/code/go/src/git.dev.fwmrm.net/EP-Public/mesos-log-collector/"
 
 export PYTHONPATH="$HOME/code/python:$PYTHONPATH"
 export GOPATH="$HOME/code/go"
