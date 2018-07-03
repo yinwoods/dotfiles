@@ -2,7 +2,7 @@
 install_file()
 {
     src=`pwd`"/"$1
-    des=`$HOME`/$1
+    des="$HOME/$1"
     if [-e $des ]; then
         mv -f $des $des".bak"
     fi
