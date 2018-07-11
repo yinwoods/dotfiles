@@ -160,11 +160,9 @@ export TERM="xterm-256color"
 # 配置rust cargo路径
 export PATH="$HOME/.cargo/bin:$PATH"
 
-# 设置spark路径
-export PATH="/usr/local/spark/bin:$PATH"
+# 优先使用/usr/local/bin目录
+export PATH="/usr/local/bin:$PATH"
 
-# 设置PYTHONPATH
-export PYTHONPATH="/Users/yinwoods/4paradigm:$PYTHONPATH"
 # 设置python的默认交互为ptpython
 export PYTHONSTARTUP="$HOME/.ptpython/config.py"
 
@@ -172,6 +170,9 @@ export PYTHONSTARTUP="$HOME/.ptpython/config.py"
 # 设置psql使用pgcli
 alias mysql="mycli"
 alias psql="pgcli"
+
+# 一键恢复工作环境
+alias work="tmux -CC attach || tmux -CC"
 
 # 设置docker-compose docker-machine简称
 alias d-c='docker-compose'
@@ -188,6 +189,7 @@ alias super=supervisorctl
 export FZF_DEFAULT_COMMAND='rg --files --no-ignore --hidden --follow -g "!{.git,node_modules}/*" 2> /dev/null'
 export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
 
+# 毕设机器
 alias b1='ssh buaa01'
 alias b2='ssh buaa02'
 alias b3='ssh buaa03'
@@ -197,6 +199,7 @@ alias ls=exa
 alias find=fd
 alias grep=rg
 alias git=hub
+alias help=tldr
 alias mesos="cd $HOME/code/go/src/git.dev.fwmrm.net/EP-Public/mesos-log-collector/"
 
 export PYTHONPATH="$HOME/code/python:$PYTHONPATH"
