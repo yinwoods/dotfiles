@@ -172,7 +172,8 @@ alias mysql="mycli"
 alias psql="pgcli"
 
 # 一键恢复工作环境
-alias work="tmux -CC attach || tmux -CC"
+alias work="tmux -CC attach work || tmux -CC"
+alias buaa="tmux -CC attach buaa || tmux -CC"
 
 # 设置docker-compose docker-machine简称
 alias d-c='docker-compose'
@@ -202,7 +203,6 @@ alias git=hub
 alias help=tldr
 
 alias mesos="cd $HOME/code/go/src/git.dev.fwmrm.net/EP-Public/mesos-log-collector/"
-alias buaa="cd $(go env GOPATH)/src/github.com/yinwoods/liman"
 
 export PYTHONPATH="$HOME/code/python:$PYTHONPATH"
 export GOPATH="$HOME/code/go"

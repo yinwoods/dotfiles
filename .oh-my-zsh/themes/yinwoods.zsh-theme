@@ -39,11 +39,11 @@ ys_hg_prompt_info() {
 }
 
 # Prompt format: \n # USER at MACHINE in DIRECTORY on git:BRANCH STATE [TIME] \n $
-PROMPT="%{$fg_bold[blue]%}🦄 %{$reset_color%}\
+PROMPT="%{$fg_bold[blue]%}%{$reset_color%}\
 %{$fg[cyan]%}%n\
-%{$fg[white]%}🍭 \
+%{$fg[white]%}🌝\
 %{$fg[green]%}$(box_name)\
-%{$fg_bold[yellow]%}${current_dir}%{$reset_color%}\
+%{$fg_bold[yellow]%} ${current_dir}%{$reset_color%}\
 ${hg_info}\
 ${git_info}\
 %{$fg_bold[red]%} ➜ %{$reset_color%}"
