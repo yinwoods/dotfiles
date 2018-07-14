@@ -172,8 +172,7 @@ alias mysql="mycli"
 alias psql="pgcli"
 
 # 一键恢复工作环境
-alias work="tmux -CC attach work || tmux -CC"
-alias buaa="tmux -CC attach buaa || tmux -CC"
+alias work="tmux -CC attach || tmux -CC"
 
 # 设置docker-compose docker-machine简称
 alias d-c='docker-compose'
@@ -199,7 +198,6 @@ alias kc=kubectl
 alias ls=exa
 alias find=fd
 alias grep=rg
-alias git=hub
 alias help=tldr
 
 alias mesos="cd $HOME/code/go/src/git.dev.fwmrm.net/EP-Public/mesos-log-collector/"
@@ -208,3 +206,11 @@ export PYTHONPATH="$HOME/code/python:$PYTHONPATH"
 export GOPATH="$HOME/code/go"
 export GOBIN="$(go env GOPATH)/bin"
 export PATH="$(go env GOBIN):$PATH"
+
+function viz() {
+	name=$1
+    name=(${(s:.:)name})
+    prefix=${name[1]}
+    dot -Tpng $prefix.dot -o $prefix.png && cat $prefix.png | imgcat
+}
+
