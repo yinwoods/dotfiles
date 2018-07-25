@@ -14,14 +14,8 @@ HYPHEN_INSENSITIVE="true"
 # Uncomment the following line to change how often to auto-update (in days).
 export UPDATE_ZSH_DAYS=30
 
-# Uncomment the following line to enable command auto-correction.
-ENABLE_CORRECTION="true"
-
 # Uncomment the following line to display red dots whilst waiting for completion.
 COMPLETION_WAITING_DOTS="true"
-
-# Uncomment the following line to enable command auto-correction.
-ENABLE_CORRECTION="true"
 
 # Uncomment the following line if you want to change the command execution time
 # stamp shown in the history command output.
@@ -32,7 +26,7 @@ HIST_STAMPS="yyyy-mm-dd"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git)
+plugins=(git osx aws)
 
 # User configuration
 source $ZSH/oh-my-zsh.sh
@@ -107,8 +101,40 @@ alias -s py='vim'
 alias -s c='vim'
 alias -s cpp='vim'
 alias -s gz='tar -xzvf'
+alias v=nvim
 alias vi=nvim
 alias vim=nvim
+# 设置mysql使用mycli
+# 设置psql使用pgcli
+alias mysql="mycli"
+alias psql="pgcli"
+
+# 一键恢复工作环境
+alias work="tmux -CC attach || tmux -CC"
+
+# 设置docker-compose docker-machine简称
+alias d-c='docker-compose'
+alias d-m='docker-machine'
+
+# 设置ipython为ptpython
+alias ipython=ptpython
+alias ipython3=ptpython3
+
+# 设置supervisor
+alias super=supervisorctl
+
+# 毕设机器
+alias b1='ssh buaa01'
+alias b2='ssh buaa02'
+alias b3='ssh buaa03'
+
+alias kc=kubectl
+alias ls=exa
+alias grep=rg
+alias help=tldr
+
+alias public="cd $HOME/code/go/src/git.dev.fwmrm.net/EP-Public/"
+
 
 #漂亮又实用的命令高亮界面
 setopt extended_glob
@@ -166,41 +192,10 @@ export PATH="/usr/local/bin:$PATH"
 # 设置python的默认交互为ptpython
 export PYTHONSTARTUP="$HOME/.ptpython/config.py"
 
-# 设置mysql使用mycli
-# 设置psql使用pgcli
-alias mysql="mycli"
-alias psql="pgcli"
-
-# 一键恢复工作环境
-alias work="tmux -CC attach || tmux -CC"
-
-# 设置docker-compose docker-machine简称
-alias d-c='docker-compose'
-alias d-m='docker-machine'
-
-# 设置ipython为ptpython
-alias ipython=ptpython
-alias ipython3=ptpython3
-
-# 设置supervisor
-alias super=supervisorctl
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
 export FZF_DEFAULT_COMMAND='rg --files --no-ignore --hidden --follow -g "!{.git,node_modules}/*" 2> /dev/null'
 export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
-
-# 毕设机器
-alias b1='ssh buaa01'
-alias b2='ssh buaa02'
-alias b3='ssh buaa03'
-
-alias kc=kubectl
-alias ls=exa
-alias find=fd
-alias grep=rg
-alias help=tldr
-
-alias mesos="cd $HOME/code/go/src/git.dev.fwmrm.net/EP-Public/mesos-log-collector/"
 
 export PYTHONPATH="$HOME/code/python:$PYTHONPATH"
 export GOPATH="$HOME/code/go"
@@ -213,4 +208,3 @@ function viz() {
     prefix=${name[1]}
     dot -Tpng $prefix.dot -o $prefix.png && cat $prefix.png | imgcat
 }
-

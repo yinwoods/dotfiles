@@ -129,8 +129,12 @@ let g:airline_symbols.branch = '⎇'
 let g:airline_powerline_fonts=1
 let g:airline#extensions#tabline#enabled=1
 let g:airline#extensions#tabline#buffer_nr_show=1
-let g:airline_section_error = '%{ALEGetStatusLine()}'
+let g:airline#extensions#ale#enabled=1
 let g:airline_theme='dracula'
+
+let g:ale_sign_error = 'xx'
+let g:ale_sign_warning = '>>'
+let g:ale_statusline_format = ['⨉ %d', '⚠ %d', '⬥ ok']
 
 
 " YouCompleteMe Position
@@ -144,6 +148,11 @@ let g:ycm_complete_in_comments=1
 let g:ycm_complete_in_strings=1
 let g:ycm_server_keep_logfiles=1
 let g:ycm_rust_src_path = '/usr/local/rust/src'
+
+" fix temporary bug for YouCompleteMe
+if has('python3')
+  silent! python3 1
+endif
 
 
 " map a specific key or shortcut to open NERDTree
@@ -232,19 +241,25 @@ if has('autocmd')
     augroup end
 endif
 
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"""""""""""""""""""""""""""""""""""""""""Set Shortcut Keys"""""""""""""""""""""""""""""""""""""""""""
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+let mapleader = ","
+
 " ale navigate between errors quickly
-nmap <silent> ,p <Plug>(ale_previous_wrap)
-nmap <silent> ,n <Plug>(ale_next_wrap)
-
-" ale show errors or warnings in my statusline
-let g:ale_statusline_format = ['⨉ %d', '⚠ %d', '⬥ ok']
-
-
+nmap <silent> <leader>p <Plug>(ale_previous_wrap)
+nmap <silent> <leader>n <Plug>(ale_next_wrap)
 " Quick compile and run kinds of files via ,p
-nnoremap ,r :call <SID>compile_and_run()<CR>
+nnoremap <leader>r :call <SID>compile_and_run()<CR>
 
 " go to definition for function or class
-nnoremap ,gd :YcmCompleter GoTo<CR>
+nnoremap <leader>gd :YcmCompleter GoTo<CR>
+
+autocmd FileType go nmap <leader>b  <Plug>(go-build)
+autocmd FileType go nmap <leader>r  <Plug>(go-run)
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 augroup SPACEVIM_ASYNCRUN
     autocmd!
@@ -260,8 +275,6 @@ function! s:compile_and_run()
         exec 'AsyncRun! gcc % -o %<; time ./%<'
     elseif &filetype ==# 'cpp'
        exec 'AsyncRun! g++ -std=c++11 % -o %<; time ./%<'
-    elseif &filetype ==# 'go'
-       exec 'AsyncRun! time go run "%"'
     elseif &filetype ==# 'rust'
        exec 'AsyncRun! rustc %; time ./%<'
     elseif &filetype ==# 'java'

@@ -26,6 +26,7 @@ install_file init.vim
 install_file .config
 install_file .oh-my-zsh
 install_file .vim
+install_file .gitconfig
 
 chmod 0600 ~/.ssh/config
 pip3 install ptpython

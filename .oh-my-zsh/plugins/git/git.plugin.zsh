@@ -84,14 +84,14 @@ alias gcpa='git cherry-pick --abort'
 alias gcpc='git cherry-pick --continue'
 alias gcs='git commit -S'
 
-alias gd='git diff'
-alias gdca='git diff --cached'
-alias gdcw='git diff --cached --word-diff'
+alias gd='git difftool'
+alias gdca='git difftool --cached'
+alias gdcw='git difftool --cached --word-diff'
 alias gdct='git describe --tags `git rev-list --tags --max-count=1`'
 alias gdt='git diff-tree --no-commit-id --name-only -r'
-alias gdw='git diff --word-diff'
+alias gdw='git difftool --word-diff'
 
-gdv() { git diff -w "$@" | view - }
+gdv() { git difftool -w "$@" | view - }
 compdef _git gdv=git-diff
 
 alias gf='git fetch'
