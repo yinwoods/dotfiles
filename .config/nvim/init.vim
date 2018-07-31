@@ -62,9 +62,6 @@ Plug 'w0rp/ale'
 " vim-go
 Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 
-" jumps to location
-Plug 'justinmk/vim-sneak'
-
 " PEP8 checking
 Plug 'nvie/vim-flake8'
 
@@ -72,7 +69,6 @@ Plug 'nvie/vim-flake8'
 Plug 'skywind3000/asyncrun.vim'
 
 " Sper Searching
-" Plug 'kien/ctrlp.vim'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 
 " power airline
@@ -132,8 +128,6 @@ let g:airline#extensions#tabline#buffer_nr_show=1
 let g:airline#extensions#ale#enabled=1
 let g:airline_theme='dracula'
 
-let g:ale_sign_error = 'xx'
-let g:ale_sign_warning = '>>'
 let g:ale_statusline_format = ['⨉ %d', '⚠ %d', '⬥ ok']
 
 
@@ -177,12 +171,6 @@ let g:flake8_quickfix_height=7
 " customize whether the show marks in the file
 let g:flake8_show_in_file=1
 
-" use rg when search in vim
-let g:rg_command = '
-  \ rg --column --line-number --no-heading --fixed-strings --ignore-case --no-ignore --hidden --follow --color "always"
-  \ -g "*.{js,json,php,md,styl,jade,html,config,py,cpp,c,go,hs,rb,conf}"
-  \ -g "!{.git,node_modules,vendor}/*" '
-
 " set split screen
 set splitright
 
@@ -195,14 +183,6 @@ nnoremap <C-H> <C-W><C-H>
 " let cursor always in center
 nnoremap j jzz
 nnoremap k kzz
-
-" replace f with Sneak
-nmap f <Plug>Sneak_s
-nmap F <Plug>Sneak_S
-xmap f <Plug>Sneak_s
-xmap F <Plug>Sneak_S
-omap f <Plug>Sneak_s
-omap F <Plug>Sneak_S
 
 " the proper PEP8 indentation for python scripts
 au BufNewFile,BufRead *.py
@@ -256,11 +236,16 @@ nnoremap <leader>r :call <SID>compile_and_run()<CR>
 " go to definition for function or class
 nnoremap <leader>gd :YcmCompleter GoTo<CR>
 
+" go build for golang program
 autocmd FileType go nmap <leader>b  <Plug>(go-build)
+" go run for golang program
 autocmd FileType go nmap <leader>r  <Plug>(go-run)
 
+" ctrl-p for fzf
+nnoremap <silent> <C-p> :FZF<CR>
+
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-""""""""""""""""""""""""""""""""""""""""""""Golang Conf""""""""""""""""""""""""""""""""""""""""""""""
+""""""""""""""""""""""""""""""""""""""""""Golang Config""""""""""""""""""""""""""""""""""""""""""""""
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 let g:go_fmt_command = "goimports"
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""

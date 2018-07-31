@@ -132,8 +132,11 @@ alias kc=kubectl
 alias ls=exa
 alias grep=rg
 alias help=tldr
+alias e=exit
 
 alias public="cd $HOME/code/go/src/git.dev.fwmrm.net/EP-Public/"
+alias liman="cd $GOPATH/src/github.com/yinwoods/liman"
+alias mk=minikube
 
 
 #漂亮又实用的命令高亮界面
