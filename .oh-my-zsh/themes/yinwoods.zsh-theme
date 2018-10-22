@@ -27,16 +27,14 @@ PROMPT="%{$fg_bold[blue]%}%{$reset_color%}\
 %{$fg[cyan]%}%n\
 %{$fg[white]%}🌝|\
 %{$fg[green]%}$(box_name)\
-%{$fg_bold[yellow]%} ${current_dir}%{$reset_color%}\
-${git_info}\
-%{$fg_bold[red]%} ➜ %{$reset_color%}"
+%{$fg_bold[yellow]%}${current_dir}%{$reset_color%}\
+${git_info}%{$reset_color%} "
 
 if [[ "$USER" == "root" ]]; then
-PROMPT="%{$fg_bold[blue]%}#%{$reset_color%} \
+PROMPT="%{$fg_bold[blue]%}#%{$reset_color%}\
 %{$fg[cyan]%}%n\
 %{$fg[white]%}🌝|\
 %{$fg[green]%}$(box_name)\
-%{$fg_bold[yellow]%} ${current_dir}%{$reset_color%}\
-${git_info}\
-%{$fg_bold[red]%} ➜ %{$reset_color%}"
+%{$fg_bold[yellow]%}${current_dir}%{$reset_color%}\
+${git_info}%{$reset_color%} "
 fi

@@ -15,6 +15,11 @@ if [ ! -d ~/.ssh ]; then
     chmod 0700 ~/.ssh
 fi
 
+# install prog
+curl -sL git.io/vXTo7 | bash
+# install neovim
+curl -sL git.io/vXToq | bash
+
 # 配置mycli
 install_file .my.cnf
 install_file .myclirc

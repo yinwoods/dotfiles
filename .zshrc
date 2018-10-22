@@ -135,8 +135,8 @@ alias help=tldr
 alias e=exit
 
 alias public="cd $HOME/code/go/src/git.dev.fwmrm.net/EP-Public/"
-alias liman="cd $GOPATH/src/github.com/yinwoods/liman"
-alias mk=minikube
+alias anchor="cd $HOME/code/go/src/github.com/yinwoods/anchor"
+alias k8s="cd $HOME/code/kubernetes"
 
 
 #漂亮又实用的命令高亮界面
@@ -203,11 +203,8 @@ export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
 export PYTHONPATH="$HOME/code/python:$PYTHONPATH"
 export GOPATH="$HOME/code/go"
 export GOBIN="$(go env GOPATH)/bin"
+# turn on go module
+export GO111MODULE=auto
 export PATH="$(go env GOBIN):$PATH"
-
-function viz() {
-	name=$1
-    name=(${(s:.:)name})
-    prefix=${name[1]}
-    dot -Tpng $prefix.dot -o $prefix.png && cat $prefix.png | imgcat
-}
+export LC_ALL=en_US.UTF-8
+export LANG=en_US.UTF-8
