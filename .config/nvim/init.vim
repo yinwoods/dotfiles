@@ -126,6 +126,9 @@ let g:airline_powerline_fonts=1
 let g:airline#extensions#tabline#enabled=1
 let g:airline#extensions#tabline#buffer_nr_show=1
 let g:airline#extensions#ale#enabled=1
+call airline#parts#define_function('ALE', 'ALEGetStatusLine')
+call airline#parts#define_condition('ALE', 'exists("*ALEGetStatusLine")')
+let g:airline_section_error = airline#section#create_right(['ALE'])
 let g:airline_theme='dracula'
 
 let g:ale_statusline_format = ['⨉ %d', '⚠ %d', '⬥ ok']
