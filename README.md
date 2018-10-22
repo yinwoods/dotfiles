@@ -1,6 +1,6 @@
 # 常用的配置文件
 
-![dotfiles-bg.jpg](https://gist.githubusercontent.com/yinwoods/4f8362faeb0a4a1f32fa8d3c97c7d24e/raw/a8a0cd7c1f068254669ff88064a3a1fcfbfb161e/dotfiles-bg.jpg "dotfiles-bg")
+![dotfiles-bg.jpg](https://github.com/yinwoods/dotfiles/dotfiles-bg.jpg "dotfiles-bg")
 
 该目录下包含一下文件/文件夹：
 
