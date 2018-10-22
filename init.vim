@@ -62,9 +62,6 @@ Plug 'w0rp/ale'
 " vim-go
 Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 
-" jumps to location
-Plug 'justinmk/vim-sneak'
-
 " PEP8 checking
 Plug 'nvie/vim-flake8'
 
@@ -72,7 +69,6 @@ Plug 'nvie/vim-flake8'
 Plug 'skywind3000/asyncrun.vim'
 
 " Sper Searching
-" Plug 'kien/ctrlp.vim'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 
 " power airline
@@ -129,8 +125,13 @@ let g:airline_symbols.branch = '⎇'
 let g:airline_powerline_fonts=1
 let g:airline#extensions#tabline#enabled=1
 let g:airline#extensions#tabline#buffer_nr_show=1
-let g:airline_section_error = '%{ALEGetStatusLine()}'
+let g:airline#extensions#ale#enabled=1
+call airline#parts#define_function('ALE', 'ALEGetStatusLine')
+call airline#parts#define_condition('ALE', 'exists("*ALEGetStatusLine")')
+let g:airline_section_error = airline#section#create_right(['ALE'])
 let g:airline_theme='dracula'
+
+let g:ale_statusline_format = ['⨉ %d', '⚠ %d', '⬥ ok']
 
 
 " YouCompleteMe Position
@@ -144,6 +145,11 @@ let g:ycm_complete_in_comments=1
 let g:ycm_complete_in_strings=1
 let g:ycm_server_keep_logfiles=1
 let g:ycm_rust_src_path = '/usr/local/rust/src'
+
+" fix temporary bug for YouCompleteMe
+if has('python3')
+  silent! python3 1
+endif
 
 
 " map a specific key or shortcut to open NERDTree
@@ -168,12 +174,6 @@ let g:flake8_quickfix_height=7
 " customize whether the show marks in the file
 let g:flake8_show_in_file=1
 
-" use rg when search in vim
-let g:rg_command = '
-  \ rg --column --line-number --no-heading --fixed-strings --ignore-case --no-ignore --hidden --follow --color "always"
-  \ -g "*.{js,json,php,md,styl,jade,html,config,py,cpp,c,go,hs,rb,conf}"
-  \ -g "!{.git,node_modules,vendor}/*" '
-
 " set split screen
 set splitright
 
@@ -186,14 +186,6 @@ nnoremap <C-H> <C-W><C-H>
 " let cursor always in center
 nnoremap j jzz
 nnoremap k kzz
-
-" replace f with Sneak
-nmap f <Plug>Sneak_s
-nmap F <Plug>Sneak_S
-xmap f <Plug>Sneak_s
-xmap F <Plug>Sneak_S
-omap f <Plug>Sneak_s
-omap F <Plug>Sneak_S
 
 " the proper PEP8 indentation for python scripts
 au BufNewFile,BufRead *.py
@@ -232,19 +224,43 @@ if has('autocmd')
     augroup end
 endif
 
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+"""""""""""""""""""""""""""""""""""""""""Set Shortcut Keys"""""""""""""""""""""""""""""""""""""""""""
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+let mapleader = ","
+
 " ale navigate between errors quickly
-nmap <silent> ,p <Plug>(ale_previous_wrap)
-nmap <silent> ,n <Plug>(ale_next_wrap)
-
-" ale show errors or warnings in my statusline
-let g:ale_statusline_format = ['⨉ %d', '⚠ %d', '⬥ ok']
-
-
+nmap <silent> <leader>p <Plug>(ale_previous_wrap)
+nmap <silent> <leader>n <Plug>(ale_next_wrap)
 " Quick compile and run kinds of files via ,p
-nnoremap ,r :call <SID>compile_and_run()<CR>
+nnoremap <leader>r :call <SID>compile_and_run()<CR>
 
 " go to definition for function or class
-nnoremap ,gd :YcmCompleter GoTo<CR>
+nnoremap <leader>gd :YcmCompleter GoTo<CR>
+
+" go build for golang program
+autocmd FileType go nmap <leader>b  <Plug>(go-build)
+" go run for golang program
+autocmd FileType go nmap <leader>r  <Plug>(go-run)
+
+" ctrl-p for fzf
+nnoremap <silent> <C-p> :FZF<CR>
+
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+""""""""""""""""""""""""""""""""""""""""""Golang Config""""""""""""""""""""""""""""""""""""""""""""""
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+let g:go_fmt_command = "goimports"
+call ale#linter#Define('go', {
+\   'name': 'revive',
+\   'output_stream': 'both',
+\   'executable': 'revive',
+\   'read_buffer': 0,
+\   'command': 'revive %t',
+\   'callback': 'ale#handlers#unix#HandleAsWarning',
+\})
+"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
 
 augroup SPACEVIM_ASYNCRUN
     autocmd!
@@ -260,8 +276,6 @@ function! s:compile_and_run()
         exec 'AsyncRun! gcc % -o %<; time ./%<'
     elseif &filetype ==# 'cpp'
        exec 'AsyncRun! g++ -std=c++11 % -o %<; time ./%<'
-    elseif &filetype ==# 'go'
-       exec 'AsyncRun! time go run "%"'
     elseif &filetype ==# 'rust'
        exec 'AsyncRun! rustc %; time ./%<'
     elseif &filetype ==# 'java'
