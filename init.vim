@@ -10,13 +10,19 @@ filetype plugin indent on
 set tabstop=4
 set shiftwidth=4
 set expandtab
-set autoindent
-set cindent
+set smartindent
 set cursorline
+
+" change dir based on current open files' position
+set autochdir
 
 " Enable folding
 set foldmethod=indent
 set foldlevel=99
+
+" lowercase matches lowercase and capitalcase
+set ignorecase
+set smartcase
 
 " Enable undo after close file
 set undofile
