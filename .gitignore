@@ -3,3 +3,4 @@
 .ptpython/.mypy_cache
 .config/kingsoft*
 .config/yarn*
+.config/direnv*
