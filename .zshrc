@@ -120,9 +120,6 @@ alias d-m='docker-machine'
 alias ipython=ptpython
 alias ipython3=ptpython3
 
-# 设置supervisor
-alias super=supervisorctl
-
 # 毕设机器
 alias b1='ssh buaa01'
 alias b2='ssh buaa02'
@@ -134,10 +131,7 @@ alias grep=rg
 alias help=tldr
 alias e=exit
 
-alias public="cd $HOME/code/go/src/git.dev.fwmrm.net/EP-Public/"
 alias anchor="cd $HOME/code/go/src/github.com/yinwoods/anchor"
-alias k8s="cd $HOME/code/kubernetes"
-
 
 #漂亮又实用的命令高亮界面
 setopt extended_glob
@@ -204,7 +198,10 @@ export PYTHONPATH="$HOME/code/python:$PYTHONPATH"
 export GOPATH="$HOME/code/go"
 export GOBIN="$(go env GOPATH)/bin"
 # turn on go module
-export GO111MODULE=auto
+export GO111MODULE=on
 export PATH="$(go env GOBIN):$PATH"
 export LC_ALL=en_US.UTF-8
 export LANG=en_US.UTF-8
+
+# use direnv manage environment variables
+eval "$(direnv hook zsh)"

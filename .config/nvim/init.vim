@@ -81,6 +81,9 @@ Plug 'michaeljsmith/vim-indent-object'
 " rust vim syntax
 Plug 'wting/rust.vim'
 
+" autocomplete based on ML
+Plug 'zxqfl/tabnine-vim'
+
 " Initialize plugin system
 call plug#end()
 
