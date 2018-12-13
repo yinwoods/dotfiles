@@ -169,9 +169,6 @@ zle -N self-insert check-cmd-self-insert
 zle -N backward-delete-char check-cmd-backward-delete-char
 
 
-# 使用pyenv
-if which pyenv > /dev/null; then eval "$(pyenv init -)"; fi
-
 # zsh开启vimn模式
 bindkey -v
 # 通过j、k浏览历史记录
@@ -197,11 +194,15 @@ export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
 export PYTHONPATH="$HOME/code/python:$PYTHONPATH"
 export GOPATH="$HOME/code/go"
 export GOBIN="$(go env GOPATH)/bin"
-# turn on go module
-export GO111MODULE=on
+# turn off go module
+export GO111MODULE=auto
 export PATH="$(go env GOBIN):$PATH"
 export LC_ALL=en_US.UTF-8
 export LANG=en_US.UTF-8
 
 # use direnv manage environment variables
 eval "$(direnv hook zsh)"
+
+# 使用pyenv
+export PATH="$HOME/.pyenv/bin:$PATH"
+eval "$(pyenv init -)"

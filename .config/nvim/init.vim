@@ -56,6 +56,9 @@ Plug 'scrooloose/nerdtree'
 " NERD Tree tabs
 Plug 'jistr/vim-nerdtree-tabs'
 
+" Vue Syntax Highlight
+Plug 'posva/vim-vue'
+
 " Syntax checking
 Plug 'w0rp/ale'
 
@@ -189,27 +192,6 @@ nnoremap <C-H> <C-W><C-H>
 " let cursor always in center
 nnoremap j jzz
 nnoremap k kzz
-
-" the proper PEP8 indentation for python scripts
-au BufNewFile,BufRead *.py
-    \ set tabstop=4 |
-    \ set softtabstop=4 |
-    \ set shiftwidth=4 |
-    \ set textwidth=99 |
-    \ set expandtab |
-    \ set autoindent |
-    \ set fileformat=unix |
-
-
-" set indent for js/html/css
-au BufNewFile,BufRead *.js
-    \ set tabstop=2 |
-    \ set softtabstop=2 |
-    \ set shiftwidth=2 |
-    \ set textwidth=99 |
-    \ set expandtab |
-    \ set autoindent |
-    \ set fileformat=unix |
 
 " solve the macos crontab problem
 augroup MACOS_CRONTAB
