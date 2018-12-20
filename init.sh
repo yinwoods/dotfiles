@@ -2,8 +2,8 @@
 install_file()
 {
     src=`pwd`"/"$1
-    des="$HOME/$1"
-    if [-e $des ]; then
+    des="$HOME/$2"
+    if [ -e $des ]; then
         mv -f $des $des".bak"
     fi
     rm -f $des
@@ -21,17 +21,18 @@ curl -sL git.io/vXTo7 | bash
 curl -sL git.io/vXToq | bash
 
 # 配置mycli
-install_file .my.cnf
-install_file .myclirc
-install_file .tmux.conf
-install_file .zshrc
-install_file .pip
-install_file .ptpython
-install_file init.vim
-install_file .config
-install_file .oh-my-zsh
-install_file .vim
-install_file .gitconfig
+install_file .my.cnf .my.cnf
+install_file .myclirc .myclirc
+install_file .tmux.conf .tmux.conf
+install_file .zshrc .zshrc
+install_file .pip .pip
+install_file .ptpython .ptpython
+install_file init.vim .config/nvim/init.vim
+install_file after .config/nvim/after
+install_file .config .config
+install_file .oh-my-zsh .oh-my-zsh
+install_file .vim .vim
+install_file .gitconfig .gitconfig
 
 chmod 0600 ~/.ssh/config
 pip3 install ptpython

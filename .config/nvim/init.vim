@@ -10,13 +10,19 @@ filetype plugin indent on
 set tabstop=4
 set shiftwidth=4
 set expandtab
-set autoindent
-set cindent
+set smartindent
 set cursorline
+
+" change dir based on current open files' position
+set autochdir
 
 " Enable folding
 set foldmethod=indent
 set foldlevel=99
+
+" lowercase matches lowercase and capitalcase
+set ignorecase
+set smartcase
 
 " Enable undo after close file
 set undofile
@@ -56,9 +62,6 @@ Plug 'scrooloose/nerdtree'
 " NERD Tree tabs
 Plug 'jistr/vim-nerdtree-tabs'
 
-" Vue Syntax Highlight
-Plug 'posva/vim-vue'
-
 " Syntax checking
 Plug 'w0rp/ale'
 
@@ -83,9 +86,6 @@ Plug 'michaeljsmith/vim-indent-object'
 
 " rust vim syntax
 Plug 'wting/rust.vim'
-
-" autocomplete based on ML
-Plug 'zxqfl/tabnine-vim'
 
 " Initialize plugin system
 call plug#end()
@@ -192,6 +192,27 @@ nnoremap <C-H> <C-W><C-H>
 " let cursor always in center
 nnoremap j jzz
 nnoremap k kzz
+
+" the proper PEP8 indentation for python scripts
+au BufNewFile,BufRead *.py
+    \ set tabstop=4 |
+    \ set softtabstop=4 |
+    \ set shiftwidth=4 |
+    \ set textwidth=99 |
+    \ set expandtab |
+    \ set autoindent |
+    \ set fileformat=unix |
+
+
+" set indent for js/html/css
+au BufNewFile,BufRead *.js
+    \ set tabstop=2 |
+    \ set softtabstop=2 |
+    \ set shiftwidth=2 |
+    \ set textwidth=99 |
+    \ set expandtab |
+    \ set autoindent |
+    \ set fileformat=unix |
 
 " solve the macos crontab problem
 augroup MACOS_CRONTAB
