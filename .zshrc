@@ -195,13 +195,10 @@ export PYTHONPATH="$HOME/code/python:$PYTHONPATH"
 export GOPATH="$HOME/code/go"
 export GOBIN="$(go env GOPATH)/bin"
 # turn off go module
-export GO111MODULE=auto
+export GO111MODULE=on
 export PATH="$(go env GOBIN):$PATH"
 export LC_ALL=en_US.UTF-8
 export LANG=en_US.UTF-8
-
-# use direnv manage environment variables
-eval "$(direnv hook zsh)"
 
 # 使用pyenv
 export PATH="$HOME/.pyenv/bin:$PATH"
