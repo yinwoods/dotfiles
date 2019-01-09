@@ -2,3 +2,4 @@
 .vim/undo
 .ptpython/.mypy_cache
 !.config/nvim
+.config/kingsoft

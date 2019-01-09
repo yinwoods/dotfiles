@@ -43,24 +43,17 @@ call plug#begin('~/.vim/plugged')
 
 " Make sure you use single quotes
 
-" The sparkup vim script is in a subdirectory of this repo called vim.
-" Pass the path to set the runtimepath properly.
-Plug 'rstacruz/sparkup', {'rtp': 'vim/'}
-
 " YouCompleteMe
 Plug 'Valloric/YouCompleteMe'
 
 " Dracula theme
 Plug 'dracula/vim'
 
-"make fold code right
-Plug 'tmhedberg/SimpylFold'
-
 " NERD Tree
 Plug 'scrooloose/nerdtree'
 
-" NERD Tree tabs
-Plug 'jistr/vim-nerdtree-tabs'
+" Vim ripgrep support
+Plug 'jremmen/vim-ripgrep'
 
 " Syntax checking
 Plug 'w0rp/ale'
@@ -76,13 +69,11 @@ Plug 'skywind3000/asyncrun.vim'
 
 " Sper Searching
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
+Plug 'junegunn/fzf.vim'
 
 " power airline
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
-
-" vim indent object
-Plug 'michaeljsmith/vim-indent-object'
 
 " rust vim syntax
 Plug 'wting/rust.vim'
@@ -193,27 +184,6 @@ nnoremap <C-H> <C-W><C-H>
 nnoremap j jzz
 nnoremap k kzz
 
-" the proper PEP8 indentation for python scripts
-au BufNewFile,BufRead *.py
-    \ set tabstop=4 |
-    \ set softtabstop=4 |
-    \ set shiftwidth=4 |
-    \ set textwidth=99 |
-    \ set expandtab |
-    \ set autoindent |
-    \ set fileformat=unix |
-
-
-" set indent for js/html/css
-au BufNewFile,BufRead *.js
-    \ set tabstop=2 |
-    \ set softtabstop=2 |
-    \ set shiftwidth=2 |
-    \ set textwidth=99 |
-    \ set expandtab |
-    \ set autoindent |
-    \ set fileformat=unix |
-
 " solve the macos crontab problem
 augroup MACOS_CRONTAB
     au BufEnter /private/tmp/crontab.* setl backupcopy=yes
@@ -252,6 +222,17 @@ autocmd FileType go nmap <leader>r  <Plug>(go-run)
 
 " ctrl-p for fzf
 nnoremap <silent> <C-p> :FZF<CR>
+" --column: Show column number
+" --line-number: Show line number
+" --no-heading: Do not show file headings in results
+" --fixed-strings: Search term as a literal string
+" --ignore-case: Case insensitive search
+" --no-ignore: Do not respect .gitignore, etc...
+" --hidden: Search hidden files and folders
+" --follow: Follow symlinks
+" --glob: Additional conditions for search (in this case ignore everything in the .git/ folder)
+" --color: Search color options
+command! -bang -nargs=* Find call fzf#vim#grep('rg --column --line-number --no-heading --fixed-strings --ignore-case --no-ignore --hidden --follow --glob "!.git/*" --color "always" '.shellescape(<q-args>).'| tr -d "\017"', 1, <bang>0)
 
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 """"""""""""""""""""""""""""""""""""""""""Golang Config""""""""""""""""""""""""""""""""""""""""""""""
