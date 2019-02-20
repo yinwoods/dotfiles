@@ -1,7 +1,7 @@
 # This is Git's per-user configuration file.
 [user]
-	name = ctyin
-	email = ctyin@freewheel.tv
+	name = 风起
+	email = chengtao.yct@alibaba-inc.com
 [diff]
 	tool = vimdiff
 [difftool]

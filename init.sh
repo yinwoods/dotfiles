@@ -25,10 +25,9 @@ install_file .my.cnf .my.cnf
 install_file .myclirc .myclirc
 install_file .tmux.conf .tmux.conf
 install_file .zshrc .zshrc
+install_file .config/nvim/init.vim ~/.ideavimrc
 install_file .pip .pip
 install_file .ptpython .ptpython
-install_file init.vim .config/nvim/init.vim
-install_file after .config/nvim/after
 install_file .config .config
 install_file .oh-my-zsh .oh-my-zsh
 install_file .vim .vim
