@@ -78,6 +78,8 @@ Plug 'vim-airline/vim-airline-themes'
 " rust vim syntax
 Plug 'wting/rust.vim'
 
+Plug 'nsf/gocode', { 'rtp': 'nvim', 'do': '~/.config/nvim/plugged/gocode/nvim/symlink.sh' }
+
 " Initialize plugin system
 call plug#end()
 

@@ -131,7 +131,8 @@ alias grep=rg
 alias help=tldr
 alias e=exit
 
-alias anchor="cd $HOME/dev/go/src/github.com/yinwoods/anchor"
+alias depot="cd $HOME/dev/java/allspark/amazon-allspark-depot"
+alias agent="cd $HOME/dev/java/allspark/amazon-allspark-agent"
 
 #漂亮又实用的命令高亮界面
 setopt extended_glob
