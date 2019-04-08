@@ -43,9 +43,6 @@ call plug#begin('~/.vim/plugged')
 
 " Make sure you use single quotes
 
-" YouCompleteMe
-Plug 'Valloric/YouCompleteMe'
-
 " Dracula theme
 Plug 'dracula/vim'
 
@@ -79,6 +76,8 @@ Plug 'vim-airline/vim-airline-themes'
 Plug 'wting/rust.vim'
 
 Plug 'nsf/gocode', { 'rtp': 'nvim', 'do': '~/.config/nvim/plugged/gocode/nvim/symlink.sh' }
+
+Plug 'neoclide/coc.nvim', {'do': { -> coc#util#install()}}
 
 " Initialize plugin system
 call plug#end()
@@ -122,34 +121,9 @@ let g:airline_right_alt_sep = '❮'
 let g:airline_symbols.linenr = '¶'
 let g:airline_symbols.branch = '⎇'
 let g:airline_powerline_fonts=1
-let g:airline#extensions#tabline#enabled=1
-let g:airline#extensions#tabline#buffer_nr_show=1
-let g:airline#extensions#ale#enabled=1
-call airline#parts#define_function('ALE', 'ALEGetStatusLine')
-call airline#parts#define_condition('ALE', 'exists("*ALEGetStatusLine")')
-let g:airline_section_error = airline#section#create_right(['ALE'])
 let g:airline_theme='dracula'
 
-let g:ale_statusline_format = ['⨉ %d', '⚠ %d', '⬥ ok']
-
-
-" YouCompleteMe Position
-let g:ycm_global_ycm_extra_conf = '~/.vim/bundle/YouCompleteMe/third_party/ycmd/cpp/ycm/.ycm_extra_conf.py'
-" ensure autocomplete window goes away when done with it
-let g:ycm_autoclose_preview_window_after_completion=1
-let g:ycm_collect_identifiers_from_comments_and_strings=1
-let g:ycm_min_num_of_chars_for_completion=2
-let g:ycm_cache_omnifunc=0
-let g:ycm_complete_in_comments=1
-let g:ycm_complete_in_strings=1
-let g:ycm_server_keep_logfiles=1
-let g:ycm_rust_src_path = '/usr/local/rust/src'
-
-" fix temporary bug for YouCompleteMe
-if has('python3')
-  silent! python3 1
-endif
-
+let g:airline#extensions#ale#enabled=1
 
 " map a specific key or shortcut to open NERDTree
 map <C-n> :NERDTreeToggle<CR>
@@ -214,13 +188,12 @@ nmap <silent> <leader>n <Plug>(ale_next_wrap)
 " Quick compile and run kinds of files via ,p
 nnoremap <leader>r :call <SID>compile_and_run()<CR>
 
-" go to definition for function or class
-nnoremap <leader>gd :YcmCompleter GoTo<CR>
-
 " go build for golang program
 autocmd FileType go nmap <leader>b  <Plug>(go-build)
 " go run for golang program
 autocmd FileType go nmap <leader>r  <Plug>(go-run)
+" json comment highlight support
+autocmd FileType json syntax match Comment +\/\/.\+$+
 
 " ctrl-p for fzf
 nnoremap <silent> <C-p> :FZF<CR>
