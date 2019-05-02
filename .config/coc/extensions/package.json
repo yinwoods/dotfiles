@@ -1,1 +1,6 @@
-{"dependencies":{}}
+{
+  "dependencies": {
+    "coc-java": "^1.2.6",
+    "coc-python": "^1.1.6"
+  }
+}

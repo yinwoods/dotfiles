@@ -3,3 +3,4 @@
 .ptpython/.mypy_cache
 !.config/nvim
 .config/kingsoft
+.config/coc
