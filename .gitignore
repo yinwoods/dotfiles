@@ -1,5 +1,6 @@
 .DS_Store
 .vim/undo
+.vim/plugged
 .ptpython/.mypy_cache
 !.config/nvim
 .config/kingsoft

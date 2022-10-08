@@ -2,6 +2,10 @@
 [user]
 	name = 风起
 	email = chengtao.yct@alibaba-inc.com
+[core]
+    ignoreCase = false
+	precomposeunicode = true
+	quotepath = false
 [diff]
 	tool = vimdiff
 [difftool]
@@ -13,3 +17,11 @@
 	required = true
 [creadential]
 	helper = store
+[pull]
+	rebase = false
+[difftool "sourcetree"]
+	cmd = opendiff \"$LOCAL\" \"$REMOTE\"
+	path = 
+[mergetool "sourcetree"]
+	cmd = /Applications/Sourcetree.app/Contents/Resources/opendiff-w.sh \"$LOCAL\" \"$REMOTE\" -ancestor \"$BASE\" -merge \"$MERGED\"
+	trustExitCode = true

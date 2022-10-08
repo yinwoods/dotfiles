@@ -75,15 +75,20 @@ Plug 'vim-airline/vim-airline-themes'
 " rust vim syntax
 Plug 'wting/rust.vim'
 
+" vim notify
+Plug 'rcarriga/nvim-notify'
+
 Plug 'nsf/gocode', { 'rtp': 'nvim', 'do': '~/.config/nvim/plugged/gocode/nvim/symlink.sh' }
 
-Plug 'neoclide/coc.nvim', {'do': { -> coc#util#install()}}
+Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
+Plug 'zchee/deoplete-jedi'
 
 " Initialize plugin system
 call plug#end()
 
 let g:python_highlight_all=1
 let g:solarized_termcolors=256
+let g:deoplete#enable_at_startup = 1
 
 " set theme
 syntax enable
@@ -187,6 +192,8 @@ nmap <silent> <leader>p <Plug>(ale_previous_wrap)
 nmap <silent> <leader>n <Plug>(ale_next_wrap)
 " Quick compile and run kinds of files via ,p
 nnoremap <leader>r :call <SID>compile_and_run()<CR>
+" <TAB>: completion.
+inoremap <expr><TAB>  pumvisible() ? "\<C-n>" : "\<TAB>"
 
 " go build for golang program
 autocmd FileType go nmap <leader>b  <Plug>(go-build)
