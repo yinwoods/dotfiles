@@ -68,15 +68,18 @@ Plug 'skywind3000/asyncrun.vim'
 Plug 'junegunn/fzf', { 'dir': '~/.fzf', 'do': './install --all' }
 Plug 'junegunn/fzf.vim'
 
+" vim notify
+Plug 'rcarriga/nvim-notify'
+
+" icon
+Plug 'ryanoasis/vim-devicons'
+
 " power airline
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 
 " rust vim syntax
 Plug 'wting/rust.vim'
-
-" vim notify
-Plug 'rcarriga/nvim-notify'
 
 Plug 'nsf/gocode', { 'rtp': 'nvim', 'do': '~/.config/nvim/plugged/gocode/nvim/symlink.sh' }
 
@@ -104,6 +107,8 @@ set nobackup
 set mouse=a
 set hlsearch
 set pastetoggle=<F3>
+" 终端支持 GUI
+set termguicolors
 hi Normal ctermfg=252 ctermbg=none
 
 if has('gui_running')
