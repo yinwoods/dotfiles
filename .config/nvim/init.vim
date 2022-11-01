@@ -1,10 +1,10 @@
-" UTF-8 support
-set encoding=utf-8
-set fileencoding=utf-8
-
 scriptencoding utf8
 filetype plugin on
 filetype plugin indent on
+
+" UTF-8 support
+set encoding=utf-8
+set fileencoding=utf-8
 
 " set tab
 set tabstop=4
@@ -29,13 +29,12 @@ set undofile
 set undodir=~/.vim/undo
 set undolevels=5000
 
-" Enable folding with spacebar
-nnoremap <space> za
 
 " 设置命令行补全模式为菜单模式
 " 有多个候选项时，以菜单形式展示，而不是默认第一个
 set wildmenu
 set wildmode=list:longest,full
+set completeopt=menu,menuone,noselect
 
 
 " Specify a directory for plugins (for Neovim: ~/.local/share/nvim/plugged)
@@ -78,20 +77,32 @@ Plug 'ryanoasis/vim-devicons'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 
-" rust vim syntax
-Plug 'wting/rust.vim'
+" rust vim
+Plug 'rust-lang/rust.vim'
 
 Plug 'nsf/gocode', { 'rtp': 'nvim', 'do': '~/.config/nvim/plugged/gocode/nvim/symlink.sh' }
 
-Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
-Plug 'zchee/deoplete-jedi'
+" autocomplete
+Plug 'neovim/nvim-lspconfig'
+Plug 'hrsh7th/cmp-nvim-lsp'
+Plug 'hrsh7th/cmp-buffer'
+Plug 'hrsh7th/cmp-path'
+Plug 'hrsh7th/cmp-cmdline'
+Plug 'hrsh7th/nvim-cmp'
 
-" Initialize plugin system
+" For vsnip users.
+Plug 'hrsh7th/cmp-vsnip'
+Plug 'hrsh7th/vim-vsnip'
+Plug 'rafamadriz/friendly-snippets'
+Plug 'onsails/lspkind-nvim'
+
+" auto pair
+Plug 'tmsvg/pear-tree'
+
 call plug#end()
 
 let g:python_highlight_all=1
 let g:solarized_termcolors=256
-let g:deoplete#enable_at_startup = 1
 
 " set theme
 syntax enable
@@ -160,6 +171,9 @@ let g:flake8_show_in_file=1
 " set split screen
 set splitright
 
+" Enable folding with spacebar
+nnoremap <space> za
+
 " split navigations
 nnoremap <C-J> <C-W><C-J>
 nnoremap <C-K> <C-W><C-K>
@@ -170,15 +184,34 @@ nnoremap <C-H> <C-W><C-H>
 nnoremap j jzz
 nnoremap k kzz
 
+let mapleader = ","
+
+" Go to tab by number
+noremap <leader>1 1gt
+noremap <leader>2 2gt
+noremap <leader>3 3gt
+noremap <leader>4 4gt
+noremap <leader>5 5gt
+noremap <leader>6 6gt
+noremap <leader>7 7gt
+noremap <leader>8 8gt
+noremap <leader>9 9gt
+noremap <leader>0 :tablast<cr>
+
 " solve the macos crontab problem
 augroup MACOS_CRONTAB
     au BufEnter /private/tmp/crontab.* setl backupcopy=yes
 augroup end
 
+" lua 插件管理
+"./lua/plugins.lua
+lua require('plugins')
+
 " remember the cursor postion when you last leave
 if has('autocmd')
     augroup REMEBER_POSITON
-        autocmd BufRead *.txt set tw=78
+        autocmd BufRead *.txt 
+                    \ set tw=78
         autocmd BufReadPost *
         \ if line("'\"") > 0 && line ("'\"") <= line("$") |
         \ exe "normal g'\"" |
@@ -186,11 +219,11 @@ if has('autocmd')
     augroup end
 endif
 
+
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 """""""""""""""""""""""""""""""""""""""""Set Shortcut Keys"""""""""""""""""""""""""""""""""""""""""""
 """""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
-let mapleader = ","
 
 " ale navigate between errors quickly
 nmap <silent> <leader>p <Plug>(ale_previous_wrap)

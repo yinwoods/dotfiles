@@ -1,4 +1,4 @@
-# Common recent settings file for Wireshark 3.4.0.
+# Common recent settings file for Wireshark 4.0.0.
 #
 # This file is regenerated each time Wireshark is quit
 # and when changing configuration profile.
@@ -7,19 +7,22 @@
 ######## Recent capture files (latest last), cannot be altered through command line ########
 
 recent.capture_file: /Users/yinwoods/Downloads/abc.pcap
+recent.capture_file: /Users/yinwoods/Downloads/capture0 (8)
 
 ######## Recent capture filters (latest last), cannot be altered through command line ########
 
 
 ######## Recent display filters (latest last), cannot be altered through command line ########
 
+recent.display_filter: tcp.window_size > 65535
+recent.display_filter: tcp.window_size_scalefactor ge 0
 
 # Main window geometry.
 # Decimal numbers.
-gui.geometry_main_x: 50
-gui.geometry_main_y: 50
-gui.geometry_main_width: 1622
-gui.geometry_main_height: 922
+gui.geometry_main_x: 0
+gui.geometry_main_y: 0
+gui.geometry_main_width: 1792
+gui.geometry_main_height: 1120
 
 # Main window maximized.
 # TRUE or FALSE (case-insensitive).
