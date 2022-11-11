@@ -32,6 +32,7 @@ install_file .config .config
 install_file .oh-my-zsh .oh-my-zsh
 install_file .vim .vim
 install_file .gitconfig .gitconfig
+install_file starship.toml starship.toml
 
 chmod 0600 ~/.ssh/config
 pip3 install ptpython
