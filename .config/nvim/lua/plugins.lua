@@ -15,7 +15,7 @@ cmp.setup({
         -- 选择上一个
         ['<C-p>'] = cmp.mapping.select_prev_item(),
         -- 选择下一个
-        ['<C-n>'] = cmp.mapping.select_next_item(),
+        ['<TAB>'] = cmp.mapping.select_next_item(),
         -- 出现补全
         ['<A-.>'] = cmp.mapping(cmp.mapping.complete(), {'i', 'c'}),
         -- 取消补全
