@@ -3,13 +3,30 @@
 	name = 风起
 	email = chengtao.yct@alibaba-inc.com
 [core]
+    pager = delta
     ignoreCase = false
 	precomposeunicode = true
 	quotepath = false
+
+[interactive]
+    diffFilter = delta --color-only
+
+[delta]
+    navigate = true    # use n and N to move between diff sections
+    light = true      # set to true if you're in a terminal w/ a light background color (e.g. the default macOS terminal)
+    side-by-side = true
+    line-numbers = true
+
+[merge]
+    conflictstyle = diff3
+
 [diff]
+    colorMoved = default
 	tool = vimdiff
+
 [difftool]
 	prompt = No
+
 [filter "lfs"]
 	clean = git-lfs clean -- %f
 	smudge = git-lfs smudge -- %f
