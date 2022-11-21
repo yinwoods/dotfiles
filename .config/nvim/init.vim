@@ -16,6 +16,9 @@ set cursorline
 " change dir based on current open files' position
 set autochdir
 
+" 设置历史命令记录上限
+set history=10000
+
 " Enable folding
 set foldmethod=indent
 set foldlevel=99
