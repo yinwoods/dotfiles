@@ -17,6 +17,9 @@
     side-by-side = true
     line-numbers = true
 
+[feature]
+    manyfiles = true
+
 [merge]
     conflictstyle = diff3
 

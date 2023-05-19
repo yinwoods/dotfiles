@@ -102,6 +102,9 @@ Plug 'onsails/lspkind-nvim'
 " auto pair
 Plug 'tmsvg/pear-tree'
 
+" tree-sitter
+Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
+
 call plug#end()
 
 let g:python_highlight_all=1

@@ -1,5 +1,3 @@
-# Fig pre block. Keep at the top of this file.
-[[ -f "$HOME/.fig/shell/zshrc.pre.zsh" ]] && builtin source "$HOME/.fig/shell/zshrc.pre.zsh"
 # Path to your oh-my-zsh installation.
 export ZSH=$HOME/.oh-my-zsh
 
@@ -33,11 +31,6 @@ plugins=(git)
 # User configuration
 source $ZSH/oh-my-zsh.sh
 
-# Fig post block. Keep at the bottom of this file.
-[[ -f "$HOME/.fig/shell/zshrc.post.zsh" ]] && builtin source "$HOME/.fig/shell/zshrc.post.zsh"
-
-# use starship
-eval "$(starship init zsh)"
 
 #编辑器
 export EDITOR=vim
@@ -145,7 +138,7 @@ alias ahas="cd $HOME/dev/java/ahas/"
 alias dev="cd $HOME/dev/"
 alias amazon="cd $HOME/dev/java/amazon/"
 alias apsara="cd $HOME/dev/java/apsara/"
-# alias sshpts="ssh -i ~/.ssh/pts/id_rsa"
+alias sshama="ssh -i ~/.ssh/amazon/amazon_test.pem"
 alias scppts="scp -i ~/.ssh/pts/id_rsa"
 
 #漂亮又实用的命令高亮界面
@@ -223,7 +216,7 @@ export LANG=en_US.UTF-8
 
 # 使用pyenv
 export PATH="$HOME/.pyenv/bin:$PATH"
-eval "$(pyenv init -)"
+# eval "$(pyenv init -)"
 
 # datetime 转 unixtime
 function datetime() {
@@ -231,20 +224,10 @@ function datetime() {
     date -j -f "%Y-%m-%d %H:%M:%S" $var +%s
 }
 
-function sshpts() {
-    var="$@"
-    ssh -i ~/.ssh/pts/id_rsa root@${var}
-}
-
 function sshct() {
     var="$@"
     ssh chengtao.yct@${var}
 }
-
-eval "$(direnv hook zsh)"
-
-# just env path
-export PATH=/Users/yinwoods/.just-installs/bin:$PATH
 
 # lima path
 export PATH=/usr/local/Cellar/lima-0.12.0-Darwin-x86_64/bin:$PATH
@@ -253,8 +236,9 @@ export PATH=/usr/local/Cellar/lima-0.12.0-Darwin-x86_64/bin:$PATH
 # export PATH=/Library/Java/JavaVirtualMachines/graalvm-ce-java11-22.0.0.2/Contents/Home/bin:$PATH
 
 # java
-export JAVA_HOME=/Library/Java/JavaVirtualMachines/graalvm-ce-java11-22.0.0.2/Contents/Home
 # export JAVA_HOME=/Library/Java/JavaVirtualMachines/jdk1.8.0_201.jdk/Contents/Home
+export JAVA_HOME=/Library/Java/JavaVirtualMachines/graalvm-ce-java11-22.0.0.2/Contents/Home
+# export JAVA_HOME=/Users/yinwoods/Library/Java/JavaVirtualMachines/openjdk-17.0.2/Contents/Home
 
 # homebrew 加速
 export HOMEBREW_BOTTLE_DOMAIN=https://mirrors.ustc.edu.cn/homebrew-bottles/bottles
@@ -267,11 +251,9 @@ alias "sudoedit"='function _sudoedit(){sudo -e "$1";};_sudoedit'
 export MC_HOST_ahas_testing='http://E26B1FE191DC7C750039F17CD1228ADE:B282D9F61F8444D101/K7MDENG/bPxRfiCYEXAMPLEKEY@11.165.113.179:9000'
 export MC_HOST_ahas_production='http://E26B1FE191DC7C750039F17CD1228ADE:B282D9F61F8444D101/K7MDENG/bPxRfiCYEXAMPLEKEY@47.92.111.209:9000'
 
-#THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
-export SDKMAN_DIR="/Users/yinwoods/.sdkman"
-[[ -s "/Users/yinwoods/.sdkman/bin/sdkman-init.sh" ]] && source "/Users/yinwoods/.sdkman/bin/sdkman-init.sh"
-
 # bun
 export BUN_INSTALL="$HOME/.bun"
 export PATH="$BUN_INSTALL/bin:$PATH"
 
+# use starship
+eval "$(starship init zsh)"
