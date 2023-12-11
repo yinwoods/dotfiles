@@ -3,7 +3,6 @@ $username\
 [🔥]()\
 $directory\
 $git_branch\
-$git_status \
 """
 
 # Disable the blank line at the start of the prompt
@@ -18,7 +17,7 @@ format = '[$user](cyan)'
 [directory]
 style = "fg:yellow bold"
 format = "[ $path]($style)"
-truncation_length = 8
+truncation_length = 12
 truncation_symbol = "…/"
 
 # Here is how you can shorten some long paths by text replacement
@@ -35,20 +34,6 @@ truncation_symbol = "…/"
 # "Important  " = "  "
 
 [git_branch]
-symbol = " "
+symbol = ""
 style = "fg:#FCA17D"
 format = '[ $symbol:$branch ]($style)'
-
-[git_status]
-conflicted = "⚔️ "
-ahead = "🏎️ 💨 ×${count}"
-behind = "🐢 ×${count}"
-diverged = "🔱 🏎️ 💨 ×${ahead_count} 🐢 ×${behind_count}"
-untracked = "🛤️  ×${count}"
-stashed = "📦 "
-modified = "📝 ×${count}"
-staged = "🗃️  ×${count}"
-renamed = "📛 ×${count}"
-deleted = "🗑️  ×${count}"
-style = "bright-white"
-format = "$all_status$ahead_behind"

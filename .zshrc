@@ -110,6 +110,7 @@ alias sv='vim -u ~/.SpaceVim/vimrc'
 alias copy="pbcopy"
 alias paste="pbpaste"
 alias lg='lazygit'
+alias time='gtime'
 # 设置mysql使用mycli
 # 设置psql使用pgcli
 alias mysql="mycli"
@@ -137,6 +138,7 @@ alias pts="cd $HOME/dev/java/pts/"
 alias ahas="cd $HOME/dev/java/ahas/"
 alias dev="cd $HOME/dev/"
 alias amazon="cd $HOME/dev/java/amazon/"
+alias ai="cd $HOME/dev/java/ai/"
 alias apsara="cd $HOME/dev/java/apsara/"
 alias sshama="ssh -i ~/.ssh/amazon/amazon_test.pem"
 alias scppts="scp -i ~/.ssh/pts/id_rsa"
@@ -247,13 +249,12 @@ export HOMEBREW_BOTTLE_DOMAIN=https://mirrors.ustc.edu.cn/homebrew-bottles/bottl
 export SUDO_EDITOR="nvim"
 alias "sudoedit"='function _sudoedit(){sudo -e "$1";};_sudoedit'
 
-# apsara-ahas
-export MC_HOST_ahas_testing='http://E26B1FE191DC7C750039F17CD1228ADE:B282D9F61F8444D101/K7MDENG/bPxRfiCYEXAMPLEKEY@11.165.113.179:9000'
-export MC_HOST_ahas_production='http://E26B1FE191DC7C750039F17CD1228ADE:B282D9F61F8444D101/K7MDENG/bPxRfiCYEXAMPLEKEY@47.92.111.209:9000'
-
 # bun
 export BUN_INSTALL="$HOME/.bun"
 export PATH="$BUN_INSTALL/bin:$PATH"
 
 # use starship
 eval "$(starship init zsh)"
+
+# trace starship
+# export STARSHIP_LOG=trace starship timings
