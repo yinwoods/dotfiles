@@ -129,7 +129,7 @@ alias ipython3=ptpython3
 alias mvn3.2=/usr/local/Cellar/maven@3.2/3.2.5_1/bin/mvn
 
 alias kc=kubectl
-alias ls=exa
+alias ls=eza
 alias grep=rg
 alias help=tldr
 alias e=exit
@@ -138,10 +138,10 @@ alias pts="cd $HOME/dev/java/pts/"
 alias ahas="cd $HOME/dev/java/ahas/"
 alias dev="cd $HOME/dev/"
 alias amazon="cd $HOME/dev/java/amazon/"
+alias mw="cd $HOME/dev/java/mw/"
+alias sre="cd $HOME/dev/java/sre/"
 alias ai="cd $HOME/dev/java/ai/"
 alias apsara="cd $HOME/dev/java/apsara/"
-alias sshama="ssh -i ~/.ssh/amazon/amazon_test.pem"
-alias scppts="scp -i ~/.ssh/pts/id_rsa"
 
 #漂亮又实用的命令高亮界面
 setopt extended_glob
@@ -205,13 +205,15 @@ export PYTHONSTARTUP="$HOME/.ptpython/config.py"
 export FZF_DEFAULT_COMMAND='rg --files --no-ignore --hidden --follow -g "!{.git,node_modules}/*" 2> /dev/null'
 export FZF_CTRL_T_COMMAND="$FZF_DEFAULT_COMMAND"
 
-export PYTHONPATH="$HOME/dev/python:/usr/local/lib/python3.7/site-packages/workflow:$PYTHONPATH"
+# 激活本地python
+source $HOME/dev/python/bin/activate
 export GOPATH="$HOME/dev/go"
 export GOBIN="$(go env GOPATH)/bin"
 # turn off go module
 export GO111MODULE=on
 export GOPROXY=https://goproxy.cn
 export PATH="$(go env GOBIN):$PATH"
+export PATH="$HOME/.npm-global/bin:$PATH"
 export LC_ALL=en_US.UTF-8
 export LANG=en_US.UTF-8
 
@@ -231,6 +233,11 @@ function sshct() {
     ssh chengtao.yct@${var}
 }
 
+function sshama() {
+    var="$@"
+    ssh -i ~/.ssh/amazon/amazon_test.pem -o StrictHostKeychecking=no -o UserKnownHostsFile=/dev/null root@${var}
+}
+
 # lima path
 export PATH=/usr/local/Cellar/lima-0.12.0-Darwin-x86_64/bin:$PATH
 
@@ -239,11 +246,16 @@ export PATH=/usr/local/Cellar/lima-0.12.0-Darwin-x86_64/bin:$PATH
 
 # java
 # export JAVA_HOME=/Library/Java/JavaVirtualMachines/jdk1.8.0_201.jdk/Contents/Home
-export JAVA_HOME=/Library/Java/JavaVirtualMachines/graalvm-ce-java11-22.0.0.2/Contents/Home
+export JAVA_HOME=/Library/Java/JavaVirtualMachines/temurin-11.jdk/Contents/Home
+# export JAVA_HOME=/Library/Java/JavaVirtualMachines/jdk-21.0.2.jdk/Contents/Home
+# export JAVA_HOME=/Library/Java/JavaVirtualMachines/temurin-21.jdk/Contents/Home
 # export JAVA_HOME=/Users/yinwoods/Library/Java/JavaVirtualMachines/openjdk-17.0.2/Contents/Home
 
 # homebrew 加速
-export HOMEBREW_BOTTLE_DOMAIN=https://mirrors.ustc.edu.cn/homebrew-bottles/bottles
+export HOMEBREW_BREW_GIT_REMOTE="https://mirrors.ustc.edu.cn/brew.git"
+export HOMEBREW_CORE_GIT_REMOTE="https://mirrors.ustc.edu.cn/homebrew-core.git"
+export HOMEBREW_BOTTLE_DOMAIN="https://mirrors.ustc.edu.cn/homebrew-bottles"
+export HOMEBREW_API_DOMAIN="https://mirrors.ustc.edu.cn/homebrew-bottles/api"
 
 # sudoedit
 export SUDO_EDITOR="nvim"
@@ -258,3 +270,6 @@ eval "$(starship init zsh)"
 
 # trace starship
 # export STARSHIP_LOG=trace starship timings
+
+# Created by `pipx` on 2024-04-15 04:12:16
+export PATH="$PATH:/Users/yinwoods/.local/bin"
